@@ -50,9 +50,11 @@ exports.setReservation = function(req,res,next){
     text: 'Hello world', // plaintext body
     html: 'First Html body!'// html body
   };
-  console.log('Saving data 12....');
+  
   pg.connect(connectionStr, function(err, client, done) {
-      if (err) throw err;
+      if (err){ throw err;
+        }
+        console.log('Saving data 123....');
 
       client
         .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
