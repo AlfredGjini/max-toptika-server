@@ -1,0 +1,88 @@
+<ion-view hide-nav-bar="true">
+
+  <ion-content style="background:#fff;">
+    <div class="row">
+      <img style="margin: 10px auto;" src="img/logox.png">
+    </div>
+
+    <!-- search box and button -->
+    <div id='search-box'>
+      <form  id='search-form' >
+      <input id='search-text' name='q' placeholder='RayBan Oval SD12144' type='text' ng-model="myVar"/>
+      <button id='search-button' type='button' ng-click='dergoInput(myVar)'><span>Kerko</span></button>
+      </form>
+    </div> 
+    <div class="row"><!-- Just for the space below search --></div>
+    <ion-scroll zooming="true" direction="x" scrollbar-x="true" paging="true" style="white-space: nowrap;">
+         <img src="img/home.jpg" style="width:100%">
+         <img src="img/home.jpg" style="width:100%">
+         <img src="img/kreu_big2.png" style="width:100%">
+    </ion-scroll>
+
+    <div class="row" style="text-align: center;">
+      <div class="col">
+      <a href="#/app/syze-dielli">
+        <img  src="img/syze_dielli.jpg" style="width:100%">
+        </a>
+      </div>
+      <div class="col">
+      <a href="#/app/syze-optike">
+        <img src="img/syze_optike.jpg" style="width:100%">
+        </a>
+      </div>
+    </div>
+    <div class="row" style="text-align: center;">
+      <div class="col">
+      <a href="#/app/koleksioniRi">
+        <img  src="img/koleksioni_ri.jpg" style="width:100%">
+        </a>
+      </div>
+      <div class="col">
+      <a href="#/app/lente">
+        <img src="img/lente_kontakti.jpg" style="width:100%">
+        </a>
+      </div>
+    </div>
+    <div class="row" style="text-align: center;margin-bottom: 40px;">
+      <div class="col">
+      <a href="#/app/rreth-nesh"> 
+        <img  src="img/rreth_nesh.jpg" style="width:100%">
+        </a>
+      </div>
+      <div class="col">
+      <a href="#/app/sherbime/pika">
+        <img src="img/dyqani_afer_meje.jpg" style="width:100%">
+        </a>
+      </div>
+    </div>
+  </ion-content>
+
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+
+</ion-view>

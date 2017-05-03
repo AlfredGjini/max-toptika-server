@@ -1,0 +1,134 @@
+<ion-view title="Kartela Klinike">
+    <ion-nav-buttons side="left">
+        <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <div class="kartela-container">
+            <div class="row responsve-sm">
+              <div class="col">
+              </div>
+              <div class="col">
+                <h3 align="center">Data e vizites</h3>
+                <input type="text" readonly value={{data.clinic.data_vizites}}>
+              </div>
+              <div class="col">
+              </div>
+            </div>
+            <div class="row responsive-sm kartela">
+                <div class="col">
+                    <h3 align="center">Syri i djathte</h3>
+                    <h4 align="center">Larg</h4>
+                    <div class="row resposive-sm">
+                        <div class="col">
+                            <label for="sphLD">Sph.</label>
+                            <input type="text" name="sphLD" readonly value="{{data.clinic.djathte_larg_sph}}"_>
+                        </div>
+                        <div class="col">
+                            <label for="cylLD">Cyl.</label>
+                            <input type="text" name="cylLD" readonly value="{{data.clinic.djathte_larg_cyl}}">
+                        </div>
+                        <div class="col">
+                            <label for="axeLD">Axe.</label>
+                            <input type="text" name="axeLD" readonly value="{{data.clinic.djathte_larg_axe}}">
+                        </div>
+                    </div>
+                    <h4 align="center">Afer</h4>
+                    <div class="row resposive-sm">
+                        <div class="col">
+                            <label for="sphAD">Sph.</label>
+                            <input type="text" name="sphAD" readonly value="{{data.clinic.djathte_afer_sph}}">
+                        </div>
+                        <div class="col">
+                            <label for="cylAD">Cyl.</label>
+                            <input type="text" name="cylAD" readonly value="{{data.clinic.djathte_afer_cyl}}">
+                        </div>
+                        <div class="col">
+                            <label for="axeAD">Axe.</label>
+                            <input type="text" name="axeAD" readonly value="{{data.clinic.djathte_afer_axe}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3 align="center">Syri i majte</h3>
+                    <h4 align="center">Larg</h4>
+                    <div class="row resposive-sm">
+                        <div class="col">
+                            <label for="sphLM">Sph.</label>
+                            <input type="text" name="sphLM" readonly value="{{data.clinic.majte_larg_sph}}">
+                        </div>
+                        <div class="col">
+                            <label for="cylLM">Cyl.</label>
+                            <input type="text" name="cylLM" readonly value="{{data.clinic.majte_larg_cyl}}">
+                        </div>
+                        <div class="col">
+                            <label for="axeLM">Axe.</label>
+                            <input type="text" name="axeLM" readonly value="{{data.clinic.majte_larg_axe}}">
+                        </div>
+                    </div>
+                    <h4 align="center">Afer</h4>
+                    <div class="row resposive-sm">
+                        <div class="col">
+                            <label for="sphAM">Sph.</label>
+                            <input type="text" name="sphAM" readonly value="{{data.clinic.majte_afer_sph}}">
+                        </div>
+                        <div class="col">
+                            <label for="cylAM">Cyl.</label>
+                            <input type="text" name="cylAM" readonly value="{{data.clinic.majte_afer_cyl}}">
+                        </div>
+                        <div class="col">
+                            <label for="axeAM">Axe.</label>
+                            <input type="text" name="axeAM" readonly value="{{data.clinic.majte_afer_axe}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row responsive-sm">
+            <div class="col">
+                <h3 align="center">Distanca Pupilare</h3>
+                <div class="row responsive-sm">
+                    <h4 align="center">Afer</h4>
+                    <div class="col">
+                      <input type="text" name="disPA" readonly value="{{data.clinic.distanca_pupilare_afer}}">
+                    </div>
+                </div>
+                <div class="row responsive-sm">
+                    <h4 align="center">Larg</h4>
+                    <div class="col">
+                      <input type="text" name="disPL" readonly value="{{data.clinic.distanca_pupilare_larg}}">
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+              <h3 align="center">Shenime</h3>
+              <textarea placeholder="Shenime..." readonly width="100%" rows="5">{{data.clinic.shenime}}</textarea>
+            </div>
+        </div>
+      </div>
+    </ion-content>
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>

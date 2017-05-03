@@ -389,7 +389,7 @@
 
 .ion-chevron-down:before { content: "\f123"; }
 
-.ion-chevron-left:before { content: "\f124"; }
+.ion-chevron-left:before { content: "\f124"; font-size: 24px !important; }
 
 .ion-chevron-right:before { content: "\f125"; }
 

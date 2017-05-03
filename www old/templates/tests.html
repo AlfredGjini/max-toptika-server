@@ -1,0 +1,21 @@
+<ion-view title="Employee">
+
+    <ion-content has-header="true" padding="true">
+
+        <div class="list card">
+            <div class="item item-avatar">
+                <img src=""/>
+                <h2>{{test.name}} {{test.username}}</h2>
+                <p>{{test.password}}</p>
+            </div>
+            <a class="item item-icon-left" href="#/employees/{{employee.managerId}}" ng-if="employee.managerId > -1"><i class="icon ion-ios7-person"></i>View Manager<p></p></a>
+            <a class="item item-icon-left" href="#/employees/{{employee.id}}/reports" ng-if="employee.reports > 0"><i class="icon ion-person-stalker"></i>View Direct Reports<p></p></a>
+            <a class="item item-icon-left" href="tel:{{employee.officePhone}}"><i class="icon ion-ios7-telephone"></i>Call Office<p></p></a>
+            <a class="item item-icon-left" href="tel:+355{{employee.cellPhone}}"><i class="icon ion-ios7-telephone"></i>Call Cell<p></p></a>
+            <a class="item item-icon-left" href="sms:+355{{employee.cellPhone}}"><i class="icon ion-chatbox-working"></i>SMS<p></p></a>
+            <a class="item item-icon-left" href="mailto:{{employee.email}}"><i class="icon ion-ios7-email"></i>Email<p></p></a>
+        </div>
+
+    </ion-content>
+
+</ion-view>

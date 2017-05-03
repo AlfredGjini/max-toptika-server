@@ -6,7 +6,8 @@
     <!-- <i class="icon ion-ios-heart-outline"></i> -->
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <button style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="addToWishlist($event)"><i style="color: #eee;" id='{{syze}}' class="icon ion-heart" s></i></button>
+    <button ng-hide="alreadyExistWishlist" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="addToWishlist($event)"><i style="color: #eee;" id='{{syze}}' class="icon ion-heart" s></i></button>
+    <button ng-show="alreadyExistWishlist" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="addToWishlist($event)"><i style="color: #a4a1a5;" id='{{syze}}' class="icon ion-heart" s></i></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
         <!-- <ion-scroll zooming="true" direction="x" scrollbar-x="true" paging="true" show-pager="true" style="white-space: nowrap;padding: 10px;margin-top:40px;">
@@ -51,7 +52,7 @@
           <p align="center">{{syze.cmimi}} {{syze.monedha}}</p> -->
           <!-- <button style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="addToWishlist($event)"><i id='{{syze}}' class="icon ion-heart" s></i></button> -->
           <!-- <button class="shtoNeShporte" data-ng-click="shtoNeShporte($event)"><i id='{{syze}}' class="icon ion-heart" s></i>Shto ne shporte</button> -->
-          <div id='{{syze}}' class="shtoNeShporte" ></i>Prove virtuale</div>
+          <div id='{{syze}}' class="shtoNeShporte" data-ng-click="provoVirtual(syze.kodartikulli)"></i>Prove virtuale</div>
           <div id='{{syze}}' class="shtoNeShporte" data-ng-click="shtoNeShporte($event)"></i>Shto ne shporte</div>
           <hr style="opacity: 0.3;margin-top:20px;">
 
@@ -91,7 +92,7 @@
               
             </div>
           </div>
-    
+    <br><br><br><br>
   </ion-content>
   <!--<div class="bar bar-footer bar-balanced">
     <div class="title" style="text-align: left;">

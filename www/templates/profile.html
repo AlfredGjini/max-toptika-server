@@ -7,7 +7,7 @@
    <div class="row" style="border-bottom: 1px solid #b71c1c;">
     <h2 class="sherbimeTitle2">Profili</h2>
    </div>
-    <div class="row responsive-sm" style="margin: 30% auto;">
+    <div class="row responsive-sm" style="margin: 18% auto;">
     <a style="text-decoration: none;" href="#/app/login"><h2 class="wishBoshClassE" >Login</h2></a>
     <h2 class="oseClass" >ose</h2>
     <a style="text-decoration: none;" href="#/app/regjistrohu"><h2 class="wishBoshClassG" >Regjistrohu</h2></a>
@@ -23,6 +23,7 @@
         </div>
       </div> -->
     </div>
+    <!-- <br><br> -->
     </div>
     <div ng-show="loggedInSakte2" style="height: 100%;">
       <div class="row" style="border-bottom: 1px solid #b71c1c;background-color: #fff;">
@@ -30,7 +31,7 @@
       </div>
       <div >
       <div class="row">
-        <img style="margin:20px auto 0px;" class="profilFoto2" src="{{data.img || '../img/general-user.jpg'}}" /><br>
+        <img style="margin:20px auto 0px;" class="profilFoto2" src="{{data.img || 'img/general-user.jpg'}}" /><br>
         
       </div>
       <h3 class="emriProfili">{{ loggedInSakte.emer}} {{ loggedInSakte.mbiemer }}</h3>
@@ -41,9 +42,9 @@
       <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Blerjet e mia</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
       <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Porosite e mia</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
       <a style="text-decoration: none;" href="#/app/sherbime/kartela-klinike">
-      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Kartela Klinike</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Kartela Klinike</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;color: black;"></i></div>
       </a>
-      <div style="margin:5px auto;width: 90%;"><span class="profiliSection3Left" ng-click="logout()"><b>Log Out</b></span></div>
+      <div ng-click="logout()" style="margin:5px auto;width: 90%;cursor:pointer;"><span class="profiliSection3Left" ><b>Log Out</b></span></div>
       </div>
       <div>
       <h4 class="emriProfili3" style="padding-top:30px;">Menyrat e pageses dhe termat ligjore</h4>
@@ -56,8 +57,9 @@
       </div>
       <!-- <h2 ng-click="logout()">Log Out</h2>
       <h2>{{ loggedInSakte.emer || "Guest" }} {{ loggedInSakte.mbiemer || "Guest" }}</h2> -->
+      <br><br><br><br>
     </div>
-
+    
   </ion-content>
 <!--   <div class="bar bar-footer bar-balanced">
   <div class="title" style="text-align: left;">
@@ -89,7 +91,7 @@
     </a>
     <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
     <a class="tab-item active" href="#/app/profile">
-      <i class="icon ion-ios-person-outline"></i>
+      <i class="icon ion-ios-person"></i>
       Profili
     </a>
   </div>

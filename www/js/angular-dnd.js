@@ -2180,7 +2180,7 @@ module.directive('dndResizable', ['$parse', '$timeout', function($parse, $timeou
 
     function createHandleElement(side) {
         if (side=="se") {
-            return angular.element('<div><img style="width:20px;padding:0;position:absolute;bottom: 0px;right: 0px;" src="img/resize2.png" /></div>').addClass('angular-dnd-resizable-handle angular-dnd-resizable-handle-' + side);
+            return angular.element('<div><img style="width:30px;padding:0;position:absolute;bottom: 0px;right: 0px;" src="img/resize2.png" /></div>').addClass('angular-dnd-resizable-handle angular-dnd-resizable-handle-' + side);
         }else {
             return angular.element('<div></div>').addClass('angular-dnd-resizable-handle angular-dnd-resizable-handle-' + side);
         }

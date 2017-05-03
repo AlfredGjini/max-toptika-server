@@ -1,0 +1,75 @@
+<ion-view title="Wishlist" cache-view="false">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <!-- <h1 style="margin:10px auto;background-color: #eee;" align="center">My wishlist</h1> -->
+      <!-- <div ng-repeat="syze in response track by $index">
+        <h2>{{syze.kodartikulli}}</h2>
+        <button id={{syze.kodartikulli}} data-ng-click="removeFromWishlist($event)">Fshij</button>
+      </div> -->
+
+      <!-- <div class="list card" ng-repeat="syze in response track by $index">
+      <div class="item item-avatar">
+       <img src="pics/1.jpg"/>
+         <a href="#/app/produkte/{{syze.kodartikulli}}"><h2><b>{{syze.pershkrimartikulli}}</b></h2></a>
+        <h2>{{syze.cmimi}} {{syze.monedha}}</h2>
+        <p>{{syze.grupi}}</p>
+        <button class="fshijB" id={{syze.kodartikulli}} data-ng-click="removeFromWishlist($event)">Fshij</button>
+      </div>
+    </div> -->
+    <div class="shporta" ng-repeat="syze in response track by $index">
+      <div class="item item-avatar">
+      <div class="shportaFotoContainer">
+       <img class="shportaFoto" src="pics/1.jpg"/>
+       </div>
+       <!-- href="#/app/produkte/{{syze.kodartikulli}}" -->
+         <a style="text-decoration: none;" ><h2 class="shportaKategori1"><b>{{syze.kodifikimartikulli2}}</b></h2></a>
+         <h2 class="shportaKategori2">{{syze.kodartikulli}}</h2>
+
+        <h2 class="shportaKategori3">{{syze.cmimi}} {{syze.monedha}}</h2>
+        <!-- <h2 class="shportaKategori4"><div class="minus"><i style="font-size: 30px;" class="icon ion-minus"></i></div><p class="numriItemShporte">1</p><div class="plusi"><i style="font-size: 30px;" class="icon ion-plus"></i></div></h2> -->
+        <p>{{syze.grupi}}</p>
+        <button class="fshijB" id={{syze.kodartikulli}} data-ng-click="removeFromWishlist($event)"><i style="font-size: 30px;" class="icon ion-android-remove-circle"></i></button>
+      </div><div style="border: 1px solid #eee;width: 97%;float: right;opacity: 0.6;"></div>
+    </div>
+
+      <h2 ng-show="!response.length" style="text-align: center;"><img ng-show="wishbosh2" style="width: 60px;margin-top: 20px;" src="img/loading.gif"></h2>
+      <h2 class="wishBoshClass" ng-show="wishbosh">wishlist eshte bosh</h2> 
+  </ion-content>
+  <!-- <div class="bar bar-footer bar-balanced">
+	<div class="title" style="text-align: left;">
+    MAX OPTICA<sup>&reg;</sup>
+  	</div>
+  	<div class="title" style="text-align: right;">
+    DEA
+  	</div>
+  </div> -->
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>

@@ -61,7 +61,18 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
 
 .controller('produkteSingleCtrl',function($scope, $state,$stateParams,$http, $ionicPopup, $rootScope, $ionicSideMenuDelegate){
+
+    $scope.provoVirtual=function (item){
+    if (item=="" || item==undefined) {
+          alert("Empty");
+        }else {
+    window.localStorage.setItem('provoVirtualKod', item);
+    window.location = "#/app/sherbime/try-on";
+  }
+
+  }
     $ionicSideMenuDelegate.canDragContent(false);
+    $scope.alreadyExistWishlist=false;
 
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
@@ -75,6 +86,11 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         // console.log('po jam bosh');
         $scope.wishlistItemsLength=null;
        }else {
+        for (var i = 0; i < numriWish.length; i++) {
+            if (numriWish[i] === $stateParams.productId) {
+                $scope.alreadyExistWishlist=true;
+            }
+        }
          $scope.wishlistItemsLength=numriWish.length;
        }
 
@@ -102,7 +118,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
   $http({
        method: 'POST',
        //url: 'https://tarzantest.herokuapp.com/login',
-       url: 'https://maxoptica.herokuapp.com/product-single',
+       url: 'https://max-optika-server.herokuapp.com/product-single',
        headers: {
          'Content-Type': 'application/x-www-form-urlencoded'
        },
@@ -124,6 +140,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
 
       $scope.addToWishlist = function(item) {
+        $scope.alreadyExistWishlist=true;
         // window.localStorage eshte si session ne php
         console.log("item "+item);
 
@@ -310,7 +327,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     console.log('t');
     $ionicLoading.hide();
   /*  var params = [];
-    $http.get('https://maxoptica.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
+    $http.get('https://max-optika-server.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
      .success(function(response){
        console.log(response);
        $scope.limit  += 20; //gets another limt data
@@ -323,7 +340,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
      $http({
        method: 'POST',
        //url: 'https://tarzantest.herokuapp.com/login',
-       url: 'https://maxoptica.herokuapp.com/kreu',
+       url: 'https://max-optika-server.herokuapp.com/kreu',
        headers: {
          'Content-Type': 'application/x-www-form-urlencoded'
        },
@@ -355,6 +372,8 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 })
 
 .controller('syzeDielliCtrl', function($scope, Syze, $location, $state, $ionicLoading, $ionicPopup, $http) {
+  console.log("test");
+  console.log($scope.offsetD);
       
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
@@ -404,7 +423,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     console.log('t');
     $ionicLoading.hide();
   /*  var params = [];
-    $http.get('https://maxoptica.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
+    $http.get('https://max-optika-server.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
      .success(function(response){
        console.log(response);
        $scope.limit  += 20; //gets another limt data
@@ -416,8 +435,8 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
      console.log('Reuqest number : ',count++);
      $http({
        method: 'POST',
-       url: 'https://maxoptica.herokuapp.com/syze-dielli',
-       // url: 'https://maxoptica.herokuapp.com/syze-dielli',
+       url: 'https://max-optika-server.herokuapp.com/syze-dielli',
+       // url: 'https://max-optika-server.herokuapp.com/syze-dielli',
        headers: {
          'Content-Type': 'application/x-www-form-urlencoded'
        },
@@ -431,6 +450,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
          offset : $scope.offsetD
        }
      }).success(function(response) {
+      console.log(response);
        $scope.$broadcast('scroll.infiniteScrollComplete');
        var randomNumber=Math.floor(Math.random() * 10) + 4 ;
        console.log(randomNumber);
@@ -447,6 +467,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
        // console.log(response);
        //gets another limt data
        $scope.offsetD += 20;
+       console.log($scope.offsetD);
      });
 
   };
@@ -506,7 +527,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     console.log('t');
     $ionicLoading.hide();
   /*  var params = [];
-    $http.get('https://maxoptica.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
+    $http.get('https://max-optika-server.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
      .success(function(response){
        console.log(response);
        $scope.limit  += 20; //gets another limt data
@@ -519,7 +540,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
      $http({
        method: 'POST',
        //url: 'https://tarzantest.herokuapp.com/login',
-       url: 'https://maxoptica.herokuapp.com/syze-optike',
+       url: 'https://max-optika-server.herokuapp.com/syze-optike',
        headers: {
          'Content-Type': 'application/x-www-form-urlencoded'
        },
@@ -600,7 +621,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     console.log('t');
     $ionicLoading.hide();
   /*  var params = [];
-    $http.get('https://maxoptica.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
+    $http.get('https://max-optika-server.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
      .success(function(response){
        console.log(response);
        $scope.limit  += 20; //gets another limt data
@@ -613,7 +634,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
      $http({
        method: 'POST',
        //url: 'https://tarzantest.herokuapp.com/login',
-       url: 'https://maxoptica.herokuapp.com/syze-koleksion',
+       url: 'https://max-optika-server.herokuapp.com/syze-koleksion',
        headers: {
          'Content-Type': 'application/x-www-form-urlencoded'
        },
@@ -694,7 +715,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     console.log('t');
     $ionicLoading.hide();
   /*  var params = [];
-    $http.get('https://maxoptica.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
+    $http.get('https://max-optika-server.herokuapp.com/kreu',{limit:$scope.limit,offset:$scope.offset})
      .success(function(response){
        console.log(response);
        $scope.limit  += 20; //gets another limt data
@@ -707,7 +728,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
      $http({
        method: 'POST',
        //url: 'https://tarzantest.herokuapp.com/login',
-       url: 'https://maxoptica.herokuapp.com/syze-lente',
+       url: 'https://max-optika-server.herokuapp.com/syze-lente',
        headers: {
          'Content-Type': 'application/x-www-form-urlencoded'
        },
@@ -821,6 +842,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         console.log('jam');
       } else {
         $ionicLoading.show({
+            template: 'Loading',
             content: 'Loading',
             animation: 'fade-in',
             showBackdrop: true,
@@ -837,7 +859,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         $http({
           method: 'POST',
           //url: 'https://tarzantest.herokuapp.com/login',
-          url: 'https://maxoptica.herokuapp.com/login-real',
+          url: 'https://max-optika-server.herokuapp.com/login-real',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
@@ -1013,6 +1035,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         $scope.showAlertEmail();
       } else {
         $ionicLoading.show({
+            template: 'Loading',
             content: 'Loading',
             animation: 'fade-in',
             showBackdrop: true,
@@ -1029,7 +1052,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         $http({
           method: 'POST',
           //url: 'https://tarzantest.herokuapp.com/login',
-          url: 'https://maxoptica.herokuapp.com/forgot-password',
+          url: 'https://max-optika-server.herokuapp.com/forgot-password',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
@@ -1183,6 +1206,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         console.log($scope.dataR);
           // Setup the loader
           $ionicLoading.show({
+            template: 'Loading',
             content: 'Loading',
             animation: 'fade-in',
             showBackdrop: true,
@@ -1199,7 +1223,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         $http({
           method: 'POST',
           //url: 'https://tarzantest.herokuapp.com/login',
-          url: 'https://maxoptica.herokuapp.com/register',
+          url: 'https://max-optika-server.herokuapp.com/register',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
@@ -1410,7 +1434,43 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
   });
 })
 */
-.controller('geoCtrl', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform) {
+.controller('geoCtrl', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform, $ionicPopup) {
+      // Check the number of elements in the cart and wishlist
+      var numriWish=[];
+      var wishlistItems=window.localStorage.getItem('wishlist');
+      if (wishlistItems==null){
+        $scope.wishlistItemsLength=null;
+      }else {
+      numriWish=wishlistItems.split(',');
+      
+       if (numriWish[0]=="") {
+        // console.log('po jam bosh');
+        $scope.wishlistItemsLength=null;
+       }else {
+         $scope.wishlistItemsLength=numriWish.length;
+       }
+
+       }
+
+
+       var numriShport=[];
+      var shportlistItems=window.localStorage.getItem('shporta');
+      if (shportlistItems==null){
+        $scope.shportlistItemsLength=null;
+      }else {
+      // console.log(shportlistItems);
+      numriShport=shportlistItems.split(',');
+      // console.log(numriShport);
+      
+         if (numriShport[0]=="") {
+          // console.log('po jam bosh');
+          $scope.shportlistItemsLength=null;
+         }else {
+           $scope.shportlistItemsLength=numriShport.length;
+         }
+       }
+
+
   $scope.adresses = [{
     "Dyqani": "Max Optika QTU",
     "Adresa": "Autostrada Tirane - Durres, Km 6, Kashar 1001, Tirana, Albania",
@@ -1571,7 +1631,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
     var posOptions = {
       enableHighAccuracy: true,
-      timeout: 20000,
+      timeout: 4000,
       maximumAge: 0
     };
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -1613,12 +1673,18 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
       });
       console.log($scope.adresses);
       $ionicLoading.show({
-        template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Dyqanet jane renditur sipas distances nga pozicioni juaj!',
+        template: 'Dyqanet jane renditur sipas distances nga pozicioni juaj!',
         duration: 1500
       });
+      // $ionicPopup.alert({
+      //       title: 'Rezervo Takim',
+      //       template: '<p align="center">Rezervimi u krye me sukses!</p>'
+      //     });
 
 
-
+     }, function (err) {
+      $ionicLoading.hide();
+      alert("Ju lutem aktivizoni location");
     });
 
     
@@ -1708,6 +1774,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
 .controller('wishlistCtrl', function($scope, $http, $stateParams, $rootScope, $timeout) {
       // Check the number of elements in the cart and wishlist
+      $scope.pojamboshw=false;
       var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
       if (wishlistItems==null){
@@ -1718,6 +1785,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
        if (numriWish[0]=="") {
         // console.log('po jam bosh');
         $scope.wishlistItemsLength=null;
+        $scope.pojamboshw=true;
        }else {
          $scope.wishlistItemsLength=numriWish.length;
        }
@@ -1737,6 +1805,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
          if (numriShport[0]=="") {
           // console.log('po jam bosh');
           $scope.shportlistItemsLength=null;
+          
          }else {
            $scope.shportlistItemsLength=numriShport.length;
          }
@@ -1751,7 +1820,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     wsh.splice(i, 1);
     window.localStorage.wishlist = wsh;
     item.target.hidden = true;
-    item.target.parentElement.parentElement.remove();
+    item.target.parentElement.parentElement.parentElement.remove();
 
     var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
@@ -1760,7 +1829,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
        if (numriWish[0]=="") {
         // console.log('po jam bosh');
         $scope.wishlistItemsLength=null;
-        $scope.wishbosh=true;
+        $scope.pojamboshw=true;
        }else {
          $scope.wishlistItemsLength=numriWish.length;
        }
@@ -1769,6 +1838,10 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
   $scope.getWishlist = function() {
     var data = window.localStorage.getItem('wishlist') || "";
+    if ($scope.pojamboshw==false) {
+      $scope.pojambosh2w=true;
+
+    }
     // console.log(typeof(data));
     // var varg = [];
     // var res = data.split(",");
@@ -1785,7 +1858,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     if (data !== "") {
       $http({
         method: 'POST',
-        url: 'https://maxoptica.herokuapp.com/wishlist',
+        url: 'https://max-optika-server.herokuapp.com/wishlist',
         cach: false,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -1800,6 +1873,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
           wishlist: JSON.stringify(data.split(','))
         }
       }).success(function(response) {
+        $scope.pojambosh2w=false;
         $scope.response = response;
         
 
@@ -1812,20 +1886,20 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
   }
   $scope.getWishlist();
 
-  $scope.wishbosh=false;
-  $scope.wishbosh2=true;
+  // $scope.wishbosh=false;
+  // $scope.wishbosh2=true;
 
 
-  // Hide the scroll and display message if wishlist is empty
-  $timeout(function() {
-  if (!$scope.response.length) {
-    console.log($scope.response.length+"mnb");
-    $scope.wishbosh2=false;
-    $scope.wishbosh=true;
+  // // Hide the scroll and display message if wishlist is empty
+  // $timeout(function() {
+  // if (!$scope.response.length) {
+  //   console.log($scope.response.length+"mnb");
+  //   $scope.wishbosh2=false;
+  //   $scope.wishbosh=true;
 
 
-    }
-  }, 3000);  
+  //   }
+  // }, 3000);  
 
   
 
@@ -2054,7 +2128,10 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
       // });
 
 
-
+    }, function (err) {
+      $scope.emailiDyqAfer="agjini@dea.com.al";
+      $ionicLoading.hide();
+      alert("Ju lutem aktivizoni location");
     });
 
     
@@ -2126,6 +2203,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
       }
 
       // Check the number of elements in the cart and wishlist
+      $scope.pojambosh=false;
       var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
       if (wishlistItems==null){
@@ -2136,6 +2214,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
        if (numriWish[0]=="") {
         // console.log('po jam bosh');
         $scope.wishlistItemsLength=null;
+        
        }else {
          $scope.wishlistItemsLength=numriWish.length;
        }
@@ -2156,6 +2235,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
          if (numriShport[0]=="") {
           // console.log('po jam bosh');
           $scope.shportlistItemsLength=null;
+          $scope.pojambosh=true;
          }else {
            $scope.shportlistItemsLength=numriShport.length;
          }
@@ -2177,7 +2257,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     // child.parentNode.removeParent(item.target.parentElement);
     // angular.element(item.target).parent().remove();
     item.target.hidden = true;
-    item.target.parentElement.parentElement.remove();
+    item.target.parentElement.remove();
 
 
 
@@ -2185,9 +2265,9 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
       console.log(item.target.parentElement.id);
       console.log($scope.response);
       console.log("pos");
-       var pos = $scope.response.map(function(e) { return e.kodartikulli; }).indexOf(item.target.id);
+       var pos = $scope.response.map(function(e) { return e.kodartikulli; }).indexOf(item.target.parentElement.id);
        console.log(pos);
-       $scope.checkoutTotal=$scope.checkoutTotal-($scope.response[pos].cmimi*$scope.example[item.target.id]);
+       $scope.checkoutTotal=$scope.checkoutTotal-($scope.response[pos].cmimi*$scope.example[item.target.parentElement.id]);
        $scope.checkoutTotal=$scope.checkoutTotal.toFixed(2);
        // console.log(item.target.parentElement.parentElement); 
        // console.log($scope.example[item.target.parentElement.id])
@@ -2200,7 +2280,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
         for( i=$scope.response.length-1; i>=0; i--) {
         // for( i=0; i>$scope.response.length; i++) {
-          if( $scope.response[i].kodartikulli == item.target.id){
+          if( $scope.response[i].kodartikulli == item.target.parentElement.id){
             $scope.response.splice(i,1);
             // $scope.response[i]=null;
             $scope.remBut=true;
@@ -2220,7 +2300,8 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         $scope.shportlistItemsLength=null;
         $scope.wishbosh3=false;
         $scope.wishbosh=true;
-        $scope.wishbosh2=false;
+        // $scope.wishbosh2=false;
+        $scope.pojambosh=true;
        }else {
          $scope.shportlistItemsLength=numriShport.length;
          // window.location.reload();
@@ -2245,6 +2326,10 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 
   $scope.getShporta = function() {
     var data = window.localStorage.getItem('shporta') || "";
+    if ($scope.pojambosh==false) {
+      $scope.pojambosh2=true;
+
+    }
     // console.log(typeof(data));
     // var varg = [];
     // var res = data.split(",");
@@ -2261,7 +2346,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
     if (data !== "") {
       $http({
         method: 'POST',
-        url: 'https://maxoptica.herokuapp.com/wishlist',
+        url: 'https://max-optika-server.herokuapp.com/wishlist',
         cach: false,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -2276,6 +2361,8 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
           wishlist: JSON.stringify(data.split(','))
         }
       }).success(function(response) {
+        $scope.pojambosh2=false;
+        console.log(response);
         $scope.response = response;
         // console.log($scope.response[0]);
         $scope.checkoutTotal=0;
@@ -2296,19 +2383,19 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
   $scope.getShporta();
 
 
-  $scope.wishbosh=false;
-  $scope.wishbosh2=true;
-  $scope.wishbosh3=false;
+//   $scope.wishbosh=false;
+//   $scope.wishbosh2=true;
+//   $scope.wishbosh3=false;
 
-$timeout(function() {
-  if (!$scope.response.length) {
-  $scope.wishbosh2=false;
-  $scope.wishbosh=true;
-  console.log('blabla');
+// $timeout(function() {
+//   if (!$scope.response.length) {
+//   $scope.wishbosh2=false;
+//   $scope.wishbosh=true;
+//   console.log('blabla');
   
 
-  }
-}, 3000); 
+//   }
+// }, 3000); 
 
 $scope.vazhdoPorosine= function(allCmimi){
   $scope.gjejVendodhjen();
@@ -2336,7 +2423,7 @@ $scope.vazhdoPorosine= function(allCmimi){
     }
     $scope.nextStep=function(){
       if ($scope.selected=="PayPal") {
-        alert("paypal");
+        // alert("paypal");
         PaypalService.initPaymentUI().then(function () {
           PaypalService.makePayment(allCmimi, "Total").then(function (response) {
 
@@ -2370,7 +2457,7 @@ $scope.vazhdoPorosine= function(allCmimi){
           $http({
           method: 'POST',
           //url: 'https://tarzantest.herokuapp.com/login',
-          url: 'https://maxoptica.herokuapp.com/pick-up-store',
+          url: 'https://max-optika-server.herokuapp.com/pick-up-store',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
@@ -2442,7 +2529,7 @@ $scope.vazhdoPorosine= function(allCmimi){
           $http({
           method: 'POST',
           //url: 'https://tarzantest.herokuapp.com/login',
-          url: 'https://maxoptica.herokuapp.com/pay-on-delivery',
+          url: 'https://max-optika-server.herokuapp.com/pay-on-delivery',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
@@ -2565,7 +2652,7 @@ $scope.vazhdoPorosine= function(allCmimi){
 
           $http({
             method: 'POST',
-            url: 'https://maxoptica.herokuapp.com/search-result',
+            url: 'https://max-optika-server.herokuapp.com/search-result',
             cach: false,
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
@@ -2663,7 +2750,7 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data = {};
   $http({
     method: 'GET',
-    url: 'https://maxoptica.herokuapp.com/kartela-klinike/?id=' + window.localStorage.id,
+    url: 'https://max-optika-server.herokuapp.com/kartela-klinike/?id=' + window.localStorage.id,
     cach: false,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -2726,7 +2813,7 @@ $scope.vazhdoPorosine= function(allCmimi){
       console.log('Success');
       $http({
         method: 'POST',
-        url: 'https://maxoptica.herokuapp.com/takim',
+        url: 'https://max-optika-server.herokuapp.com/takim',
         cach: false,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -2913,7 +3000,52 @@ $scope.vazhdoPorosine= function(allCmimi){
 
 
 .controller('KamerCtrl', function($scope, $cordovaCamera, $ionicSideMenuDelegate, $ionicModal) {
-            // Check the number of elements in the cart and wishlist
+  
+  
+
+      $scope.takeImage = function() {
+        var options = {
+            quality: 80,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 250,
+            targetHeight: 250,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: true,
+            cameraDirection:1
+        };
+         
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.srcImage = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+            // error
+        });
+    }
+    $scope.loadImage = function() {
+        var options = {
+            quality: 80,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 250,
+            targetHeight: 250,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+         
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.srcImage = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+            // error
+        });
+    }
+
+    $scope.takeImage(); 
+
+      // Check the number of elements in the cart and wishlist
       var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
       if (wishlistItems==null){
@@ -3025,6 +3157,18 @@ $scope.vazhdoPorosine= function(allCmimi){
           console.log('test foto');
 
         };
+
+        $scope.provoVirtualKodi=window.localStorage.getItem('provoVirtualKod');
+        if ($scope.provoVirtualKodi!=null) {
+          console.log('inside');
+          // The real code
+          // var imageFoto="img/tryon/"+$scope.provoVirtualKodi+"_front.png";
+          var imageFoto="img/tryon/SD12203_front.png";
+          console.log(imageFoto);
+          // $scope.shtoLart(imageFoto);
+          $scope.fotoUrl2=imageFoto;
+          window.localStorage.removeItem('provoVirtualKod');
+        }
 
 });
 

@@ -1,0 +1,101 @@
+<ion-view title="Produkte">
+  <ion-nav-buttons side="left">
+    <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <div class="filter">
+      <div class="row responsive-sm">
+        <div class="search-container">
+          <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper textbox-search">
+              <i class="icon ion-ios7-search placeholder-icon"></i>
+              <input type="search" placeholder="Kerko..." ng-model="searchh">
+            </label>
+          </div>
+<!--           <div>
+            <div class="checkbox">
+              <label>M:<input type="radio" ng-model="gjinia" value="M"/></label>
+            </div>
+            <div class="checkbox">
+              <label>F:<input type="radio" ng-model="gjinia" value="F"/></label>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="list card" > -->
+    <div class="row"  ng-repeat="syzet in syze | filter:searchh" ng-if="$index % 2 == 0">
+      <div class="col list card" >
+      <a style="text-decoration: none;" href="#/app/produkte/{{syze[$index].kodartikulli}}">
+        <div class="item " style="text-align: center;">
+         <img src="pics/1.jpg"/>
+           <h2 class="produkteShkrim"><b>{{syze[$index].kodifikimartikulli2}} {{syze[$index].kodartikulli}}</b></h2>
+          <!-- <h2>{{syze[$index].pershkrimartikulli}}</h2> -->
+          <p style="margin-bottom:2px;">{{syze[$index].grupi}}</p>
+          <h2 class="produkteShkrim"><b>{{syze[$index].cmimi}} {{syze[$index].monedha}}</b></h2>
+          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index].kodartikulli}}" class="icon ion-heart"></i></button> -->
+        </div>
+        </a>
+      </div>
+      <div class="col list card"  ng-if="syze.length">
+      <a style="text-decoration: none;" href="#/app/produkte/{{syze[$index + 1].kodartikulli}}">
+        <div class="item " style="text-align: center;">
+         <img src="pics/1.jpg"/>
+           <h2 class="produkteShkrim"><b>{{syze[$index + 1].kodifikimartikulli2}} {{syze[$index + 1].kodartikulli}}</b></h2>
+          <!-- <h2>{{syze[$index + 1].pershkrimartikulli}}</h2> -->
+          <p style="margin-bottom:2px;">{{syze[$index + 1].grupi}}</p>
+          <h2 class="produkteShkrim"><b>{{syze[$index + 1].cmimi}} {{syze[$index +1].monedha}}</b></h2>
+          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index + 1].kodartikulli}}" class="icon ion-heart"></i></button> -->
+        </div>
+        </a>
+      </div>
+    </div>
+
+      <!-- <div class="item item-avatar">
+       <img src="pics/1.jpg"/>
+         <a href="#/app/produkte/{{syzet.kodartikulli}}"><h2><b>{{syzet.kodifikimartikulli2}}</b></h2></a>
+        <h2>{{syzet.pershkrimartikulli}}{{gjinia}}</h2>
+        <p>{{syzet.grupi}}</p>
+        <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syzet.kodartikulli}}" class="icon ion-heart"></i></button>
+      </div> -->
+    <!-- </div> -->
+    <ion-infinite-scroll
+    on-infinite="loadNextProducts()"
+    distance="1%">
+  </ion-infinite-scroll>
+  </ion-content>
+  <!--<div class="bar bar-footer bar-balanced">
+    <div class="title" style="text-align: left;">
+      MAX OPTICA<sup>&reg;</sup>
+    </div>
+    <div class="title" style="text-align: right;">
+      DEA
+    </div>
+  </div>-->
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>

@@ -4104,9 +4104,9 @@ a.subdued {
 
 .tab-item .icon {
   display: block;
-  margin: 0 auto;
-  height: 32px;
-  font-size: 32px; }
+  margin: 2px auto;
+  height: 23px;
+  font-size: 25px; }
 
 .tabs-icon-left.tabs .tab-item,
 .tabs-icon-left > .tabs .tab-item,

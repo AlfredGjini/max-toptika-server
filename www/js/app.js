@@ -13,7 +13,7 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
     
 })
 
-.run(function($ionicPlatform, ngFB) {
+.run(function($ionicPlatform, ngFB, $ionicPopup) {
   $ionicPlatform.ready(function() {
     ngFB.init({
       appId: '1791859544427676'
@@ -27,6 +27,24 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    if (window.Connection) {
+
+                if (navigator.connection.type == Connection.NONE) {
+
+        //             $ionicPopup.confirm({
+
+        //                 title: "Internet is not working",
+
+        //                 content: "Internet is not working on your device."
+
+        // });
+        alert("Ju lutemi lidhuni me internet qe programi te punoje plotesisht");
+
+      }
+
+    }
+
+
   });
 })
 

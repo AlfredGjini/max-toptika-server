@@ -18,7 +18,7 @@
           <a style="text-decoration: none;" ><h2 class="shportaKategori1"><b>{{syze.kodifikimartikulli2}}</b></h2></a>
           <h2 class="shportaKategori2">{{syze.kodartikulli}}</h2>
           <h2 class="shportaKategori3">{{syze.cmimi}} {{syze.monedha}}</h2>
-          <h2 class="shportaKategori4"><div class="minus"><i style="font-size: 30px;" id="{{syze.kodartikulli}}" data-ng-click="minusElement(syze.kodartikulli, $index, syze.cmimi, syze.monedha)" class="icon ion-minus"></i></div><p class="numriItemShporte" ><!-- {{numriElement.kodartikulli || 1}} --><input class="input_NrElement" type="text" ng-model="example[syze.kodartikulli]" ng-init="example[syze.kodartikulli]='1'"></p><div class="plusi"><i style="font-size: 30px;" id="{{syze.kodartikulli}}" data-ng-click="plusElement(syze.kodartikulli, $index, syze.cmimi, syze.monedha)" class="icon ion-plus"></i></div></h2>
+          <h2 class="shportaKategori4"><div class="minus"><i style="font-size: 30px;" id="{{syze.kodartikulli}}" data-ng-click="minusElement(syze.kodartikulli, $index, syze.cmimi, syze.monedha)" class="icon ion-minus"></i></div><p class="numriItemShporte" ><!-- {{numriElement.kodartikulli || 1}} --><input class="input_NrElement" readonly type="text" ng-model="example[syze.kodartikulli]" ng-init="example[syze.kodartikulli]='1'"></p><div class="plusi"><i style="font-size: 30px;" id="{{syze.kodartikulli}}" data-ng-click="plusElement(syze.kodartikulli, $index, syze.cmimi, syze.monedha)" class="icon ion-plus"></i></div></h2>
           <!-- <p>{{syze.grupi}}</p> -->
           <button class="fshijB" id={{syze.kodartikulli}} data-ng-click="removeFromShporta($event)"><i id={{syze.kodartikulli}} style="font-size: 30px;" class="icon ion-android-remove-circle"></i></button>
           <button ng-show="remBut" class="fshijB" id={{syze.kodartikulli}} data-ng-click="removeFromShporta($event)"><i id={{syze.kodartikulli}} style="font-size: 30px;" class="icon ion-android-remove-circle"></i></button>
@@ -26,15 +26,19 @@
         <div style="border: 1px solid #eee;width: 97%;float: right;opacity: 0.6;"></div>
       </div>
 
-      <h2 ng-show="!response.length" style="text-align: center;"><img ng-show="wishbosh2" style="width: 60px;margin-top: 20px;" src="img/loading.gif"></h2>
-      <h2 class="wishBoshClassB" ng-show="wishbosh">shporta eshte bosh</h2> 
+      <h2 ng-show="pojambosh2" style="text-align: center;"><img  style="width: 60px;margin-top: 20px;" src="img/loading.gif"></h2>
+      <h2 class="wishBoshClassB" ng-show="pojambosh">shporta eshte bosh</h2> 
       <div class="subtotaliContainer2">
       <div ng-show="wishbosh3" class="subtotaliContainer"><p class="subtotali">Subtotali</p><p class="subtotaliCmim">{{checkoutTotal}} LEK</p></div>
       <div style="border: 1px solid #eee;width: 97%;float: right;opacity: 0.6;"></div>
       </div>
-      <div class="wishBoshClass" ng-show="loggedInSakte2 && wishbosh3"  data-ng-click="vazhdoPorosine(checkoutTotal)"><p>Vazhdo porosine</p></div>
-      <a href="#/app/profile" ng-hide="loggedInSakte2"><div class="wishBoshClass" ng-show="wishbosh3" ><p>Vazhdo porosine</p></div></a>
+      <span ng-show="wishbosh3">
+      <div class="wishBoshClass" ng-show="loggedInSakte2"  data-ng-click="vazhdoPorosine(checkoutTotal)"><p>Vazhdo porosine</p></div>
+      <a style="text-decoration: none;" href="#/app/profile" ng-hide="loggedInSakte2"><div class="wishBoshClass"  ><p>Vazhdo porosine</p></div></a>
+      </span>
+      <br><br><br><br>
   </ion-content>
+
   <!-- <div class="bar bar-footer bar-balanced">
 	<div class="title" style="text-align: left;">
     MAX OPTICA<sup>&reg;</sup>
