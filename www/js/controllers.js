@@ -2802,10 +2802,15 @@ $scope.vazhdoPorosine= function(allCmimi){
          }
        }
 
+  $scope.loggedInSakte=window.localStorage.getItem('loggedInSakte');
+  $scope.loggedInSakte=JSON.parse($scope.loggedInSakte);
+  //console.log($scope.loggedInSakte);
   $scope.data = {};
-  $scope.data.id = window.localStorage.id;
+  $scope.data.id = $scope.loggedInSakte.id;
   $scope.response = {};
   $scope.rezervo = function() {
+    $scope.data.date=jQuery('#mdp-demo').multiDatesPicker('getDates')[0];
+    console.log($scope.data);
     if ($scope.data.dyqan === undefined || $scope.data.date === undefined ||
       $scope.data.ora == undefined || $scope.data.shenime === undefined) {
       alert('Plotesoni te dhenat!');

@@ -20,11 +20,11 @@
         <input placeholder="Zgjidhni Orarin"  type="text" onfocus="(this.type='time')" onblur="(this.type='text')" ng-model="data.ora"/>
       </label>
       <div class="padding-bottom"></div>
-      <label class="item item-input item-select">
+      <label class="item item-input ">
         <div class="input-label">
           Dyqani
         </div>
-        <select style="text-align: right;" name="dyqan" ng-model="data.dyqan" >
+        <select style="position: relative;padding-left: 0px;" name="dyqan" ng-model="data.dyqan" >
         <option value="">Zgjidhni nje qytet</option>
           <option value="Durres">Durres</option>
           <option value="Tirane">Tirane</option>
@@ -81,24 +81,28 @@
     type: "post",
     success: function (response) {
       //response = JSON.parse(response);
-      console.log(response);
+      //console.log(response);
       //updateDashboard(response);
       var oraret=response.rows[0].oraret;
       oraret=JSON.parse(oraret);
-      console.log(oraret);
+      //console.log(oraret);
       jQuery('#mdp-demo').multiDatesPicker({
         // disable the 1st and 3rd of the current month
 
         addDisabledDates: oraret,
         maxPicks: 1,
         disabled: false,
+        changeMonth: true,
+        changeYear: true,
       });
+      // var selMDate=jQuery('#mdp-demo').multiDatesPicker('getDates');
 
       },
       error: function(jqXHR, textStatus, errorThrown) {
         console.log(textStatus, errorThrown);
       }
   });
+
 
 
 

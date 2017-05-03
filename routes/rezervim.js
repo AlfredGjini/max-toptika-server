@@ -45,7 +45,7 @@ exports.setReservation = function(req,res,next){
     });
   var mailOptions = {
     from: '"MaxOptika App" <tarzanprenga17@gmail.com>', // sender address
-    to: 'tprenga@dea.com.al', // list of receivers
+    to: 'agjini@dea.com.al', // list of receivers
     subject: 'Rezervim Takimi!', // Subject line
     text: 'Hello world', // plaintext body
     html: 'First Html body!'// html body
