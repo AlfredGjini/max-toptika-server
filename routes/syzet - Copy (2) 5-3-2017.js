@@ -23,7 +23,7 @@ exports.findAll = function (req, res, next) {
       console.log('Connected to postgres! 1');
 
       client
-        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.grupi=\'Syze Dielli\'  limit 20 offset ' + offset)
+        .query('SELECT products.grupi, products.kodartikulli,products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE products.grupi=\'Syze Dielli\'  limit 20 offset ' + offset)
         .on('row', function(row) {
           syzet.push(row);
           console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
@@ -46,9 +46,9 @@ exports.findAll = function (req, res, next) {
         console.log('closed connection');
     });
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 exports.findAllDielli = function (req, res, next) {
   //TODO : in localhost the response stucks at offset = 180, if the same thing happens in Heroku
@@ -89,9 +89,9 @@ exports.findAllDielli = function (req, res, next) {
     });
     syzetD = [];
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 exports.findAllOptike = function (req, res, next) {
   //TODO : in localhost the response stucks at offset = 180, if the same thing happens in Heroku
@@ -107,7 +107,7 @@ exports.findAllOptike = function (req, res, next) {
       console.log('Connected to postgres! 3');
 
       client
-        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.grupi=\'Syze Optike\'  limit 20 offset ' + offset)
+        .query('SELECT products.grupi, products.kodartikulli,products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE products.grupi=\'Syze Optike\'  limit 20 offset ' + offset)
         .on('row', function(row) {
           syzetO.push(row);
           console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
@@ -131,9 +131,9 @@ exports.findAllOptike = function (req, res, next) {
         console.log('closed connection');
     });
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 exports.findAllKoleksion = function (req, res, next) {
   //TODO : in localhost the response stucks at offset = 180, if the same thing happens in Heroku
@@ -149,7 +149,7 @@ exports.findAllKoleksion = function (req, res, next) {
       console.log('Connected to postgres! 4');
 
       client
-        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.grupi=\'Syze Dielli\'  limit 20 offset ' + offset)
+        .query('SELECT products.grupi, products.kodartikulli,products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE products.grupi=\'Syze Dielli\'  limit 20 offset ' + offset)
         .on('row', function(row) {
           syzetK.push(row);
           console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
@@ -173,9 +173,9 @@ exports.findAllKoleksion = function (req, res, next) {
         console.log('closed connection');
     });
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 exports.findAllLente = function (req, res, next) {
   //TODO : in localhost the response stucks at offset = 180, if the same thing happens in Heroku
@@ -191,7 +191,7 @@ exports.findAllLente = function (req, res, next) {
       console.log('Connected to postgres! 5');
 
       client
-        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.grupi=\'Lente Kontakti\'  limit 20 offset ' + offset)
+        .query('SELECT products.grupi, products.kodartikulli,products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE products.grupi=\'Lente Kontakti\'  limit 20 offset ' + offset)
         .on('row', function(row) {
           syzetL.push(row);
           console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
@@ -215,9 +215,9 @@ exports.findAllLente = function (req, res, next) {
         console.log('closed connection');
     });
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 
 exports.findAllSearch = function (req, res, next) {
@@ -236,15 +236,15 @@ exports.findAllSearch = function (req, res, next) {
       for(var i = 0; i < kerkimiFjala2.length; i++) {
         console.log(i);
         if (i!=kerkimiFjala2.length-1) {
-        params.push('products2.kodartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.grupi ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.pershkrimartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.kodifikimartikulli2 ILIKE \'%' + kerkimiFjala2[i] +'%\' OR ');
+        params.push('products.kodartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products.grupi ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products.pershkrimartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products.kodifikimartikulli2 ILIKE \'%' + kerkimiFjala2[i] +'%\' OR ');
         }else {
-          // params.push('products2.kodartikulli LIKE \'%' + kerkimiFjala2[i] +'%\'');
-          // params.push('products2.kodartikulli LIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.grupi LIKE \'%' + kerkimiFjala2[i] +'%\'');
-          params.push('products2.kodartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.grupi ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.pershkrimartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products2.kodifikimartikulli2 ILIKE \'%' + kerkimiFjala2[i] +'%\' ');
+          // params.push('products.kodartikulli LIKE \'%' + kerkimiFjala2[i] +'%\'');
+          // params.push('products.kodartikulli LIKE \'%' + kerkimiFjala2[i] +'%\' OR products.grupi LIKE \'%' + kerkimiFjala2[i] +'%\'');
+          params.push('products.kodartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products.grupi ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products.pershkrimartikulli ILIKE \'%' + kerkimiFjala2[i] +'%\' OR products.kodifikimartikulli2 ILIKE \'%' + kerkimiFjala2[i] +'%\' ');
         }
       }
 
-    var queryTextS = 'SELECT distinct on(products2.kodartikulli) products2.kodartikulli, products2.grupi, products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE ' + params.join(' ') + ' ORDER BY products2.kodartikulli';
+    var queryTextS = 'SELECT distinct on(products.kodartikulli) products.kodartikulli, products.grupi, products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE ' + params.join(' ') + ' ORDER BY products.kodartikulli';
 
     console.log(queryTextS);
     
@@ -282,9 +282,9 @@ exports.findAllSearch = function (req, res, next) {
         console.log('closed connection');
     });
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 
 exports.regjistroUser = function (req, res, next) {
@@ -350,9 +350,9 @@ exports.regjistroUser = function (req, res, next) {
     });
     // res.send(sukses);
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 
 
@@ -414,9 +414,9 @@ exports.loginUser = function (req, res, next) {
     });
     // res.send(sukses);
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 
 
@@ -502,9 +502,9 @@ exports.forgotPassword = function (req, res, next) {
     });
     // res.send(sukses);
     console.log('too early');
-    //res.send(products2);
+    //res.send(products);
     console.log('test');
-    //console.log(products2);
+    //console.log(products);
 };
 
 
@@ -613,8 +613,8 @@ exports.getSingleProduct = function(req, res, next){
       console.log('Connected to postgresss! 9');
 
       client
-        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.kodartikulli = $1',[productId])
-         // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
+        .query('SELECT products.grupi, products.kodartikulli,products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE products.kodartikulli = $1',[productId])
+         // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products WHERE kodartikulli = $1',[productId])
         
         .on('row', function(row) {
           console.log(row);
