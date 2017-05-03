@@ -2767,6 +2767,31 @@ $scope.vazhdoPorosine= function(allCmimi){
 
 .controller('takimCtrl', function($scope, $stateParams, $http, $ionicPopup) {
 
+
+      $http({
+        method: 'POST',
+        url: 'https://max-optika-server.herokuapp.com/takimOrari',
+        cach: false,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        transformRequest: function(obj) {
+          var str = [];
+          for (var p in obj)
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+        },
+      }).success(function(response) {
+        console.log(response);
+        console.log("oraret erdhen");
+        //console.log(response.success);
+        //console.log(typeof response);
+
+      });
+
+
+  
+
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
