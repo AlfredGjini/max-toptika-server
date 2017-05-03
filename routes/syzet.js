@@ -64,7 +64,7 @@ exports.findAllDielli = function (req, res, next) {
       console.log('Connected to postgres! 2');
 
       client
-        .query('SELECT products.grupi, products.kodartikulli,products.kodifikimartikulli2,products.pershkrimartikulli, cmime.cmimi, cmime.monedha FROM products INNER JOIN cmime ON (products.kodartikulli=cmime.idprodukti) WHERE products.grupi=\'Syze Dielli\'  limit 20 offset ' + offset)
+        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.grupi=\'Syze Dielli\'  limit 20 offset ' + offset)
         .on('row', function(row) {
           syzetD.push(row);
           console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
