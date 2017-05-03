@@ -1,0 +1,137 @@
+<ion-view  hide-nav-bar="true">
+  <!-- <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons> -->
+  <ion-content >
+    <!-- <div class="row responsive-sm">
+
+      <div class="col" ng-show="loggedin">
+        <a style="text-decoration: none;" href="#/app/sherbime/kartela-klinike">
+        <div class="card card--expand card-gray">
+          <div class="item item-divider prenotoTak2"  style="height: 100%;">
+              <img src="img/kartela-klinike.png" style="width: 100px;float: left;"><h2 class="prenotoTak" style="color: #b11b29;" >Kartela Klinike</h2>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="col" ng-show="loggedin">
+      <a style="text-decoration: none;" href="#/app/sherbime/takim">
+        <div class="card card--expand card-gray takimii">
+          <div class="item item-divider prenotoTak2" style="height: 100%;">
+              <img src="img/calendar-icon.png" style="width: 100px;float: right;"><h2 class="prenotoTak" >Prenoto takim</h2>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="col" >
+        <a style="text-decoration: none;" href="#/app/sherbime/pika">
+        <div class="card card--expand card-gray">
+          <div class="item item-divider prenotoTak2"  style="height: 100%;">
+              <img src="img/point.png" style="width: 100px;float: left;"><h2 class="prenotoTak" style="color: #ff0042;padding-top: 40px;" >Dyqani me <br>afer jush</h2>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <!-- Old Style -->
+      <!-- <div class="col">
+      <a style="text-decoration: none;" href="#/app/sherbime/pika">
+        <div class="card card--expand card-gray pika-afert">
+          <div class="item item-divider">
+              <h2 align="center"></h2>
+          </div>
+        </div>
+        </a>
+      </div> -->
+
+      <!-- <div class="col" style="margin-bottom:80px;">
+      <a style="text-decoration: none;" href="#/app/sherbime/try-on">
+        <div class="card card--expand card-gray ">
+          <div class="item item-divider prenotoTak2" style="height: 100%;">
+              <img src="img/try_it.png" style="width: 100px;float: right;"><h2 class="prenotoTak" style="color: #a91a1f;">Virtual Try On</h2>
+          </div>
+        </div>
+        </a>
+      </div> -->
+      <!-- Old Try it on styling -->
+      <!-- <div class="col">
+      <a style="text-decoration: none;" href="#/app/sherbime/try-on">
+        <div class="card card--expand card-gray">
+          <div class="item item-divider">
+              <h2 align="center">Virtual Try On</h2>
+          </div>
+        </div>
+        </a>
+      </div> -->
+   <!--  </div>  -->
+   <div class="row sherbimeContainer qenderSherbime">
+    <h2 class="sherbimeTitle">Sherbime</h2>
+   </div>
+
+
+   <!-- <div class="row sherbimeContainer">
+   <div style="border: 1px solid #eee;width: 10%;float: right;"></div>
+   </div> -->
+   <hr style="opacity: 0.2;width: 95%;">
+
+
+
+   <div class="row sherbimeContainer" ng-hide="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/profile"> 
+     <img src="img/kartela_klinike.jpg">
+     </a>
+   </div>
+   <div style="margin-top:20px;" class="row sherbimeContainer" ng-show="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/sherbime/kartela-klinike"> 
+     <img src="img/kartela_klinike.jpg">
+     </a>
+   </div>
+   <div class="row sherbimeContainer">
+    <a style="text-decoration: none;" href="#/app/sherbime/takim">
+     <img src="img/vizita_juaj.jpg">
+     </a>
+   </div>
+   <div class="row sherbimeContainer">
+   <a style="text-decoration: none;" href="#/app/sherbime/try-on">
+     <img src="img/prove_virtuale.jpg">
+     </a>
+   </div>
+
+  </ion-content>
+  <!-- <div class="bar bar-footer bar-balanced">
+	<div class="title" style="text-align: left;">
+    MAX OPTICA<sup>&reg;</sup>
+  	</div>
+  	<div class="title" style="text-align: right;">
+    DEA
+  	</div>
+  </div> -->
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+
+</ion-view>

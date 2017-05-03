@@ -1,0 +1,76 @@
+<ion-view title="Sherbime">
+    <ion-nav-buttons side="left">
+        <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <h1>Pika me e afert</h1>
+    </ion-content>
+    <ion-pane>
+        <ion-content ng-controller="geoCtrl">
+          <div class="row responsive-sm" style="height: 100%;">
+            <!-- <div class="col-67">
+              <div id="map" data-tap-disabled="true"></div>
+              <div id="output"></div>
+            </div> -->
+            <div class="col-100" style="width: 100%;">
+              <ion-list class="list card">
+                <ion-item ng-repeat="adress in adresses" style="text-align: center;border-bottom:1px dashed #eee;">
+                  <div>
+                    <b>{{adress.Dyqani}}</b>
+                  </div>
+                  <div>
+                    {{adress.Adresa}}
+                  </div>
+                  <div>
+                    {{adress.Orari}}
+                  </div>
+                  <div>
+                    {{adress.Cel}}
+                  </div>
+                  <div>
+                    {{adress.Email}}
+                  </div>
+                  <div>
+                    Distanca nga pozicioni juaj: {{adress.distanca | number:1}} KM
+                  </div>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </ion-content>
+    </ion-pane>
+<!--     <div class="bar bar-footer bar-balanced">
+        <div class="title" style="text-align: left;">
+            MAX OPTIKA<sup>&reg;</sup>
+        </div>
+        <div class="title" style="text-align: right;">
+            DEA
+        </div>
+    </div> -->
+      <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>

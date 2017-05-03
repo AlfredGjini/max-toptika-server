@@ -1,0 +1,94 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-left"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu class="mainSideMenu" side="left" >
+    <!-- <header class="bar bar-header bar-stable" style="height:80px;padding-top: 10px;">
+      <div class="item item-avatar user">
+        <img src="{{data.img || '../img/general-user.jpg'}}" height="50"/>
+        <a nav-clear menu-close href="#/app/profile">
+          <h2 class="profKap">&nbsp;{{ user.name || username || "Guest" }}   <img src="img/cart3.png" height="40" style="float: right;padding-right: 10px;" /></h2> --><!-- <i class="icon ion-ios-cart-outline" style="width: 30px;height: 30px;">test</i> -->
+        <!-- </a>
+      </div>
+    </header> -->
+    <ion-content class="has-header" style="background:none;top: 10px;">
+    <div class="item user">
+        <img class="profilFoto" src="{{data.img || '../img/general-user.jpg'}}" />
+        <a nav-clear menu-close href="#/app/profile">
+          <h2 class="profilName">&nbsp;{{ user.name || username || "Guest" }}   <!-- <img src="img/cart3.png" height="40" style="float: right;padding-right: 10px;" /> --></h2>
+          <p class="profilSubName">Profili im</p><!-- <i class="icon ion-ios-cart-outline" style="width: 30px;height: 30px;">test</i> -->
+        </a>
+      </div>
+      <div class="listaMenu">
+      <ion-list >
+        <ion-item nav-clear menu-close href="#/app/kreu">
+          <img src="img/home_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Kreu</div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close href="#/app/oferta">
+          <img src="img/oferta_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Oferta <span class="badge profilBadge">2</span></div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close href="#/app/produkte">
+          <img src="img/produkte_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Produkte</div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close href="#/app/sherbime">
+          <img src="img/sherbime_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Sherbime</div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close href="#/app/rreth-nesh">
+          <img src="img/rreth_nesh_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Rreth nesh</div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close href="#/app/shporta">
+          <img src="img/shporta_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Shporta <span class="badge profilBadge">{{shportlistItemsLength}}</span></div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close href="#/app/wishlist">
+          <img src="img/wishlist_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Wishlist <span class="badge profilBadge">{{wishlistItemsLength}}</span></div>
+        </ion-item>
+        <hr style="opacity: 0.1;">
+        <ion-item nav-clear menu-close ng-hide="loggedin" href="#/app/login">
+          <img src="img/login_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Login</div>
+        </ion-item>
+        <ion-item nav-clear menu-close ng-show="loggedin" href="" ng-click="logout()">
+          <img src="img/login_icon.png" height="25" style="float: left;" />
+          <div class="profilCategory">Log out</div>
+        </ion-item>
+        <!-- <ion-item nav-clear menu-close href="#/app/produkte">
+          <i class="icon ion-bag"></i> Oferta
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/produkte">
+          <i class="icon ion-ios7-cart-outline"></i> Produkte
+        </ion-item> -->
+        <!-- <ion-item nav-clear menu-close href="#/app/sherbime">
+          <i class="icon ion-ios7-pricetags-outline"></i> Sherbime
+        </ion-item> -->
+        <!-- <ion-item nav-clear menu-close href="#/app/rreth-nesh">
+          <i class="icon ion-ios7-people-outline"></i> Rreth nesh
+        </ion-item> -->
+        <!-- <ion-item nav-clear menu-close ng-hide="loggedin" href="#/app/login">
+          <i class="icon ion-ios7-upload-outline"></i> Login
+        </ion-item> -->
+        <!-- <ion-item nav-clear menu-close ng-show="loggedin" href="" ng-click="logout()">
+          <i class="icon ion-ios7-download-outline"></i> Log out
+        </ion-item> -->
+      </ion-list>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
