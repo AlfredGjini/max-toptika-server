@@ -4,9 +4,15 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <div class="list takim">
-      <label class="item item-input">
+    
+      <!-- Old date version -->
+      <!-- <label class="item item-input">
         <span class="input-label">Data</span>
         <input placeholder="Zgjidhni Daten"  type="text" onfocus="(this.type='date')" onblur="(this.type='text')" ng-model="data.date"/>
+      </label> -->
+      <label class="item item-input">
+        <span class="input-label">Data</span>
+        <div id="mdp-demo"></div>
       </label>
       <div class="padding-bottom"></div>
       <label class="item item-input">
@@ -66,4 +72,13 @@
       Profili
     </a>
   </div>
+
+  <script type="text/javascript">
+    var date = new Date();
+      jQuery('#mdp-demo').multiDatesPicker({
+        // disable the 1st and 3rd of the current month
+        addDisabledDates: [date.setDate(1), date.setDate(3)],
+        maxPicks: 1
+      });
+  </script>
 </ion-view>

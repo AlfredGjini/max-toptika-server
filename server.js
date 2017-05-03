@@ -43,6 +43,8 @@ app.post('/login', users.getUser);
 
 app.post('/takim',reservation.setReservation);
 
+app.post('/takimOrari',reservation.getOrariTakim);
+
 app.get('/test', function(req, res) {
     res.send("Test");
 });

@@ -303,4 +303,15 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
 
 })
 
+    var date = new Date();
+    //console.log("test ja");
+    jQuery( document ).ready(function() {
+      console.log( "ready!" );
+      jQuery('#mdp-demo').multiDatesPicker({
+        // disable the 1st and 3rd of the current month
+        addDisabledDates: [date.setDate(1), date.setDate(3)]
+      });
+  });
+      
+
 
