@@ -50,13 +50,14 @@ exports.setReservation = function(req,res,next){
     text: 'Hello world', // plaintext body
     html: 'First Html body!'// html body
   };
+  console.log('Saving data 12....');
   pg.connect(connectionStr, function(err, client, done) {
       if (err) throw err;
 
       client
         .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
         .on('row', function(row) {
-          mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.emer + " " + row.mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>"// html body
+          mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.emer + " " + row.mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
           transporter.sendMail(mailOptions, function(error, info){
               if(error){
                   return console.log(error);
