@@ -31,6 +31,8 @@ exports.setReservation = function(req,res,next){
   var dyqan = req.body.dyqan;
   var shenime = req.body.shenime;
   var id = req.body.id;
+  console.log(id);
+  console.log(req.body);
   var id_clienti;
   console.log('Saving data....');
   // var transporter = mailer.createTransport('smtps://tarzanprenga17%40gmail.com:M3tall1ca!@smtp.gmail.com');
