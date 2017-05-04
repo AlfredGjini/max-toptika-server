@@ -66,6 +66,7 @@ exports.setReservation = function(req,res,next){
               }
               console.log('Message sent: ' + info.response);
           });
+          console.log('inside 123....');
           id_clienti = row.id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
