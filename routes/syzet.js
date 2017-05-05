@@ -357,6 +357,28 @@ exports.regjistroUser = function (req, res, next) {
                      console.log(emailNjejt2);
                      console.log("brenda2");
                      console.log(emailNjejt2[0].id);
+
+                     var queryTextRegisterClients = 'insert into clients(emer,mbiemer,mosha,gjinia,vendlindja,celular,email,user_id) values(\''+emer+'\',\''+mbiemer+'\',\'0\',\'a\',\'Pa Percaktuar\',\''+tel+'\',\''+email+'\',\''+emailNjejt2[0].id+'\')';
+                      
+                     // client
+                     //    .query(queryTextRegisterClients)
+                     //    .on('end',function(){
+                     //     console.log(emailNjejt2);
+                     //     console.log("brenda2");
+                     //     console.log(emailNjejt2[0].id);
+                     //  }); 
+
+
+                     client.query(queryTextRegisterClients, function(err, result, done) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+
+                        console.log('u shtuan tek klientet');
+                      }
+                      });
+
+
                   });
 
 
