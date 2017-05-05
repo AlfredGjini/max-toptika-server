@@ -388,7 +388,7 @@ exports.regjistroUser = function (req, res, next) {
           }else {
             console.log('jo bosh');
             res.send(JSON.stringify({regjistrimi:0}));
-            client.end();
+            //client.end();
           }
           done();
         });
