@@ -354,19 +354,12 @@ exports.regjistroUser = function (req, res, next) {
                       // done();
                       // client.end();
                   }).on('end',function(){
-                     console.log(emailNjejt2);
-                     console.log("brenda2");
-                     console.log(emailNjejt2[0].id);
+                     //console.log(emailNjejt2);
+                     //console.log("brenda2");
+                     //console.log(emailNjejt2[0].id);
 
                      var queryTextRegisterClients = 'insert into clients(emer,mbiemer,mosha,gjinia,vendlindja,celular,email,user_id) values(\''+emer+'\',\''+mbiemer+'\',\'0\',\'a\',\'Pa Percaktuar\',\''+tel+'\',\''+email+'\',\''+emailNjejt2[0].id+'\')';
-                      
-                     // client
-                     //    .query(queryTextRegisterClients)
-                     //    .on('end',function(){
-                     //     console.log(emailNjejt2);
-                     //     console.log("brenda2");
-                     //     console.log(emailNjejt2[0].id);
-                     //  }); 
+
 
 
                      client.query(queryTextRegisterClients, function(err, result, done) {
@@ -375,6 +368,9 @@ exports.regjistroUser = function (req, res, next) {
                       } else {
 
                         console.log('u shtuan tek klientet');
+                        console.log('Regjistrimi perfundoi me sukses');
+                        res.send(JSON.stringify({regjistrimi:1}));
+                        // client.end();
                       }
                       });
 
@@ -383,9 +379,7 @@ exports.regjistroUser = function (req, res, next) {
 
 
 
-                // console.log('Regjistrimi perfundoi me sukses');
-                // res.send(JSON.stringify({regjistrimi:1}));
-                // client.end();
+                
               }
 
             });
