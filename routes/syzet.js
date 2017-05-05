@@ -297,9 +297,11 @@ exports.regjistroUser = function (req, res, next) {
     var fjalekalimi = req.body.fjalekalimi;
     var date = req.body.date;
 
+    var queryTextRegister = 'insert into users(name,username,password,emailval) values(\''+emer+'\',\''+emer+'.'mbiemer+'\',\''+fjalekalimi+'\',\''+email+'\')';
+    var queryTextEmailCheck = 'SELECT * FROM users WHERE emailval = \''+email+'\'';
+    var queryTextRegisterClients = 'insert into clients(emer,mbiemer,mosha,gjinia,vendlindja,celular,email,user_id) values(\''+emer+'\',\''+emer+'.'mbiemer+'\',\''+tel+'\',\''+email+'\',\''+fjalekalimi+'\',\''+date+'\')';
+    
 
-    var queryTextRegister = 'insert into users2(emer,mbiemer,tel,email,fjalekalimi,data) values(\''+emer+'\',\''+mbiemer+'\',\''+tel+'\',\''+email+'\',\''+fjalekalimi+'\',\''+date+'\')';
-    var queryTextEmailCheck = 'SELECT * FROM users2 WHERE email = \''+email+'\'';
     // console.log(queryTextRegister);
     console.log(queryTextEmailCheck);
     var emailNjejt = [];
@@ -327,9 +329,21 @@ exports.regjistroUser = function (req, res, next) {
               if (err) {
                 console.log(err);
               } else {
-                console.log('Regjistrimi perfundoi me sukses');
-                res.send(JSON.stringify({regjistrimi:1}));
-                client.end();
+                    client.query(queryTextEmailCheck, function(err, result, done) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        //console.log('Regjistrimi perfundoi me sukses');
+                        //res.send(JSON.stringify({regjistrimi:1}));
+                        //client.end();
+                        console.log(result);
+                        console.log("brenda2")
+                      }
+
+                  });
+                // console.log('Regjistrimi perfundoi me sukses');
+                // res.send(JSON.stringify({regjistrimi:1}));
+                // client.end();
               }
 
             });
