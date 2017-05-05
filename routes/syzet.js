@@ -351,6 +351,8 @@ exports.regjistroUser = function (req, res, next) {
                     .on('end', function(result) {
                       //emailNjejt.push(row);
                       console.log(result);
+                      console.log("brenda2");
+                      console.log(result.id);
                       // done();
                       // client.end();
                   }) 
