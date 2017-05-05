@@ -371,6 +371,7 @@ exports.regjistroUser = function (req, res, next) {
                         console.log('Regjistrimi perfundoi me sukses');
                         res.send(JSON.stringify({regjistrimi:1}));
                         // client.end();
+                        done();
                       }
                       });
 
@@ -387,9 +388,9 @@ exports.regjistroUser = function (req, res, next) {
           }else {
             console.log('jo bosh');
             res.send(JSON.stringify({regjistrimi:0}));
-            //client.end();
+            client.end();
           }
-          //done();
+          done();
         });
 
       // done();
