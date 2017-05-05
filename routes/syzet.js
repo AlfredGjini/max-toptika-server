@@ -371,7 +371,7 @@ exports.regjistroUser = function (req, res, next) {
                         console.log('Regjistrimi perfundoi me sukses');
                         res.send(JSON.stringify({regjistrimi:1}));
                         // client.end();
-                        done();
+                        //done();
                       }
                       });
 
@@ -414,7 +414,7 @@ exports.loginUser = function (req, res, next) {
     var fjalekalimi = req.body.fjalekalimi;
 
 
-    var queryTextEmailAndPassCheck = 'SELECT * FROM users2 WHERE email = \''+email+'\' AND fjalekalimi = \''+fjalekalimi+'\' ';
+    var queryTextEmailAndPassCheck = 'SELECT * FROM users WHERE emailval = \''+email+'\' AND password = \''+fjalekalimi+'\' ';
     // console.log(queryTextRegister);
     console.log(queryTextEmailAndPassCheck);
     var emailNjejtPass = [];
