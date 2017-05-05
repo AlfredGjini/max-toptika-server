@@ -329,6 +329,7 @@ exports.regjistroUser = function (req, res, next) {
               if (err) {
                 console.log(err);
               } else {
+                console.log("brenda 1");
                     //client.end();
                     //done();
                   //   client.query(queryTextEmailCheck, function(err, result, done) {
@@ -366,9 +367,9 @@ exports.regjistroUser = function (req, res, next) {
           }else {
             console.log('jo bosh');
             res.send(JSON.stringify({regjistrimi:0}));
-            client.end();
+            //client.end();
           }
-          done();
+          //done();
         });
 
       // done();
