@@ -329,6 +329,8 @@ exports.regjistroUser = function (req, res, next) {
               if (err) {
                 console.log(err);
               } else {
+                    client.end();
+                    done();
                     client.query(queryTextEmailCheck, function(err, result, done) {
                       if (err) {
                         console.log(err);
