@@ -305,6 +305,7 @@ exports.regjistroUser = function (req, res, next) {
     // console.log(queryTextRegister);
     console.log(queryTextEmailCheck);
     var emailNjejt = [];
+    var emailNjejt2 = [];
     var sukses;
     
     pg.connect(connectionStr, function(err, client, done) {
@@ -348,14 +349,15 @@ exports.regjistroUser = function (req, res, next) {
 
                    client
                     .query(queryTextEmailCheck)
-                    .on('end', function(result) {
-                      //emailNjejt.push(row);
-                      console.log(result);
-                      console.log("brenda2");
-                      console.log(result.id);
+                    .on('row', function(row) {
+                      emailNjejt2.push(row);
                       // done();
                       // client.end();
-                  }) 
+                  }).on('end',function(){
+                     console.log(emailNjejt2);
+                     console.log("brenda2");
+                     console.log(emailNjejt2.id);
+                  });
 
 
 
