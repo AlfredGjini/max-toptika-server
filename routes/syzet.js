@@ -356,7 +356,7 @@ exports.regjistroUser = function (req, res, next) {
                   }).on('end',function(){
                      console.log(emailNjejt2);
                      console.log("brenda2");
-                     console.log(emailNjejt2.id);
+                     console.log(emailNjejt2[0].id);
                   });
 
 
