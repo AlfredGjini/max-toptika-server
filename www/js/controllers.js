@@ -2766,7 +2766,8 @@ $scope.vazhdoPorosine= function(allCmimi){
 })
 
 .controller('takimCtrl', function($scope, $stateParams, $http, $ionicPopup) {
-
+      
+      $scope.showtakim=false;
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
@@ -2801,6 +2802,13 @@ $scope.vazhdoPorosine= function(allCmimi){
            $scope.shportlistItemsLength=numriShport.length;
          }
        }
+  $scope.shfaqRezervim = function() {
+    if ($scope.showtakim==true) {
+      $scope.showtakim=false;
+    }else{
+      $scope.showtakim=true;
+    }
+  }
 
   $scope.loggedInSakte=window.localStorage.getItem('loggedInSakte');
   $scope.loggedInSakte=JSON.parse($scope.loggedInSakte);

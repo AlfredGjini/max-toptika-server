@@ -86,7 +86,12 @@
      <img src="img/kartela_klinike.jpg">
      </a>
    </div>
-   <div class="row sherbimeContainer">
+   <div class="row sherbimeContainer" ng-hide="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/profile"">
+     <img src="img/vizita_juaj.jpg">
+     </a>
+   </div>
+   <div class="row sherbimeContainer" ng-show="loggedInSakte2">
     <a style="text-decoration: none;" href="#/app/sherbime/takim">
      <img src="img/vizita_juaj.jpg">
      </a>
