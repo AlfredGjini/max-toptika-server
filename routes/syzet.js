@@ -390,7 +390,7 @@ exports.regjistroUser = function (req, res, next) {
             res.send(JSON.stringify({regjistrimi:0}));
             //client.end();
           }
-          done();
+          //done();
         });
 
       // done();
