@@ -1,0 +1,96 @@
+<ion-view title="PROFILI" cache-view="false" hide-nav-bar="true">
+<!--   <ion-nav-buttons side="left" >
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" style="border:2px solid blue;"></button>
+  </ion-nav-buttons> -->
+  <ion-content style="background-color: #ebeef2;">
+  <div ng-hide="loggedInSakte2" style="background-color: #fff;height: 100%;">
+   <div class="row" style="border-bottom: 1px solid #b71c1c;">
+    <h2 class="sherbimeTitle2">Profili</h2>
+   </div>
+    <div class="row responsive-sm" style="margin: 30% auto;">
+    <a style="text-decoration: none;" href="#/app/login"><h2 class="wishBoshClassE" >Login</h2></a>
+    <h2 class="oseClass" >ose</h2>
+    <a style="text-decoration: none;" href="#/app/regjistrohu"><h2 class="wishBoshClassG" >Regjistrohu</h2></a>
+    <img style="margin:52px auto;box-shadow:none;" dnd-resizable src="img/logox.png">
+
+      <!-- <div class="col">
+        <div class="card card--expand card-gray">
+          <div class="item item-divider">
+            <a href="#/app/wishlist">
+              <h2 align="center">Wishlist</h2>
+            </a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    </div>
+    <div ng-show="loggedInSakte2" style="height: 100%;">
+      <div class="row" style="border-bottom: 1px solid #b71c1c;background-color: #fff;">
+        <h2 class="sherbimeTitle2">Profili</h2>
+      </div>
+      <div >
+      <div class="row">
+        <img style="margin:20px auto 0px;" class="profilFoto2" src="{{data.img || '../img/general-user.jpg'}}" /><br>
+        
+      </div>
+      <h3 class="emriProfili">{{ loggedInSakte.emer}} {{ loggedInSakte.mbiemer }}</h3>
+      <h4 class="emriProfili2">Modifiko Profilin</h4>
+      <h4 class="emriProfili3">Llogaria ime</h4>
+      </div>
+      <div style="background-color: #fff;padding-top:10px;padding-bottom:5px;">
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Blerjet e mia</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Porosite e mia</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      <a style="text-decoration: none;" href="#/app/sherbime/kartela-klinike">
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Kartela Klinike</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      </a>
+      <div style="margin:5px auto;width: 90%;"><span class="profiliSection3Left" ng-click="logout()"><b>Log Out</b></span></div>
+      </div>
+      <div>
+      <h4 class="emriProfili3" style="padding-top:30px;">Menyrat e pageses dhe termat ligjore</h4>
+      </div>
+      <div style="background-color: #fff;padding-top:10px;padding-bottom:5px;">
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Menyrat e pageses</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Kontakto</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      <div style="margin:5px auto;width: 90%;border-bottom: 2px solid #ebeef2;"><span class="profiliSection2Left">Termat Ligjore</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      <div style="margin:5px auto;width: 90%;"><span class="profiliSection2Left">Privacy Policy</span><i class="icon ion-chevron-right" class="profiliSection2Right" style="float:right;"></i></div>
+      </div>
+      <!-- <h2 ng-click="logout()">Log Out</h2>
+      <h2>{{ loggedInSakte.emer || "Guest" }} {{ loggedInSakte.mbiemer || "Guest" }}</h2> -->
+    </div>
+
+  </ion-content>
+<!--   <div class="bar bar-footer bar-balanced">
+  <div class="title" style="text-align: left;">
+    MAX OPTICA<sup>&reg;</sup>
+    </div>
+    <div class="title" style="text-align: right;">
+    DEA
+    </div>
+  </div> -->
+    <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>

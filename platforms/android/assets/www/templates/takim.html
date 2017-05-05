@@ -1,0 +1,110 @@
+<ion-view title="Prenoto Takim">
+  <ion-nav-buttons side="left">
+    <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <div class="list takim">
+    
+      <!-- Old date version -->
+      <!-- <label class="item item-input">
+        <span class="input-label">Data</span>
+        <input placeholder="Zgjidhni Daten"  type="text" onfocus="(this.type='date')" onblur="(this.type='text')" ng-model="data.date"/>
+      </label> -->
+      <label class="item item-input">
+        <span class="input-label">Data</span>
+        <div id="mdp-demo"></div>
+      </label>
+      <div class="padding-bottom"></div>
+      <label class="item item-input">
+        <span class="input-label">Ora</span>
+        <input placeholder="Zgjidhni Orarin"  type="text" onfocus="(this.type='time')" onblur="(this.type='text')" ng-model="data.ora"/>
+      </label>
+      <div class="padding-bottom"></div>
+      <label class="item item-input ">
+        <div class="input-label">
+          Dyqani
+        </div>
+        <select style="position: relative;padding-left: 0px;" name="dyqan" ng-model="data.dyqan" >
+        <option value="">Zgjidhni nje qytet</option>
+          <option value="Durres">Durres</option>
+          <option value="Tirane">Tirane</option>
+          <option value="Prishtine">Prishtine</option>
+        </select>
+      </label>
+      <div class="padding-bottom"></div>
+      <textarea rows="6" placeholder="Shenime" ng-model="data.shenime"></textarea>
+      <div style="width: 100%;margin-top:10px;margin-bottom:10px;text-align: center;">
+      <button class="button button-dark" ng-click="rezervo()">Rezervo</button>
+      </div>
+    </div>
+  </ion-content>
+<!--   <div class="bar bar-footer bar-balanced">
+    <div class="title" style="text-align: left;">
+      MAX OPTICA<sup>&reg;</sup>
+    </div>
+    <div class="title" style="text-align: right;">
+      DEA
+    </div>
+  </div> -->
+    <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+
+  <script type="text/javascript">
+
+
+  $.ajax({
+    url: "https://max-optika-server.herokuapp.com/takimOrari",
+    type: "post",
+    success: function (response) {
+      //response = JSON.parse(response);
+      //console.log(response);
+      //updateDashboard(response);
+      var oraret=response.rows[0].oraret;
+      oraret=JSON.parse(oraret);
+      //console.log(oraret);
+      jQuery('#mdp-demo').multiDatesPicker({
+        // disable the 1st and 3rd of the current month
+
+        addDisabledDates: oraret,
+        maxPicks: 1,
+        disabled: false,
+        changeMonth: true,
+        changeYear: true,
+      });
+      // var selMDate=jQuery('#mdp-demo').multiDatesPicker('getDates');
+
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+  });
+
+
+
+
+  </script>
+</ion-view>

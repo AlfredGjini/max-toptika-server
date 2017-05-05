@@ -1,0 +1,76 @@
+<ion-view title="Prove Virtuale" cache-view="false">
+  <ion-nav-buttons side="left">
+    <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+  </ion-nav-buttons>
+  <ion-content class="has-header" scroll="false" >
+
+     <!--  <img ng-src="{{srcImage || 'img/dummy.jpg'}}" id="srcImage" width="90%" height="65%" style="display: block; margin: 10px auto;"/><br/> -->
+     <div style="border:2px solid red;width: 90%;height: 65%;padding:0;padding-top:180px;padding-left:16%;margin:10px auto;background:url({{srcImage || 'img/faceTemplate.jpg'}});background-size: 100% 100%;">
+     <div dnd-draggable dnd-resizable dnd-containment="body" dnd-on-resizestart = "resizeStart()"  style="width: 230px;height: 89px;z-index: 9999999;">
+        <img  ng-src="{{fotoUrl2 }}" id="srcImage" width="100%" height="100%" />
+     </div>
+       
+     </div>
+      <div style="text-align: center;"><button style="margin-right:10px;" class="button button-positive " ng-click="takeImage() ">Beni</button><button class="button button-positive " ng-click="loadImage() ">Zgjidhni</button></div>
+      
+
+
+
+
+      <ion-scroll zooming="true" direction="xy" scrollbar-x="true" style="margin-top:10px;min-height: 200px; height: 100px; white-space: nowrap;padding: 10px;background-color: rgba(228, 218, 218,0.9);">
+        
+
+         <img ng-repeat="image in images" ng-src="{{image}}" ng-click="shtoLart($index)" style="width: 110px;padding-right: 3px;padding-top: 6%;"> 
+        
+
+        <!-- <img src="img/dummy.jpg"  ng-click="shtoLart($index)" style="width: 100px;padding-right: 3px;">
+        <img src="img/dummy.jpg" style="width: 100px;padding-right: 3px;">
+        <img src="img/100.png" style="width: 100px;padding-right: 3px;">
+        <img src="img/dummy.jpg" style="width: 100px;padding-right: 3px;">
+        <img src="img/dummy.jpg" style="width: 100px;padding-right: 3px;">
+        <img src="img/dummy.jpg" style="width: 100px;padding-right: 3px;"> -->
+
+      </ion-scroll>
+
+
+
+
+
+    <canvas id="tempCanvas"></canvas>
+  </ion-content>
+<!--   <div class="bar bar-footer bar-balanced">
+    <div class="title" style="text-align: left;">
+      MAX OPTICA<sup>&reg;</sup>
+    </div>
+    <div class="title" style="text-align: right;">
+      DEA
+    </div>
+  </div> -->
+    <div class="tabs tabs-icon-top" style="z-index: 99999;">
+    <a class="tab-item active" href="#/app/kreu" >
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>
+

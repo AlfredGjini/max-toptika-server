@@ -1,0 +1,39 @@
+<ion-view title="PROFILI IM" cache-view="false">
+  <ion-nav-buttons side="right">
+    <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+   <div class="list card">
+    <div class="item item-image">
+      <!--<img data-ng-src="{{data.image_url}}">-->
+      <h1>Test</h1>
+        <div class="row">
+            <img ng-src="{{image}}" style="width: 100%">
+          </div>
+          <div class="list">
+              <label class="item item-input">
+                  <input type="text" ng-model="textOverlay" placeholder="Text to overlay">
+              </label>
+          </div>
+          <div class="row">
+              <button ng-click="createOverlay()" class="button button-full button-positive">
+                  Overlay
+              </button>
+          </div>
+          <span>testttttt</span>
+          <canvas id="tempCanvas"></canvas>
+    </div>
+   </div>
+   <!--<div class="padding">
+     <button ng-click="takePicture()"class="button button-block button-calm">Take Picture</button>
+   </div>-->
+  </ion-content>
+  <ion-footer-bar>
+    <div>
+      <h4>Max Optika</h4>
+    </div>
+    <div>
+      <h4 align="right">DEA</h4>
+    </div>
+  </ion-footer-bar>
+</ion-view>

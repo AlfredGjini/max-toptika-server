@@ -1,0 +1,16 @@
+<ion-view title="Test">
+
+    <ion-content has-header="true" padding="true">
+
+        <div class="list card">
+           <ion-item ng-repeat="x in test" type="item-text-wrap" class="item-avatar"
+                      href="#/employees/{{x.id}}">
+                <img src="pics/{{employee.pic}}"/>
+                {{x.name}} {{x.username}}
+                <p>{{x.password}}</p>
+            </ion-item>
+        </div>
+
+    </ion-content>
+
+</ion-view>
