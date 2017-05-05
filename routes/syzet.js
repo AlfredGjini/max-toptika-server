@@ -329,20 +329,33 @@ exports.regjistroUser = function (req, res, next) {
               if (err) {
                 console.log(err);
               } else {
-                    client.end();
+                    //client.end();
                     //done();
-                    client.query(queryTextEmailCheck, function(err, result, done) {
-                      if (err) {
-                        console.log(err);
-                      } else {
-                        //console.log('Regjistrimi perfundoi me sukses');
-                        //res.send(JSON.stringify({regjistrimi:1}));
-                        //client.end();
-                        console.log(result.id);
-                        console.log("brenda2")
-                      }
+                  //   client.query(queryTextEmailCheck, function(err, result, done) {
+                  //     if (err) {
+                  //       console.log(err);
+                  //     } else {
+                  //       //console.log('Regjistrimi perfundoi me sukses');
+                  //       //res.send(JSON.stringify({regjistrimi:1}));
+                  //       //client.end();
+                  //       console.log(result.id);
+                  //       console.log("brenda2")
+                  //     }
 
-                  });
+                  // });
+
+
+                   client
+                    .query(queryTextEmailCheck)
+                    .on('end', function(result) {
+                      //emailNjejt.push(row);
+                      console.log(result);
+                      // done();
+                      // client.end();
+                  }) 
+
+
+
                 // console.log('Regjistrimi perfundoi me sukses');
                 // res.send(JSON.stringify({regjistrimi:1}));
                 // client.end();
