@@ -299,7 +299,7 @@ exports.regjistroUser = function (req, res, next) {
 
     var queryTextRegister = 'insert into users(name,username,password,emailval) values(\''+emer+'\',\''+emer+'.'+mbiemer+'\',\''+fjalekalimi+'\',\''+email+'\')';
     var queryTextEmailCheck = 'SELECT * FROM users WHERE emailval = \''+email+'\'';
-    var queryTextRegisterClients = 'insert into clients(emer,mbiemer,mosha,gjinia,vendlindja,celular,email,user_id) values(\''+emer+'\',\''+emer+'.'mbiemer+'\',\''+tel+'\',\''+email+'\',\''+fjalekalimi+'\',\''+date+'\')';
+    //var queryTextRegisterClients = 'insert into clients(emer,mbiemer,mosha,gjinia,vendlindja,celular,email,user_id) values(\''+emer+'\',\''+emer+'.'+mbiemer+'\',\''+tel+'\',\''+email+'\',\''+fjalekalimi+'\',\''+date+'\')';
     
 
     // console.log(queryTextRegister);
