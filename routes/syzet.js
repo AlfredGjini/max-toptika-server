@@ -336,7 +336,7 @@ exports.regjistroUser = function (req, res, next) {
                         //console.log('Regjistrimi perfundoi me sukses');
                         //res.send(JSON.stringify({regjistrimi:1}));
                         //client.end();
-                        console.log(result);
+                        console.log(result.id);
                         console.log("brenda2")
                       }
 
