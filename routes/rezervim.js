@@ -47,8 +47,8 @@ exports.setReservation = function(req,res,next){
         }
     });
   var mailOptions = {
-    from: '"MaxOptika App" <tarzanprenga17@gmail.com>', // sender address
-    to: 'agjini@dea.com.al', // list of receivers
+    from: '"MaxOptika App" <maxoptikasmtp@gmail.com>', // sender address
+    to: 'a.gjini@live.com', // list of receivers
     subject: 'Rezervim Takimi!', // Subject line
     text: 'Hello world', // plaintext body
     html: 'First Html body!'// html body
@@ -73,7 +73,7 @@ exports.setReservation = function(req,res,next){
           });
           console.log('inside 123....');
           console.log(row);
-          id_clienti = row[0].id;
+          id_clienti = row.rows[0].id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
           client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
