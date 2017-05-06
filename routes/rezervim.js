@@ -40,7 +40,7 @@ exports.setReservation = function(req,res,next){
     var transporter = mailer.createTransport( {
         host: "smtp.gmail.com", // hostname
         secureConnection: true, // use SSL
-        port: 465, // port for secure SMTP
+        port: 587, // port for secure SMTP
         auth: {
             user: "maxoptikasmtp@gmail.com",
             pass: "maxoptika.1A"
