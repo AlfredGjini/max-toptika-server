@@ -63,17 +63,17 @@ exports.setReservation = function(req,res,next){
         .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
         .on('end', function(row) {
           mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.emer + " " + row.mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
-          // transporter.sendMail(mailOptions, function(error, info){
-          //     if(error){
-          //         console.log('1');
-          //         console.log(error);
-          //         return console.log(error);
-          //     }
-          //     console.log('Message sent: ' + info.response);
-          // });
+          transporter.sendMail(mailOptions, function(error, info){
+              if(error){
+                  console.log('1');
+                  console.log(error);
+                  return console.log(error);
+              }
+              console.log('Message sent: ' + info.response);
+          });
           console.log('inside 123....');
           console.log(row);
-          id_clienti = row.id;
+          id_clienti = row[0].id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
           client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
