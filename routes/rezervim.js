@@ -80,8 +80,8 @@ exports.setReservation = function(req,res,next){
                 console.log(err);
               } else {
                 console.log('Stage two completed successfully...');
-                done();
-                client.end();
+                //done();
+                //client.end();
               }
             });
           }).on('error', function(error) {
