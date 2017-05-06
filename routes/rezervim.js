@@ -30,6 +30,7 @@ exports.setReservation = function(req,res,next){
   var ora = req.body.ora;
   var dyqan = req.body.dyqan;
   var shenime = req.body.shenime;
+  var aprovuar = "jo";
   var id = req.body.id;
   console.log(id);
   console.log(req.body);
@@ -74,7 +75,7 @@ exports.setReservation = function(req,res,next){
           id_clienti = row.id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
-          client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime) VALUES($1,$2,$3,$4,$5)',[id_clienti,data,ora,dyqan,shenime],
+          client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,],
             function(err, result,done) {
               if (err) {
                 console.log(err);
