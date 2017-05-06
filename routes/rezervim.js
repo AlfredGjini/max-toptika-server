@@ -60,13 +60,20 @@ exports.setReservation = function(req,res,next){
 
       client
         .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
-        .on('row', function(row) {
+        .on('end', function(row) {
           mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.emer + " " + row.mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
           transporter.sendMail(mailOptions, function(error, info){
               if(error){
+                console.log('1');
+                console.log(error);
                   return console.log(error);
               }
               console.log('Message sent: ' + info.response);
+          }).on('error', function(error) {
+            //handle the error
+            console.log('2');
+            console.log(error);
+
           });
           console.log('inside 123....');
           id_clienti = row.id;
