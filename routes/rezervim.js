@@ -48,9 +48,8 @@ exports.getReservations = function(req, res, next){
           done();
         }).on('end', function(result) {
           //rezervations.push(row);
-          console.log(rezervations);
-          //console.log('Single item : ', productId);
-          //res.send(row);
+          //console.log(rezervations);
+          res.send(rezervations);
           // client.end();
           done();
         });
