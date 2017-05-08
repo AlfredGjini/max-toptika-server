@@ -27,7 +27,7 @@ exports.getReservations = function(req, res, next){
   var id = req.body.id;
   console.log(id);
   var rezervations = [];
-  console.log(productId);
+  console.log(id);
   pg.connect(connectionStr, function(err, client, done) {
       if (err) {
         //console.log();
@@ -36,7 +36,7 @@ exports.getReservations = function(req, res, next){
       console.log('Connected to postgresss! 9');
 
       client
-        .query('SELECT * FROM reservations INNER JOIN clients ON (reservations.id_klienti=clients.id) WHERE clients.user_id = $1',[productId])
+        .query('SELECT * FROM reservations INNER JOIN clients ON (reservations.id_klienti=clients.id) WHERE clients.user_id = $1',[id])
          // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
         
         .on('row', function(row) {
