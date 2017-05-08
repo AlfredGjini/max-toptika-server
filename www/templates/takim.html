@@ -45,33 +45,34 @@
         </div>
         <div class="item item-text-wrap" style="text-align: center;">
          <div class="radios">
-              <input type="radio" name="rGroup" value="1" id="r1" checked="checked" />
-              <label class="radio" for="r1">10:00</label>
-              <input type="radio" name="rGroup" value="2" id="r2" />
-              <label class="radio" for="r2">10:20</label>
-              <input type="radio" name="rGroup" value="3" id="r3" />
-              <label class="radio" for="r3">10:40</label>
-              <input type="radio" name="rGroup" value="4" id="r4" />
-              <label class="radio" for="r4">10:40</label>
-              <input type="radio" name="rGroup" value="5" id="r5" />
-              <label class="radio" for="r5">10:40</label>
-              <input type="radio" name="rGroup" value="6" id="r6" />
-              <label class="radio" for="r6">10:40</label>
-              <input type="radio" name="rGroup" value="7" id="r7" />
-              <label class="radio" for="r7">10:40</label>
-              <input type="radio" name="rGroup" value="8" id="r8" />
-              <label class="radio" for="r8">10:40</label>
-              <input type="radio" name="rGroup" value="9" id="r9" />
-              <label class="radio" for="r9">10:40</label>
+              <input type="radio" name="rGroup" value="10:00-10:20" id="r1" checked="checked" ng-model="data.ora"/>
+              <label class="radio" for="r1">10:00-10:20</label>
+              <input type="radio" name="rGroup" value="10:20-10:40" id="r2" ng-model="data.ora"/>
+              <label class="radio" for="r2">10:20-10:40</label>
+              <input type="radio" name="rGroup" value="10:40-11:00" id="r3" ng-model="data.ora"/>
+              <label class="radio" for="r3">10:40-11:00</label>
+              <input type="radio" name="rGroup" value="11:00-11:20" id="r4" ng-model="data.ora"/>
+              <label class="radio" for="r4">11:00-11:20</label>
+              <input type="radio" name="rGroup" value="11:20-11:40" id="r5" ng-model="data.ora"/>
+              <label class="radio" for="r5">11:20-11:40</label>
+              <input type="radio" name="rGroup" value="11:40-12:00" id="r6" ng-model="data.ora"/>
+              <label class="radio" for="r6">11:40-12:00</label>
+              <input type="radio" name="rGroup" value="12:00-12:20" id="r7" ng-model="data.ora"/>
+              <label class="radio" for="r7">12:00-12:20</label>
+              <input type="radio" name="rGroup" value="12:20-10:40" id="r8" ng-model="data.ora"/>
+              <label class="radio" for="r8">12:20-10:40</label>
+              <input type="radio" name="rGroup" value="12:40-13:00" id="r9" ng-model="data.ora"/>
+              <label class="radio" for="r9">12:40-13:00</label>
           </div>
         </div>
+        {{data.ora}}
         <!-- Dyqani -->
         <div class="item item-divider" style="text-align: center;font-size: 18px;margin-bottom: -20px;padding-top: 0px;">
          Dyqani
         </div>
         <div class="item item-text-wrap" style="text-align: center;">
          <div class="select">
-            <select name="slct" id="slct" ng-model="data.dyqan">
+            <select name="dyqan" id="slct" ng-model="data.dyqan">
               <option value="bosh">Zgjidhni nje dyqan</option>
               <option value="Tirane">Tirane</option>
               <option value="Durres">Durres</option>
