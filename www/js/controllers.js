@@ -2817,6 +2817,7 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data.id = $scope.loggedInSakte.id;
   $scope.response = {};
   $scope.data.dyqan="bosh";
+  $scope.rezervimeGjitha;
 
 
   $http({
@@ -2838,6 +2839,7 @@ $scope.vazhdoPorosine= function(allCmimi){
      }).success(function(response) {
           console.log(response);
           console.log("rezervimet");
+          $scope.rezervimeGjitha=response;
          //$scope.syze = response;
          //console.log("trt"+$scope.syze);
       });
