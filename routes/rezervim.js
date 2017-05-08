@@ -19,11 +19,47 @@ var connectionStr = 'postgres://dekixmpqcprkpu:MNbCC56WQ1ZaNRqX8GHmTBaUv-@ec2-23
           done();
         });
     });
-console.log(rezervime);
+//console.log(rezervime);
 
-exports.getReservations = function(req,res,next){
 
-};
+
+exports.getReservations = function(req, res, next){
+  var id = req.body.id;
+  console.log(id);
+  var rezervations = [];
+  console.log(productId);
+  pg.connect(connectionStr, function(err, client, done) {
+      if (err) {
+        //console.log();
+        throw err;
+      }
+      console.log('Connected to postgresss! 9');
+
+      client
+        .query('SELECT * FROM reservations INNER JOIN clients ON (reservations.id_klienti=clients.id) WHERE clients.user_id = $1',[productId])
+         // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
+        
+        .on('row', function(row) {
+          rezervations.push(row);
+          //console.log(row);
+          //console.log('Single item : ', productId);
+          //res.send(row);
+          // client.end();
+          done();
+        })on('end', function(result) {
+          //rezervations.push(row);
+          console.log(rezervations);
+          //console.log('Single item : ', productId);
+          //res.send(row);
+          // client.end();
+          done();
+        });
+    });
+  pg.end(function(err) {
+        if (err) throw err;
+    });
+}
+
 
 exports.setReservation = function(req,res,next){
   var data = req.body.date;

@@ -40,6 +40,7 @@ app.post('/wishlist', wishlist.find);
 
 app.post('/login', users.getUser);
 
+app.post('/getTakim',reservation.getReservations);
 
 app.post('/takim',reservation.setReservation);
 
