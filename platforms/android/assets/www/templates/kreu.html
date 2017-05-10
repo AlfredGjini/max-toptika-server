@@ -1,18 +1,27 @@
 <ion-view hide-nav-bar="true">
 
-  <ion-content style="background:#fff;">
-    <div class="row">
-      <img style="margin: 10px auto;" src="img/logox.png">
+  <ion-content style="background:#e4e9ee;">
+    <div class="row" style="background:#fff;padding: 0px;">
+      <img style="margin: 10px auto 3px;height: 35px;" src="img/logox.png">
     </div>
 
+    <div class="searchFillimKreu list list-inset">
+      <label class="item item-input" style="min-height: 25px;height: 25px;border-radius: 5px;">
+        <i ng-hide="myVar.length==0" class="icon ion-search placeholder-icon" style="left: 50%;position: absolute;margin-left: -35px;font-size: 16px; margin-top: 2px;"></i>
+        <input type="text" placeholder="Search" style="text-align: center;    margin-right: -50px;" ng-model="myVar">
+      </label>
+    </div>
+    <!-- ng-model="myVar"  -->
+
     <!-- search box and button -->
-    <div id='search-box'>
+    <!-- <div id='search-box'>
       <form  id='search-form' >
       <input id='search-text' name='q' placeholder='RayBan Oval SD12144' type='text' ng-model="myVar"/>
+      <i class="ion-ios-search"></i>
       <button id='search-button' type='button' ng-click='dergoInput(myVar)'><span>Kerko</span></button>
       </form>
-    </div> 
-    <div class="row"><!-- Just for the space below search --></div>
+    </div> --> 
+    <!-- <div class="row">Just for the space below search</div> -->
     <!-- <ion-scroll zooming="true" direction="x" scrollbar-x="true" paging="true" style="white-space: nowrap;">
          <img src="img/home.jpg" style="width:100%">
          <img src="img/home.jpg" style="width:100%">
@@ -20,49 +29,49 @@
     </ion-scroll> -->
     <ion-slide-box class="kreuuu" style="text-align: center;">
           <ion-slide>
-            <img src="img/home.jpg" style="width:100%;">
+            <img src="img/home_re.jpg" style="width:100%;">
           </ion-slide>
           <ion-slide>
-            <img src="img/home.jpg" style="width:100%">
+            <img src="img/home_re.jpg" style="width:100%">
           </ion-slide>
           <ion-slide>
-            <img src="img/home.jpg" style="width:100%">
+            <img src="img/home_re.jpg" style="width:100%">
           </ion-slide>
         </ion-slide-box>
 
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align: center;padding: 0px;">
       <div class="col">
       <a href="#/app/syze-dielli">
-        <img  src="img/syze_dielli.jpg" style="width:100%">
+        <img  src="img/syze_dielli_re.jpg" style="width:100%">
         </a>
       </div>
       <div class="col">
       <a href="#/app/syze-optike">
-        <img src="img/syze_optike.jpg" style="width:100%">
+        <img src="img/syze_optike_re.jpg" style="width:100%">
         </a>
       </div>
     </div>
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align: center;padding: 0px;">
       <div class="col">
       <a href="#/app/koleksioniRi">
-        <img  src="img/koleksioni_ri.jpg" style="width:100%">
+        <img  src="img/koleksioni_ri_re.jpg" style="width:100%">
         </a>
       </div>
       <div class="col">
       <a href="#/app/lente">
-        <img src="img/lente_kontakti.jpg" style="width:100%">
+        <img src="img/lente_kontakti_re.jpg" style="width:100%">
         </a>
       </div>
     </div>
-    <div class="row" style="text-align: center;margin-bottom: 40px;">
+    <div class="row" style="text-align: center;margin-bottom: 40px;padding: 0px;">
       <div class="col">
       <a href="#/app/rreth-nesh"> 
-        <img  src="img/rreth_nesh.jpg" style="width:100%">
+        <img  src="img/rreth_nesh_re.jpg" style="width:100%">
         </a>
       </div>
       <div class="col">
       <a href="#/app/sherbime/pika">
-        <img src="img/dyqani_afer_meje.jpg" style="width:100%">
+        <img src="img/dyqani_afer_meje_re.jpg" style="width:100%">
         </a>
       </div>
     </div>

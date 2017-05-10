@@ -2816,6 +2816,36 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data = {};
   $scope.data.id = $scope.loggedInSakte.id;
   $scope.response = {};
+  $scope.data.dyqan="bosh";
+  $scope.rezervimeGjitha;
+
+
+  $http({
+       method: 'POST',
+       //url: 'https://tarzantest.herokuapp.com/login',
+       url: 'https://max-optika-server.herokuapp.com/getTakim',
+       headers: {
+         'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       transformRequest: function(obj) {
+         var str = [];
+         for (var p in obj)
+           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+         return str.join("&");
+       },
+       data: {
+         id : $scope.data.id
+       }
+     }).success(function(response) {
+          console.log(response);
+          console.log("rezervimet");
+          $scope.rezervimeGjitha=response;
+         //$scope.syze = response;
+         //console.log("trt"+$scope.syze);
+      });
+
+
+
   $scope.rezervo = function() {
     $scope.data.date=jQuery('#mdp-demo').multiDatesPicker('getDates')[0];
     console.log($scope.data);

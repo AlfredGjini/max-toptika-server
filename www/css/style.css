@@ -766,12 +766,12 @@ button:hover {
 #search-box {
 position: relative;
 width: 95%;
-margin: 0px auto;
+margin: 7px auto;
 }
 
 #search-form 
 {
-height: 35px;
+height: 25px;
 border: 1px solid #999;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -790,10 +790,11 @@ background: transparent;
 
 #search-box input[type="text"]
 {
-width: 90%;
-padding: 11px 0 12px 1em;
+width: 100%;
+padding: 4px 1em 12px 1em;
 color: #333;
 outline: none;
+text-align: center;
 }
 
 #search-button {
@@ -1458,4 +1459,11 @@ table.ui-datepicker-calendar {border-collapse: separate;}
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;
   transition: .25s all ease;
+}
+
+.searchFillimKreu.list-inset {
+    margin: 5px 5px !important;
+    /*border: solid 0px #ccc !important;*/
+    border-radius: 7px !important;
+    background-color: #fff !important;
 }
