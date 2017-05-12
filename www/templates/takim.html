@@ -41,7 +41,7 @@
         </div>
         <!-- Ora -->
         <div class="item item-divider" style="text-align: center;font-size: 18px;margin-bottom: -20px;padding-top: 0px;">
-         Ora
+         <span class="loadingOraret" style="padding-top: 15px;float: left;margin-left: -10px;margin-top: -5px;display: none;"><img src="img/loading.gif" style="width: 20px;"></span><span style="margin-left: -10px;">Ora</span>
         </div>
         <div class="item item-text-wrap" style="text-align: center;">
          <div class="radios">
@@ -173,13 +173,19 @@
 
   function checkDate(){
     var currData=jQuery('#mdp-demo').multiDatesPicker('getDates')[0];
+    console.log(currData);
+    
     if (currData!=null){
-      alert("jo null");
+      console.log("jo null brenda checkDate");
+      jQuery('.loadingOraret').show();
 
       $.ajax({
-        url: "https://max-optika-server.herokuapp.com/takimOrari",
+        url: "https://max-optika-server.herokuapp.com/oraretZene",
         type: "post",
+        data: {dataZgjdhur:currData},
         success: function (response) {
+          console.log(response);
+          jQuery('.loadingOraret').hide();
 
           //var oraret=response.rows[0].oraret;
           //oraret=JSON.parse(oraret);
@@ -198,7 +204,7 @@
 
 
     }else{
-      alert("null");
+      console.log("null");
     }
     console.log('u thirra');
     //console.log(date);
