@@ -172,7 +172,7 @@ exports.getOraretZene = function(req,res,next){
       console.log('Connected to postgresss! get orare');
 
       client
-        .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[dataZgjdhur])
+        .query('SELECT * FROM oraret2 WHERE data = $1;',[dataZgjdhur])
          // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
         
         .on('end', function(row) {
