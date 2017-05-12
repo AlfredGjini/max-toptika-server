@@ -413,8 +413,8 @@ exports.loginUser = function (req, res, next) {
     var email = req.body.email;
     var fjalekalimi = req.body.fjalekalimi;
 
-
-    var queryTextEmailAndPassCheck = 'SELECT * FROM users WHERE emailval = \''+email+'\' AND password = \''+fjalekalimi+'\' ';
+    var queryTextEmailAndPassCheck = 'SELECT * FROM users INNER JOIN clients ON (users.id=clients.user_id) WHERE users.emailval = \''+email+'\' AND users.password = \''+fjalekalimi+'\' ';
+    // var queryTextEmailAndPassCheck = 'SELECT * FROM users WHERE emailval = \''+email+'\' AND password = \''+fjalekalimi+'\' ';
     // console.log(queryTextRegister);
     console.log(queryTextEmailAndPassCheck);
     var emailNjejtPass = [];

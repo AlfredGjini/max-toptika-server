@@ -184,8 +184,11 @@
         type: "post",
         data: {dataZgjdhur:currData},
         success: function (response) {
-          console.log(response);
+          console.log(response.rows[0]);
           jQuery('.loadingOraret').hide();
+          var loggedInSakte=window.localStorage.getItem('loggedInSakte');
+          loggedInSakte=JSON.parse(loggedInSakte)
+          console.log(loggedInSakte);
 
           //var oraret=response.rows[0].oraret;
           //oraret=JSON.parse(oraret);
