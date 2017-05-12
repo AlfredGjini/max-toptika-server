@@ -46,6 +46,8 @@ app.post('/takim',reservation.setReservation);
 
 app.post('/takimOrari',reservation.getOrariTakim);
 
+app.post('/oraretZene',reservation.getOraretZene);
+
 app.get('/test', function(req, res) {
     res.send("Test");
 });

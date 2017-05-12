@@ -158,3 +158,31 @@ exports.getOrariTakim = function(req,res,next){
         if (err) throw err;
     });
 };
+
+
+
+exports.getOraretZene = function(req,res,next){
+
+  pg.connect(connectionStr, function(err, client, done) {
+      if (err) {
+        //console.log();
+        throw err;
+      }
+      console.log('Connected to postgresss! get orare');
+
+      client
+        .query('SELECT * from oraret where id=1 ')
+         // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
+        
+        .on('end', function(row) {
+          //console.log(row);
+          //console.log('Single item : ', productId);
+          res.send(row);
+          // client.end();
+          done();
+        });
+    });
+  pg.end(function(err) {
+        if (err) throw err;
+    });
+};
