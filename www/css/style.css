@@ -745,12 +745,12 @@ button:hover {
 
 }
 .tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
-    color: #d12127;
+    color: #aaa;
     text-transform: capitalize;
-    font-size: 11px !important;
+    font-size: 9px !important;
 }
 .tab-item .icon {
-  color:#d12127;
+  color:#aaa;
 
 }
 .tabs{
@@ -771,13 +771,14 @@ margin: 7px auto;
 
 #search-form 
 {
-height: 25px;
-border: 1px solid #999;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
-background-color: #fff;
-overflow: hidden;
+    height: 25px;
+    /* border: 1px solid #999; */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 5px 5px;
 }
 
 #search-text 
@@ -1462,8 +1463,8 @@ table.ui-datepicker-calendar {border-collapse: separate;}
 }
 
 .searchFillimKreu.list-inset {
-    margin: 5px 5px !important;
-    /*border: solid 0px #ccc !important;*/
+    margin: -1px 5px !important;
+    border: solid 0px #ccc !important;
     border-radius: 7px !important;
     background-color: #fff !important;
 }

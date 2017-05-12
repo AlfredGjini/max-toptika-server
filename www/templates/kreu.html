@@ -1,14 +1,16 @@
 <ion-view hide-nav-bar="true">
 
-  <ion-content style="background:#e4e9ee;">
+  <ion-content style="background:#eef0f2;">
     <div class="row" style="background:#fff;padding: 0px;">
-      <img style="margin: 10px auto 3px;height: 35px;" src="img/logox.png">
+      <img style="margin: 10px auto 3px;height: 25px;" src="img/logox.png">
     </div>
-    <form  id='search-form' >
+    <form  id='search-form' ng-submit='dergoInput(myVar)'>
     <div class="searchFillimKreu list list-inset">
       <label class="item item-input" style="min-height: 25px;height: 25px;border-radius: 5px;">
-        <i ng-hide="myVar.length==0" class="icon ion-search placeholder-icon" style="left: 50%;position: absolute;margin-left: -35px;font-size: 16px; margin-top: 2px;"></i>
-        <input type="text" placeholder="Search" style="text-align: center;    margin-right: -50px;" ng-model="myVar">
+        <i ng-show="myVar.length==0 || myVar==''" class="icon ion-search placeholder-icon" style="left: 50%;position: absolute;margin-left: -35px;font-size: 16px; margin-top: 1px;"></i>
+        <input type="text" placeholder="Search" style="text-align: center;margin-right: -50px;font-size: 13px;" ng-model="myVar" ng-init="myVar =''">
+        <!-- Is needed for the keyboard submit -->
+        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
       </label>
     </div>
     </form>
@@ -80,26 +82,26 @@
 
 
   <div class="tabs tabs-icon-top">
-    <a class="tab-item active" href="#/app/kreu" >
-      <i class="icon ion-ios-home"></i>
+    <a class="tab-item active" href="#/app/kreu" style="color: #d12127">
+      <i class="icon ion-ios-home" style="color: #d12127"></i>
       Kreu
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/sherbime">
       <i class="icon ion-ios-briefcase-outline"></i>
       Sherbime
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/shporta">
-      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      <i class="icon ion-ios-cart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
       Shporta
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/wishlist">
-      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      <i class="icon ion-ios-heart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
       Wishlist
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/profile">
       <i class="icon ion-ios-person-outline"></i>
       Profili

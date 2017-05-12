@@ -159,6 +159,9 @@
         disabled: false,
         changeMonth: true,
         changeYear: true,
+        onSelect: function() {
+        checkDate()
+      }
       });
       // var selMDate=jQuery('#mdp-demo').multiDatesPicker('getDates');
 
@@ -167,6 +170,40 @@
         console.log(textStatus, errorThrown);
       }
   });
+
+  function checkDate(){
+    var currData=jQuery('#mdp-demo').multiDatesPicker('getDates')[0];
+    if (currData!=null){
+      alert("jo null");
+
+      $.ajax({
+        url: "https://max-optika-server.herokuapp.com/takimOrari",
+        type: "post",
+        success: function (response) {
+
+          //var oraret=response.rows[0].oraret;
+          //oraret=JSON.parse(oraret);
+          //console.log(oraret);
+
+          // var selMDate=jQuery('#mdp-demo').multiDatesPicker('getDates');
+
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+          }
+      });
+
+
+
+
+
+    }else{
+      alert("null");
+    }
+    console.log('u thirra');
+    //console.log(date);
+
+  }
 
 
 

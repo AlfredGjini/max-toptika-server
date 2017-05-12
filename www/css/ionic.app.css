@@ -4102,11 +4102,18 @@ a.subdued {
   font-size: 12px;
   line-height: 14px; }
 
-.tab-item .icon {
+/*.tab-item .icon {
   display: block;
   margin: 2px auto;
   height: 23px;
-  font-size: 25px; }
+  font-size: 25px; }*/
+
+  .tab-item .icon {
+    display: block;
+    margin: 5px auto;
+    height: 20px;
+    font-size: 25px;
+}
 
 .tabs-icon-left.tabs .tab-item,
 .tabs-icon-left > .tabs .tab-item,
