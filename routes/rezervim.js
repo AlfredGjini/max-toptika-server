@@ -134,6 +134,11 @@ exports.setReservation = function(req,res,next){
         .on('end', function(row) {
           console.log('inside 123....');
           console.log(row);
+          var pergjigje= row.rows[0];
+          var newOra= pergjigje.oraret+','+ora;
+          var newKlient= pergjigje.klientet+','+klient_id;
+          console.log(newOra);
+          console.log(newKlient);
           //id_clienti = row.rows[0].id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
