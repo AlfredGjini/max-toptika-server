@@ -122,6 +122,40 @@ exports.setReservation = function(req,res,next){
 
     } else {
       console.log("dataexist true");
+      // Get the row from oraret2 and update it's values
+
+      pg.connect(connectionStr, function(err, client, done) {
+        if (err) {
+           //console.log();
+          throw err;
+        }
+      client
+        .query('SELECT * FROM oraret2 WHERE data = $1;',[data])
+        .on('end', function(row) {
+          console.log('inside 123....');
+          console.log(row);
+          //id_clienti = row.rows[0].id;
+          console.log('Stage one complete...');
+          console.log('Initiating stage two...');
+          // client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
+          //   function(err, result,done) {
+          //     if (err) {
+          //       console.log(err);
+          //     } else {
+          //       console.log('Stage two completed successfully...');
+          //       //done();
+          //       //client.end();
+          //     }
+          //   });
+          }).on('error', function(error) {
+            //handle the error
+            console.log('2');
+            console.log(error);
+
+          });
+
+
+          });
     }
 
 
