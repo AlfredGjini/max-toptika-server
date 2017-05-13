@@ -157,7 +157,7 @@ exports.setReservation = function(req,res,next){
                     if (err) {
                       console.log(err);
                     } else {
-                      console.log('Stage two completed successfully 2...');
+                      console.log('Stage two completed successfully 234...');
                       //done();
                       //client.end();
                     }
