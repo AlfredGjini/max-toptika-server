@@ -93,7 +93,7 @@ exports.setReservation = function(req,res,next){
 
 
   // Insertion into orare2 logic
-    if(dataExists==false){
+    if(dataExists=='false'){
       console.log("jam brenda 1");
 
       pg.connect(connectionStr, function(err, client, done) {
@@ -121,7 +121,7 @@ exports.setReservation = function(req,res,next){
       });
 
     } else {
-
+      console.log("dataexist true");
     }
 
 
