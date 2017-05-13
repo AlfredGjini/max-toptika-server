@@ -109,11 +109,22 @@ exports.setReservation = function(req,res,next){
                 
           .on('end', function(row) {
             console.log("U shtuan tek oraret2");
+
+                client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[klient_id,data,ora,dyqan,shenime,aprovuar],
+                  function(err, result,done) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log('Stage two completed successfully 234...');
+                      //done();
+                      //client.end();
+                    }
+                  });
             //console.log('Single item : ', productId);
             //res.send(JSON.stringify({success:1}));
             //res.send(row);
             // client.end();
-            done();
+            //done();
           });
         });
       pg.end(function(err) {
