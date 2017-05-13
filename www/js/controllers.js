@@ -2819,7 +2819,7 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data.emer = $scope.loggedInSakte.emer;
   $scope.data.mbiemer = $scope.loggedInSakte.mbiemer;
   $scope.data.celular = $scope.loggedInSakte.celular;
-  console.log($scope.data.klient_id);
+  console.log($scope.data);
   $scope.response = {};
   $scope.data.dyqan="bosh";
   $scope.rezervimeGjitha;
@@ -2884,7 +2884,7 @@ $scope.vazhdoPorosine= function(allCmimi){
           klient_id: $scope.data.klient_id,
           emer: $scope.data.emer,
           mbiemer: $scope.data.mbiemer,
-          celular: $scope.data.celular,
+          celular: $scope.data.celular
         }
       }).success(function(response) {
         console.log(response);
