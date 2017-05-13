@@ -19,6 +19,9 @@ var connectionStr = 'postgres://dekixmpqcprkpu:MNbCC56WQ1ZaNRqX8GHmTBaUv-@ec2-23
           done();
         });
     });
+      pg.end(function(err) {
+        if (err) throw err;
+    });
 //console.log(rezervime);
 
 
