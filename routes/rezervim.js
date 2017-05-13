@@ -142,6 +142,8 @@ exports.setReservation = function(req,res,next){
           //id_clienti = row.rows[0].id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
+          var updateQuery="UPDATE oraret2 set oraret='"+newOra+"',  klientet='"+newOra+"' WHERE DATA='"+data+"'";
+          console.log(updateQuery);
           // client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
           //   function(err, result,done) {
           //     if (err) {
