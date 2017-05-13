@@ -73,7 +73,7 @@ exports.setReservation = function(req,res,next){
   var mbiemer = req.body.mbiemer;
   var celular = req.body.celular;
   //console.log(id);
-  console.log(req.body);
+  //console.log(req.body);
   var id_clienti;
   //console.log('Saving data....');
   // var transporter = mailer.createTransport('smtps://tarzanprenga17%40gmail.com:M3tall1ca!@smtp.gmail.com');
