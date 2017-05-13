@@ -2765,7 +2765,7 @@ $scope.vazhdoPorosine= function(allCmimi){
 
 })
 
-.controller('takimCtrl', function($scope, $stateParams, $http, $ionicPopup) {
+.controller('takimCtrl', function($scope, $stateParams, $http, $ionicPopup, $window) {
       
       $scope.showtakim=false;
       // Check the number of elements in the cart and wishlist
@@ -2814,7 +2814,8 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.loggedInSakte=JSON.parse($scope.loggedInSakte);
   //console.log($scope.loggedInSakte);
   $scope.data = {};
-  $scope.data.id = $scope.loggedInSakte.id;
+  $scope.data.id = $scope.loggedInSakte.user_id;
+  $scope.data.klient_id = $scope.loggedInSakte.id;
   $scope.response = {};
   $scope.data.dyqan="bosh";
   $scope.rezervimeGjitha;
@@ -2848,7 +2849,9 @@ $scope.vazhdoPorosine= function(allCmimi){
 
   $scope.rezervo = function() {
     $scope.data.date=jQuery('#mdp-demo').multiDatesPicker('getDates')[0];
-    console.log($scope.data);
+    $scope.dataExists=$window.dataExists;
+    console.log($scope.dataExists);
+    console.log("siper");
     if ($scope.data.dyqan === undefined || $scope.data.date === undefined ||
       $scope.data.ora == undefined || $scope.data.shenime === undefined) {
       alert('Plotesoni te dhenat!');
@@ -2872,12 +2875,14 @@ $scope.vazhdoPorosine= function(allCmimi){
           ora: $scope.data.ora,
           shenime: $scope.data.shenime,
           dyqan: $scope.data.dyqan,
-          id: $scope.data.id
+          id: $scope.data.id,
+          dataExists: $scope.dataExists,
+          klient_id: $scope.klient_id
         }
       }).success(function(response) {
         console.log(response);
         console.log(response.success);
-        console.log(typeof response);
+        //console.log(typeof response);
         if (response.success) {
           $ionicPopup.alert({
             title: 'Rezervo Takim',

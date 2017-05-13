@@ -90,89 +90,46 @@ exports.setReservation = function(req,res,next){
     text: 'Hello world', // plaintext body
     html: 'First Html body!'// html body
   };
-
-
-  // Insertion into orare2 logic
-    if(dataExists==false){
-
-      pg.connect(connectionStr, function(err, client, done) {
-        if (err) {
-           //console.log();
-          throw err;
+  
+  pg.connect(connectionStr, function(err, client, done) {
+      if (err){ throw err;
         }
-        console.log('Connected to postgresss! get orare');
+        console.log('Saving data 123....');
 
-        client
-          .query('INSERT INTO oraret2(data,oraret, klientet) VALUES($1,$2,$3)',[data,ora,klient_id],
-          // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
-                
-          .on('end', function(row) {
-            console.log("U shtuan tek oraret2");
-            //console.log('Single item : ', productId);
-            //res.send(JSON.stringify({success:1}));
-            //res.send(row);
-            // client.end();
-            done();
+      client
+        .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
+        .on('end', function(row) {
+          mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.rows[0].emer + " " + row.rows[0].mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.rows[0].celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
+          transporter.sendMail(mailOptions, function(error, info){
+              if(error){
+                  console.log('1');
+                  console.log(error);
+                  return console.log(error);
+              }
+              console.log('Message sent: ' + info.response);
+          });
+          console.log('inside 123....');
+          console.log(row);
+          id_clienti = row.rows[0].id;
+          console.log('Stage one complete...');
+          console.log('Initiating stage two...');
+          client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
+            function(err, result,done) {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log('Stage two completed successfully...');
+                //done();
+                //client.end();
+              }
+            });
+          }).on('error', function(error) {
+            //handle the error
+            console.log('2');
+            console.log(error);
+
           });
         });
-      pg.end(function(err) {
-        if (err) throw err;
-      });
-
-    } else {
-
-    }
-
-
-
-
-
-
-  
-  // pg.connect(connectionStr, function(err, client, done) {
-  //     if (err){ throw err;
-  //       }
-  //       console.log('Saving data 123....');
-        
-
-
-
-
-
-  //     client
-  //       .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
-  //       .on('end', function(row) {
-  //         mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.rows[0].emer + " " + row.rows[0].mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.rows[0].celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
-  //         transporter.sendMail(mailOptions, function(error, info){
-  //             if(error){
-  //                 console.log('1');
-  //                 console.log(error);
-  //                 return console.log(error);
-  //             }
-  //             console.log('Message sent: ' + info.response);
-  //         });
-  //         console.log('inside 123....');
-  //         console.log(row);
-  //         id_clienti = row.rows[0].id;
-  //         console.log('Stage one complete...');
-  //         console.log('Initiating stage two...');
-  //         client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
-  //           function(err, result,done) {
-  //             if (err) {
-  //               console.log(err);
-  //             } else {
-  //               console.log('Stage two completed successfully...');
-  //               //done();
-  //               //client.end();
-  //             }
-  //           });
-  //         }).on('error', function(error) {
-  //           //handle the error
-  //           console.log('2');
-  //           console.log(error);
-
-  //         });
-  //       });
       
   res.send(JSON.stringify({success:1}));
 };
