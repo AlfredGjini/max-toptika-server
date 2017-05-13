@@ -208,15 +208,15 @@
           var loginId=loggedInSakte.id;
 
           // Check if this client has already made a reservation to this specific day
-          // klientet.forEach( function(element, index) {
-          //   // statements
-          //   if(loginId==element){
-          //     console.log("e gjetem man");
-          //     console.log(element);
-          //      $('#butoniRezervo').prop('disabled', true);
-          //      alert("Ju nuk mund te beni me shume se 1 rezervim ne dite");
-          //   }
-          // });
+          klientet.forEach( function(element, index) {
+            // statements
+            if(loginId==element){
+              console.log("e gjetem man");
+              console.log(element);
+               $('#butoniRezervo').prop('disabled', true);
+               alert("Ju nuk mund te beni me shume se 1 rezervim ne dite");
+            }
+          });
 
           // Loop through orare and disable the times that are inside
           oraret.forEach( function(element, index) {

@@ -152,6 +152,20 @@ exports.setReservation = function(req,res,next){
                 console.log('Stage two completed successfully...');
                 //done();
                 //client.end();
+                client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[klient_id,data,ora,dyqan,shenime,aprovuar],
+                  function(err, result,done) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log('Stage two completed successfully 2...');
+                      //done();
+                      //client.end();
+                    }
+                  });
+
+
+
+
               }
             });
           }).on('error', function(error) {
@@ -181,40 +195,40 @@ exports.setReservation = function(req,res,next){
 
 
 
-  //     client
-  //       .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
-  //       .on('end', function(row) {
-  //         mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.rows[0].emer + " " + row.rows[0].mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.rows[0].celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
-  //         transporter.sendMail(mailOptions, function(error, info){
-  //             if(error){
-  //                 console.log('1');
-  //                 console.log(error);
-  //                 return console.log(error);
-  //             }
-  //             console.log('Message sent: ' + info.response);
-  //         });
-  //         console.log('inside 123....');
-  //         console.log(row);
-  //         id_clienti = row.rows[0].id;
-  //         console.log('Stage one complete...');
-  //         console.log('Initiating stage two...');
-  //         client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
-  //           function(err, result,done) {
-  //             if (err) {
-  //               console.log(err);
-  //             } else {
-  //               console.log('Stage two completed successfully...');
-  //               //done();
-  //               //client.end();
-  //             }
-  //           });
-  //         }).on('error', function(error) {
-  //           //handle the error
-  //           console.log('2');
-  //           console.log(error);
+      // client
+      //   .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
+      //   .on('end', function(row) {
+      //     mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.rows[0].emer + " " + row.rows[0].mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.rows[0].celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
+      //     transporter.sendMail(mailOptions, function(error, info){
+      //         if(error){
+      //             console.log('1');
+      //             console.log(error);
+      //             return console.log(error);
+      //         }
+      //         console.log('Message sent: ' + info.response);
+      //     });
+      //     console.log('inside 123....');
+      //     console.log(row);
+      //     id_clienti = row.rows[0].id;
+      //     console.log('Stage one complete...');
+      //     console.log('Initiating stage two...');
+      //     client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
+      //       function(err, result,done) {
+      //         if (err) {
+      //           console.log(err);
+      //         } else {
+      //           console.log('Stage two completed successfully...');
+      //           //done();
+      //           //client.end();
+      //         }
+      //       });
+      //     }).on('error', function(error) {
+      //       //handle the error
+      //       console.log('2');
+      //       console.log(error);
 
-  //         });
-  //       });
+      //     });
+      //   });
       
   res.send(JSON.stringify({success:1}));
 };
