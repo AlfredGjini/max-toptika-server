@@ -142,7 +142,7 @@ exports.setReservation = function(req,res,next){
           //id_clienti = row.rows[0].id;
           console.log('Stage one complete...');
           console.log('Initiating stage two...');
-          var updateQuery="UPDATE oraret2 set oraret='"+newOra+"',  klientet='"+newOra+"' WHERE DATA='"+data+"'";
+          var updateQuery="UPDATE oraret2 set oraret='"+newOra+"',  klientet='"+newKlient+"' WHERE DATA='"+data+"'";
           console.log(updateQuery);
           client.query(updateQuery,
             function(err, result,done) {
