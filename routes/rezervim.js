@@ -133,7 +133,7 @@ exports.setReservation = function(req,res,next){
         .query('SELECT * FROM oraret2 WHERE data = $1;',[data])
         .on('end', function(row) {
           console.log('inside 123....');
-          console.log(row);
+          //console.log(row);
           var pergjigje= row.rows[0];
           var newOra= pergjigje.oraret+','+ora;
           var newKlient= pergjigje.klientet+','+klient_id;
@@ -144,16 +144,16 @@ exports.setReservation = function(req,res,next){
           console.log('Initiating stage two...');
           var updateQuery="UPDATE oraret2 set oraret='"+newOra+"',  klientet='"+newOra+"' WHERE DATA='"+data+"'";
           console.log(updateQuery);
-          // client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
-          //   function(err, result,done) {
-          //     if (err) {
-          //       console.log(err);
-          //     } else {
-          //       console.log('Stage two completed successfully...');
-          //       //done();
-          //       //client.end();
-          //     }
-          //   });
+          client.query(updateQuery,
+            function(err, result,done) {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log('Stage two completed successfully...');
+                //done();
+                //client.end();
+              }
+            });
           }).on('error', function(error) {
             //handle the error
             console.log('2');
