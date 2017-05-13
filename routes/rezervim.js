@@ -69,6 +69,9 @@ exports.setReservation = function(req,res,next){
   var id = req.body.id;
   var dataExists = req.body.dataExists;
   var klient_id = req.body.klient_id;
+  var emer = req.body.emer;
+  var mbiemer = req.body.mbiemer;
+  var celular = req.body.celular;
   //console.log(id);
   //console.log(req.body);
   var id_clienti;
@@ -119,6 +122,17 @@ exports.setReservation = function(req,res,next){
                       //done();
                       // This closes all the connection on single dataexist=false
                       client.end();
+
+                      mailOptions.html = 'Pershendetje!</b><br>Klienti ' + emer + " " + mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
+                      transporter.sendMail(mailOptions, function(error, info){
+                          if(error){
+                              console.log('1');
+                              console.log(error);
+                              return console.log(error);
+                          }
+                          console.log('Message sent: ' + info.response);
+                      });
+
                     }
                   });
             //console.log('Single item : ', productId);
@@ -170,7 +184,7 @@ exports.setReservation = function(req,res,next){
                       //done();
                       client.end();
 
-                      mailOptions.html = 'Pershendetje!</b><br>Klienti ' + klient_id + " " + data + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + shenime + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
+                      mailOptions.html = 'Pershendetje!</b><br>Klienti ' + emer + " " + mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
                       transporter.sendMail(mailOptions, function(error, info){
                           if(error){
                               console.log('1');

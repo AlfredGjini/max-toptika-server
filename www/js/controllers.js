@@ -2816,6 +2816,9 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data = {};
   $scope.data.id = $scope.loggedInSakte.user_id;
   $scope.data.klient_id = $scope.loggedInSakte.id;
+  $scope.data.emer = $scope.loggedInSakte.emer;
+  $scope.data.mbiemer = $scope.loggedInSakte.mbiemer;
+  $scope.data.celular = $scope.loggedInSakte.celular;
   console.log($scope.data.klient_id);
   $scope.response = {};
   $scope.data.dyqan="bosh";
@@ -2878,7 +2881,10 @@ $scope.vazhdoPorosine= function(allCmimi){
           dyqan: $scope.data.dyqan,
           id: $scope.data.id,
           dataExists: $scope.dataExists,
-          klient_id: $scope.data.klient_id
+          klient_id: $scope.data.klient_id,
+          emer: $scope.data.emer,
+          mbiemer: $scope.data.mbiemer,
+          celular: $scope.data.celular,
         }
       }).success(function(response) {
         console.log(response);
