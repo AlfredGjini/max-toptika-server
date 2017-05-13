@@ -115,9 +115,9 @@ exports.setReservation = function(req,res,next){
                     if (err) {
                       console.log(err);
                     } else {
-                      console.log('Stage two completed successfully 234...');
+                      console.log('Inserted successfully to the reservations table case 1...');
                       //done();
-                      //client.end();
+                      client.end();
                     }
                   });
             //console.log('Single item : ', productId);
@@ -150,9 +150,6 @@ exports.setReservation = function(req,res,next){
           var newKlient= pergjigje.klientet+','+klient_id;
           console.log(newOra);
           console.log(newKlient);
-          //id_clienti = row.rows[0].id;
-          console.log('Stage one complete...');
-          console.log('Initiating stage two...');
           var updateQuery="UPDATE oraret2 set oraret='"+newOra+"',  klientet='"+newKlient+"' WHERE DATA='"+data+"'";
           console.log(updateQuery);
           client.query(updateQuery,
@@ -168,7 +165,7 @@ exports.setReservation = function(req,res,next){
                     if (err) {
                       console.log(err);
                     } else {
-                      console.log('Stage two completed successfully 234...');
+                      console.log('Inserted successfully to the reservations table case 2...');
                       //done();
                       //client.end();
                     }
