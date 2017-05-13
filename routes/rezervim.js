@@ -69,22 +69,22 @@ exports.setReservation = function(req,res,next){
   var id = req.body.id;
   var dataExists = req.body.dataExists;
   var klient_id = req.body.klient_id;
-  console.log(id);
-  console.log(req.body);
+  //console.log(id);
+  //console.log(req.body);
   var id_clienti;
-  console.log('Saving data....');
+  //console.log('Saving data....');
   // var transporter = mailer.createTransport('smtps://tarzanprenga17%40gmail.com:M3tall1ca!@smtp.gmail.com');
     var transporter = mailer.createTransport( {
-        host: "smtp.gmail.com", // hostname
+        host: "smtp-mail.outlook.com", // hostname
         secureConnection: true, // use SSL
         port: 587, // port for secure SMTP
         auth: {
-            user: "maxoptikasmtp@gmail.com",
+            user: "maxoptikasmtp@outlook.com",
             pass: "maxoptika.1A"
         }
     });
   var mailOptions = {
-    from: '"MaxOptika App" <maxoptikasmtp@gmail.com>', // sender address
+    from: '"MaxOptika App" <maxoptikasmtp@outlook.com>', // sender address
     to: 'alfred.gjini93@gmail.com', // list of receivers
     subject: 'Rezervim Takimi!', // Subject line
     text: 'Hello world', // plaintext body
@@ -94,28 +94,28 @@ exports.setReservation = function(req,res,next){
 
   // Insertion into orare2 logic
     if(dataExists=='false'){
-      console.log("jam brenda 1");
+      //console.log("jam brenda 1");
 
       pg.connect(connectionStr, function(err, client, done) {
         if (err) {
            //console.log();
           throw err;
         }
-        console.log('jam brenda 2');
+        //console.log('jam brenda 2');
 
         client
           .query('INSERT INTO oraret2 (data,oraret, klientet) VALUES($1,$2,$3)',[data,ora,klient_id])
           // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
                 
           .on('end', function(row) {
-            console.log("U shtuan tek oraret2");
+            //console.log("U shtuan tek oraret2");
 
                 client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[klient_id,data,ora,dyqan,shenime,aprovuar],
                   function(err, result,done) {
                     if (err) {
                       console.log(err);
                     } else {
-                      console.log('Inserted successfully to the reservations table case 1...');
+                      //console.log('Inserted successfully to the reservations table case 1...');
                       //done();
                       // This closes all the connection on single dataexist=false
                       client.end();
@@ -144,21 +144,21 @@ exports.setReservation = function(req,res,next){
       client
         .query('SELECT * FROM oraret2 WHERE data = $1;',[data])
         .on('end', function(row) {
-          console.log('inside 123....');
+          //console.log('inside 123....');
           //console.log(row);
           var pergjigje= row.rows[0];
           var newOra= pergjigje.oraret+','+ora;
           var newKlient= pergjigje.klientet+','+klient_id;
-          console.log(newOra);
-          console.log(newKlient);
+          //console.log(newOra);
+          //console.log(newKlient);
           var updateQuery="UPDATE oraret2 set oraret='"+newOra+"',  klientet='"+newKlient+"' WHERE DATA='"+data+"'";
-          console.log(updateQuery);
+          //console.log(updateQuery);
           client.query(updateQuery,
             function(err, result,done) {
               if (err) {
                 console.log(err);
               } else {
-                console.log('Stage two completed successfully...');
+                //console.log('Stage two completed successfully...');
                 //done();
                 //client.end();
                 client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[klient_id,data,ora,dyqan,shenime,aprovuar],
@@ -166,9 +166,20 @@ exports.setReservation = function(req,res,next){
                     if (err) {
                       console.log(err);
                     } else {
-                      console.log('Inserted successfully to the reservations table case 2...');
+                      //console.log('Inserted successfully to the reservations table case 2...');
                       //done();
                       client.end();
+
+                      mailOptions.html = 'Pershendetje!</b><br>Klienti ' + klient_id + " " + data + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + shenime + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
+                      transporter.sendMail(mailOptions, function(error, info){
+                          if(error){
+                              console.log('1');
+                              console.log(error);
+                              return console.log(error);
+                          }
+                          console.log('Message sent: ' + info.response);
+                      });
+
                     }
                   });
 
@@ -188,56 +199,6 @@ exports.setReservation = function(req,res,next){
           });
     }
 
-
-
-
-
-
-  
-  // pg.connect(connectionStr, function(err, client, done) {
-  //     if (err){ throw err;
-  //       }
-  //       console.log('Saving data 123....');
-        
-
-
-
-
-
-      // client
-      //   .query('SELECT id,emer,mbiemer,celular FROM clients WHERE user_id = $1;',[id])
-      //   .on('end', function(row) {
-      //     mailOptions.html = 'Pershendetje!</b><br>Klienti ' + row.rows[0].emer + " " + row.rows[0].mbiemer + " kerkon te rezervoje nje takim si meposhte.<br><br>"+ "<b>Data</b> : " + data + "<br><b>Ora</b> : "+ ora + "<br>" + "<b>Dyqani</b> : " + dyqan + "<br><b>Shenime</b> : " + shenime + "<br><b>Celular</b> : " + row.rows[0].celular + "<br><br><br><i>Powered by <a href='http://dea.com.al'>DEA</a><i>";// html body
-      //     transporter.sendMail(mailOptions, function(error, info){
-      //         if(error){
-      //             console.log('1');
-      //             console.log(error);
-      //             return console.log(error);
-      //         }
-      //         console.log('Message sent: ' + info.response);
-      //     });
-      //     console.log('inside 123....');
-      //     console.log(row);
-      //     id_clienti = row.rows[0].id;
-      //     console.log('Stage one complete...');
-      //     console.log('Initiating stage two...');
-      //     client.query('INSERT INTO reservations(id_klienti,data,ora, dyqani,shenime,aprovuar) VALUES($1,$2,$3,$4,$5,$6)',[id_clienti,data,ora,dyqan,shenime,aprovuar],
-      //       function(err, result,done) {
-      //         if (err) {
-      //           console.log(err);
-      //         } else {
-      //           console.log('Stage two completed successfully...');
-      //           //done();
-      //           //client.end();
-      //         }
-      //       });
-      //     }).on('error', function(error) {
-      //       //handle the error
-      //       console.log('2');
-      //       console.log(error);
-
-      //     });
-      //   });
       
   res.send(JSON.stringify({success:1}));
 };
