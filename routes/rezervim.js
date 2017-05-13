@@ -94,16 +94,17 @@ exports.setReservation = function(req,res,next){
 
   // Insertion into orare2 logic
     if(dataExists==false){
+      console.log("jam brenda 1");
 
       pg.connect(connectionStr, function(err, client, done) {
         if (err) {
            //console.log();
           throw err;
         }
-        console.log('Connected to postgresss! get orare');
+        console.log('jam brenda 2');
 
         client
-          .query('INSERT INTO oraret2(data,oraret, klientet) VALUES($1,$2,$3)',[data,ora,klient_id])
+          .query('INSERT INTO oraret2 (data,oraret, klientet) VALUES($1,$2,$3)',[data,ora,klient_id])
           // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
                 
           .on('end', function(row) {

@@ -2816,6 +2816,7 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data = {};
   $scope.data.id = $scope.loggedInSakte.user_id;
   $scope.data.klient_id = $scope.loggedInSakte.id;
+  console.log($scope.data.klient_id);
   $scope.response = {};
   $scope.data.dyqan="bosh";
   $scope.rezervimeGjitha;
@@ -2877,7 +2878,7 @@ $scope.vazhdoPorosine= function(allCmimi){
           dyqan: $scope.data.dyqan,
           id: $scope.data.id,
           dataExists: $scope.dataExists,
-          klient_id: $scope.klient_id
+          klient_id: $scope.data.klient_id
         }
       }).success(function(response) {
         console.log(response);
