@@ -117,6 +117,7 @@ exports.setReservation = function(req,res,next){
                     } else {
                       console.log('Inserted successfully to the reservations table case 1...');
                       //done();
+                      // This closes all the connection on single dataexist=false
                       client.end();
                     }
                   });
@@ -167,7 +168,7 @@ exports.setReservation = function(req,res,next){
                     } else {
                       console.log('Inserted successfully to the reservations table case 2...');
                       //done();
-                      //client.end();
+                      client.end();
                     }
                   });
 
