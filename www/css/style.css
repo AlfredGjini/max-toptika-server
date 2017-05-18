@@ -979,13 +979,13 @@ input[type=number]::-webkit-outer-spin-button {
 .qenderSherbime{
   /*margin-top:-5px;*/
 }
-.sherbimeTitle{
-  font-family: 'Montserrat', sans-serif;
-  font-size: 38px;
-  text-transform: uppercase;
-  text-align: center;
-  margin: 1px auto
-
+.sherbimeTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: -10px auto;
+    color: #313131;
 }
 
 .list:last-child.card {

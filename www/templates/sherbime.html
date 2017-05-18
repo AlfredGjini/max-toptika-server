@@ -2,7 +2,7 @@
   <!-- <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons> -->
-  <ion-content >
+  <ion-content style="background-color: #f4f4f4;">
     <!-- <div class="row responsive-sm">
 
       <div class="col" ng-show="loggedin">
@@ -76,7 +76,7 @@
 
 
 
-   <div class="row sherbimeContainer" ng-hide="loggedInSakte2">
+<!--    <div class="row sherbimeContainer" ng-hide="loggedInSakte2">
     <a style="text-decoration: none;" href="#/app/profile"> 
      <img src="img/kartela_klinike.jpg">
      </a>
@@ -100,7 +100,35 @@
    <a style="text-decoration: none;" href="#/app/sherbime/try-on">
      <img src="img/prove_virtuale.jpg">
      </a>
+   </div> -->
+  <div class="row sherbimeContainer" ng-hide="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/profile"> 
+     <img src="img/kartela_klinike_re.jpg">
+     </a>
    </div>
+   <div style="margin-top:20px;" class="row sherbimeContainer" ng-show="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/sherbime/kartela-klinike"> 
+     <img src="img/kartela_klinike_re.jpg">
+     </a>
+   </div>
+   <div class="row sherbimeContainer" ng-hide="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/profile"">
+     <img src="img/vizita_juaj_re.png">
+     </a>
+   </div>
+   <div class="row sherbimeContainer" ng-show="loggedInSakte2">
+    <a style="text-decoration: none;" href="#/app/sherbime/takim">
+     <img src="img/vizita_juaj_re.png">
+     </a>
+   </div>
+   <div class="row sherbimeContainer">
+   <a style="text-decoration: none;" href="#/app/sherbime/try-on">
+     <img src="img/prove_virtuale_re.jpg">
+     </a>
+   </div>
+
+
+
   <br><br><br><br>
   </ion-content>
   <!-- <div class="bar bar-footer bar-balanced">
@@ -113,7 +141,7 @@
   </div> -->
 
   <div class="tabs tabs-icon-top">
-    <a class="tab-item active" href="#/app/kreu" >
+    <a class="tab-item active" href="#/app/kreu">
       <i class="icon ion-ios-home-outline"></i>
       Kreu
     </a>
@@ -122,14 +150,22 @@
       <i class="icon ion-ios-briefcase" style="color: #d12127"></i>
       Sherbime
     </a>
-   <!--  <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
-    <a class="tab-item active" href="#/app/shporta">
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="shportlistItemsLength != null" class="tab-item active" href="#/app/shporta">
       <i class="icon ion-ios-cart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
       Shporta
     </a>
+    <a ng-show="shportlistItemsLength == null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" ><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
     <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
-    <a class="tab-item active" href="#/app/wishlist">
+    <a ng-show="wishlistItemsLength != null" class="tab-item active" href="#/app/wishlist">
       <i class="icon ion-ios-heart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <a ng-show="wishlistItemsLength == null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" ><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
       Wishlist
     </a>
     <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
