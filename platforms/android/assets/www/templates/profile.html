@@ -74,22 +74,30 @@
       <i class="icon ion-ios-home-outline"></i>
       Kreu
     </a>
-    <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <!-- <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/sherbime">
       <i class="icon ion-ios-briefcase-outline"></i>
       Sherbime
     </a>
-    <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
-    <a class="tab-item active" href="#/app/shporta">
-      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+    <!-- <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="shportlistItemsLength != null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
       Shporta
     </a>
-    <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
-    <a class="tab-item active" href="#/app/wishlist">
-      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+    <a ng-show="shportlistItemsLength == null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" ><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="wishlistItemsLength != null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
       Wishlist
     </a>
-    <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a ng-show="wishlistItemsLength == null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" ><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <!-- <div style="border-right:1px solid #aaa;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/profile" style="color: #d12127;">
       <i class="icon ion-ios-person" style="color: #d12127;"></i>
       Profili

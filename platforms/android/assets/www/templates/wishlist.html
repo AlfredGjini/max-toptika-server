@@ -57,13 +57,21 @@
       Sherbime
     </a>
     <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
-    <a class="tab-item active" href="#/app/shporta">
+    <a ng-show="shportlistItemsLength != null" class="tab-item active" href="#/app/shporta">
       <i class="icon ion-ios-cart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
       Shporta
     </a>
+    <a ng-show="shportlistItemsLength == null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" ><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
     <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
-    <a class="tab-item active" href="#/app/wishlist" style="color: #d12127;">
-      <i class="icon ion-ios-heart badge-container" style="color: #d12127;margin-left: -10px;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+    <a ng-show="wishlistItemsLength != null" class="tab-item active" href="#/app/wishlist" style="color: #d12127;">
+      <i class="icon ion-ios-heart badge-container" style="margin-left: -10px;color: #d12127;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <a ng-show="wishlistItemsLength == null" class="tab-item active" href="#/app/wishlist" style="color: #d12127;">
+      <i class="icon ion-ios-heart badge-container" style="color: #d12127;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
       Wishlist
     </a>
     <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->

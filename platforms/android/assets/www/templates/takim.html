@@ -41,28 +41,28 @@
         </div>
         <!-- Ora -->
         <div class="item item-divider" style="text-align: center;font-size: 18px;margin-bottom: -20px;padding-top: 0px;">
-         Ora
+         <span class="loadingOraret" style="padding-top: 15px;float: left;margin-left: -10px;margin-top: -5px;display: none;"><img src="img/loading.gif" style="width: 20px;"></span><span style="margin-left: -10px;">Ora</span>
         </div>
         <div class="item item-text-wrap" style="text-align: center;">
          <div class="radios">
-              <input type="radio" name="rGroup" value="10:00-10:20" id="r1" checked="checked" ng-model="data.ora"/>
-              <label class="radio" for="r1">10:00-10:20</label>
+              <input type="radio" name="rGroup" value="10:00-10:20" id="r1" ng-model="data.ora"/>
+              <label class="radio" class="10:00-10:20" name="10:00-10:20" for="r1">10:00-10:20</label>
               <input type="radio" name="rGroup" value="10:20-10:40" id="r2" ng-model="data.ora"/>
-              <label class="radio" for="r2">10:20-10:40</label>
+              <label class="radio" id="10:20-10:40" name="10:20-10:40" for="r2">10:20-10:40</label>
               <input type="radio" name="rGroup" value="10:40-11:00" id="r3" ng-model="data.ora"/>
-              <label class="radio" for="r3">10:40-11:00</label>
+              <label class="radio" id="10:40-11:00" name="10:40-11:00" for="r3">10:40-11:00</label>
               <input type="radio" name="rGroup" value="11:00-11:20" id="r4" ng-model="data.ora"/>
-              <label class="radio" for="r4">11:00-11:20</label>
+              <label class="radio" id="11:00-11:20" name="11:00-11:20" for="r4">11:00-11:20</label>
               <input type="radio" name="rGroup" value="11:20-11:40" id="r5" ng-model="data.ora"/>
-              <label class="radio" for="r5">11:20-11:40</label>
+              <label class="radio" id="11:20-11:40" name="11:20-11:40" for="r5">11:20-11:40</label>
               <input type="radio" name="rGroup" value="11:40-12:00" id="r6" ng-model="data.ora"/>
-              <label class="radio" for="r6">11:40-12:00</label>
+              <label class="radio" id="11:40-12:00" name="11:40-12:00" for="r6">11:40-12:00</label>
               <input type="radio" name="rGroup" value="12:00-12:20" id="r7" ng-model="data.ora"/>
-              <label class="radio" for="r7">12:00-12:20</label>
+              <label class="radio" id="12:00-12:20" name="12:00-12:20" for="r7">12:00-12:20</label>
               <input type="radio" name="rGroup" value="12:20-10:40" id="r8" ng-model="data.ora"/>
-              <label class="radio" for="r8">12:20-10:40</label>
+              <label class="radio" id="12:20-10:40" name="12:20-10:40" for="r8">12:20-10:40</label>
               <input type="radio" name="rGroup" value="12:40-13:00" id="r9" ng-model="data.ora"/>
-              <label class="radio" for="r9">12:40-13:00</label>
+              <label class="radio" id="12:40-13:00" name="12:40-13:00" for="r9">12:40-13:00</label>
           </div>
         </div>
         {{data.ora}}
@@ -88,7 +88,7 @@
          <textarea rows="6" placeholder="Shenime" ng-model="data.shenime" style="padding: 5px;border:1px solid #eee;width: 100%;"></textarea>
         </div>
         <div style="width: 100%;margin-top:10px;margin-bottom:10px;text-align: center;">
-          <button class="button button-dark" ng-click="rezervo()">Rezervo</button>
+          <button class="button button-dark" id="butoniRezervo" ng-click="rezervo()">Rezervo</button>
         </div>
         <div class="padding-bottom" style="margin-bottom: 35px;"></div>
     </div>
@@ -111,27 +111,35 @@
       DEA
     </div>
   </div> -->
-    <div class="tabs tabs-icon-top">
-    <a class="tab-item active" href="#/app/kreu" >
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu">
       <i class="icon ion-ios-home-outline"></i>
       Kreu
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/sherbime">
       <i class="icon ion-ios-briefcase-outline"></i>
       Sherbime
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
-    <a class="tab-item active" href="#/app/shporta">
-      <i class="icon ion-ios-cart-outline badge-container"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="shportlistItemsLength != null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
       Shporta
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
-    <a class="tab-item active" href="#/app/wishlist">
-      <i class="icon ion-ios-heart-outline badge-container"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+    <a ng-show="shportlistItemsLength == null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" ><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="wishlistItemsLength != null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
       Wishlist
     </a>
-    <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div>
+    <a ng-show="wishlistItemsLength == null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" ><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
     <a class="tab-item active" href="#/app/profile">
       <i class="icon ion-ios-person-outline"></i>
       Profili
@@ -159,6 +167,9 @@
         disabled: false,
         changeMonth: true,
         changeYear: true,
+        onSelect: function() {
+        checkDate()
+      }
       });
       // var selMDate=jQuery('#mdp-demo').multiDatesPicker('getDates');
 
@@ -167,6 +178,115 @@
         console.log(textStatus, errorThrown);
       }
   });
+
+  function checkDate(){
+    var currData=jQuery('#mdp-demo').multiDatesPicker('getDates')[0];
+    console.log(currData);
+    
+    if (currData!=null){
+      console.log("jo null brenda checkDate");
+      jQuery('.loadingOraret').show();
+
+      $.ajax({
+        url: "https://max-optika-server.herokuapp.com/oraretZene",
+        type: "post",
+        data: {dataZgjdhur:currData},
+        success: function (response) {
+          console.log(response);
+          //var pergjigje=response.rows[0];
+          if(response.rows.length==0){
+            console.log("all oraret are free");
+            $('#butoniRezervo').prop('disabled', false);
+            // Hide the loading gif
+            jQuery('.loadingOraret').hide();
+            // Show all hidden labels
+            $('.radios label').show();
+            // On the ajax call from angular just insert it as a new row
+            window.dataExists = false;
+          }else{
+          var pergjigje=response.rows[0];
+          // Get oraret and convert them to array
+          var oraret=pergjigje.oraret.split(",");
+          // Get klientet and convert them to array
+          var klientet=pergjigje.klientet.split(",");
+
+          // Get the current id of the loggined client
+          var loggedInSakte=window.localStorage.getItem('loggedInSakte');
+          loggedInSakte=JSON.parse(loggedInSakte)
+          var loginId=loggedInSakte.id;
+
+          // Check if this client has already made a reservation to this specific day
+          // klientet.forEach( function(element, index) {
+          //   // statements
+          //   if(loginId==element){
+          //     console.log("e gjetem man");
+          //     console.log(element);
+          //      $('#butoniRezervo').prop('disabled', true);
+          //      alert("Ju nuk mund te beni me shume se 1 rezervim ne dite");
+          //   }
+          // });
+
+          // Loop through orare and disable the times that are inside
+          oraret.forEach( function(element, index) {
+
+            //$('input[value="'+element+'"]').hide();
+            $('[name="'+element+'"]').hide();
+
+          });
+          // On the ajax call from angular update the existing row
+          window.dataExists = true;
+          // Hide the loading gif
+          jQuery('.loadingOraret').hide();
+
+          }
+
+
+
+
+          // console.log(response.rows[0]);
+          // jQuery('.loadingOraret').hide();
+          // var loggedInSakte=window.localStorage.getItem('loggedInSakte');
+          // loggedInSakte=JSON.parse(loggedInSakte)
+          // console.log(loggedInSakte);
+          // loginId=loggedInSakte.id;
+          // // Check Klientet Part
+          // var klientet=pergjigje.klientet;
+          // var klientArr=klientet.split(",");
+
+          // klientArr.forEach( function(element, index) {
+          //   // statements
+          //   if(loginId==element){
+          //     console.log("e gjetem man");
+          //     console.log(element);
+          //   }
+          // });
+          // //console.log(typeof(klientArr));
+          // console.log(klientArr);
+
+
+          //var oraret=response.rows[0].oraret;
+          //oraret=JSON.parse(oraret);
+          //console.log(oraret);
+
+          // var selMDate=jQuery('#mdp-demo').multiDatesPicker('getDates');
+
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+          }
+      });
+
+
+
+
+
+    }else{
+      console.log("null");
+    }
+    console.log('u thirra');
+    //console.log(date);
+
+  }
 
 
 
