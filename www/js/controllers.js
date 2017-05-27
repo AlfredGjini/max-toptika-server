@@ -1,4 +1,4 @@
-angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMdInput', 'ionic-material', 'ngCordova'])
+angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMdInput', 'ionic-material', 'ngCordova', 'rzModule', 'ui.bootstrap'])
 
 
 
@@ -374,6 +374,115 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 .controller('syzeDielliCtrl', function($scope, Syze, $location, $state, $ionicLoading, $ionicPopup, $http) {
   console.log("test");
   console.log($scope.offsetD);
+
+$scope.slider = {
+  minValue: 100,
+  maxValue: 400,
+  options: {
+    floor: 0,
+    ceil: 500,
+    translate: function(value, sliderId, label) {
+      switch (label) {
+        case 'model':
+          return '<b>Min price:</b> $' + value;
+        case 'high':
+          return '<b>Max price:</b> $' + value;
+        default:
+          return '$' + value
+      }
+    }
+  }
+};
+
+  $scope.singleModel = 1;
+
+  $scope.radioModel = 'Middle';
+
+  $scope.checkModel = {
+    rayban: false,
+    police: false,
+    tjeter: false
+  };
+
+  $scope.checkResults = [];
+
+  $scope.$watchCollection('checkModel', function () {
+    $scope.checkResults = [];
+    angular.forEach($scope.checkModel, function (value, key) {
+      if (value) {
+        $scope.checkResults.push(key);
+      }
+    });
+  });
+
+
+  $scope.singleModel = 1;
+
+  $scope.radioModel = 'Middle';
+
+  $scope.checkModelForma = {
+    square: false,
+    circle: false,
+    oval: false
+  };
+
+  $scope.checkResultsForma = [];
+
+  $scope.$watchCollection('checkModelForma', function () {
+    $scope.checkResultsForma = [];
+    angular.forEach($scope.checkModelForma, function (value, key) {
+      if (value) {
+        $scope.checkResultsForma.push(key);
+      }
+    });
+  });
+
+
+
+$scope.klasaSfond=['product--blue','product--orange','product--red','product--green','product--yellow','product--pink'];
+
+$scope.ktheNgjyre= function(index){
+  var kodi=index%6;
+  if(kodi==0){
+    kodi=6;
+  }
+  return kodi
+}
+
+$scope.filtroProduktet =  function(){
+  console.log("brenda");
+  console.log($scope.syzeD);
+  $scope.syzeDCopy=$scope.syzeD;
+  console.log($scope.slider);
+  var newSyzeDHolder1=[];
+  var newSyzeDHolder2=[];
+  var newSyzeDHolder3=[];
+  var newSyzeDHolder4=[];
+
+  $scope.syzeD.forEach( function(element, index) {
+    if(element.cmimi>=$scope.slider.minValue && element.cmimi<=$scope.slider.maxValue){
+      newSyzeDHolder1.push(element);
+    }
+  });
+  console.log(newSyzeDHolder1);
+  console.log($scope.checkResultsForma);
+  // newSyzeDHolder1.forEach( function(element, index) {
+  //   if(element.cmimi>=$scope.slider.minValue && element.cmimi<=$scope.slider.maxValue){
+  //     newSyzeDHolder1.push(element);
+  //   }
+  // });
+
+
+}
+
+
+
+
+
+
+
+
+
       
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
