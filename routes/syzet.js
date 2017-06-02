@@ -689,7 +689,8 @@ exports.getSingleProduct = function(req, res, next){
           //console.log("ndarje");
           //console.log(pergjigje[0].produkti.pershkrimiangartikulli);
           var pershkrim_artikulli=pergjigje[0].produkti.pershkrimiangartikulli;
-          var query_text_new='SELECT * FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.pershkrimiangartikulli =\''+pershkrim_artikulli+'\'';
+          var kod_artikulli=pergjigje[0].produkti.kodartikulli;
+          var query_text_new='SELECT * FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.pershkrimiangartikulli =\''+pershkrim_artikulli+'\' AND products2.kodartikulli!=\''+kod_artikulli+'\'';
 
 
 
