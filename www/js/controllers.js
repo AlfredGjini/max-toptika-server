@@ -133,7 +133,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
        }
      }).success(function(response) {
          $scope.syze = response;
-         console.log("trt"+$scope.syze);
+         console.log($scope.syze);
       });
 
 

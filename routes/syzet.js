@@ -702,7 +702,7 @@ exports.getSingleProduct = function(req, res, next){
                       //done();
                       //console.log("para result");
                       //console.log(result.rows[0]);
-                      pergjigje.push(result.rows[0]);
+                      pergjigje.push(result.rows);
                       res.send(pergjigje);
 
                       client.end();
