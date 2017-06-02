@@ -1,0 +1,158 @@
+<ion-view title="Syze Dielli">
+  <ion-nav-buttons side="right">
+    <button ng-hide="itemchecked" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="itemchecked=true"><i style="color: #fff;font-size: 28px;"  class="icon ion-ios-toggle-outline" s></i></button>
+    <button ng-show="itemchecked" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="itemchecked=false"><i style="color: #fff;font-size: 28px;" class="icon ion-ios-toggle" s></i></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <div class="filter">
+      <div class="row responsive-sm">
+        <div class="search-container" style="background-color: #fff;">
+          <div class="bar bar-header item-input-inset" style="">
+            <label class="item-input-wrapper textbox-search" >
+              <i class="icon ion-ios7-search placeholder-icon"></i>
+              <input type="search" placeholder="Kerko..." ng-model="searchh">
+            </label>
+          </div>
+          <div ng-hide="itemchecked" style="" data-ng-click="itemchecked=true">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
+          <div ng-show="itemchecked" style="" data-ng-click="itemchecked=false">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
+
+
+
+
+
+<!--           <div>
+            <div class="checkbox">
+              <label>M:<input type="radio" ng-model="gjinia" value="M"/></label>
+            </div>
+            <div class="checkbox">
+              <label>F:<input type="radio" ng-model="gjinia" value="F"/></label>
+            </div>
+          </div> -->
+        </div>
+      </div>
+          <!-- <ion-toggle ng-model="item.checked" ng-checked="false" ng-init="item.checked=false">
+          Shfaq filtrat {{itemchecked}}
+          </ion-toggle> -->
+
+            <div ng-show="itemchecked" class="item item-text-wrap" style="text-align: center;">
+
+            <div>
+                <rzslider rz-slider-model="slider.minValue"
+          rz-slider-high="slider.maxValue"
+          rz-slider-options="slider.options"></rzslider>
+            </div>
+
+
+<style type="text/css">
+  .zgjedhSakte{
+    background-color: red;
+  }
+</style>
+
+    <!-- <pre>Model: {{checkModel}}</pre> -->
+    <pre>Results: {{checkResults}}</pre>
+    <div class="btn-group">
+        <label class="btn btn-primary" style="background-color: #337ab7;" ng-class="{'zgjedhSakte': checkModel.left==left}" ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+        <label class="btn btn-primary" style="background-color: #337ab7;" ng-class="{'zgjedhSakte': checkModel.middle==middle}" ng-model="checkModel.middle" uib-btn-checkbox>Middle</label>
+        <label class="btn btn-primary" style="background-color: #337ab7;" ng-class="{'zgjedhSakte': checkModel.right==right}" ng-model="checkModel.right" uib-btn-checkbox>Right</label>
+    </div>
+
+             <div class="radios">
+                  <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.ora" />
+                  <label class="radio" class="10:00-10:20" name="10:00-10:20" for="r1">Woman</label>
+                  <input type="radio" name="rGroup" value="10:20-10:40" id="r2" ng-model="data.ora" />
+                  <label class="radio" id="10:20-10:40" name="10:20-10:40" for="r2">Man</label>
+              </div>
+              {{data.ora}}
+            </div>
+
+
+    </div>
+    <!-- <div class="list card" > -->
+    <div class="row"  ng-repeat="syzet in syzeD | filter:searchh" ng-if="$index % 2 == 0">
+      <div class="col list card" >
+      <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
+        <div class="item " style="text-align: center;">
+         <img src="http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index].kodartikulli}}_front.png"/>
+           <h2 class="produkteShkrim"><b>{{syzeD[$index].kodifikimartikulli2}} {{syzeD[$index].kodartikulli}}</b></h2>
+          <!-- <h2>{{syze[$index].pershkrimartikulli}}</h2> -->
+          <p style="margin-bottom:2px;">{{syzeD[$index].grupi}}</p>
+          <h2 class="produkteShkrim"><b>{{syzeD[$index].cmimi}} {{syzeD[$index].monedha}}</b></h2>
+          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index].kodartikulli}}" class="icon ion-heart"></i></button> -->
+        </div>
+        </a>
+      </div>
+      <!-- <div class="col list card"  ng-if="syzeD.length">
+      <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index + 1].kodartikulli}}">
+        <div class="item " style="text-align: center;">
+         <img src="http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index + 1].kodartikulli}}_front.png"/>
+           <h2 class="produkteShkrim"><b>{{syzeD[$index + 1].kodifikimartikulli2}} {{syzeD[$index + 1].kodartikulli}}</b></h2> -->
+          <!-- <h2>{{syze[$index + 1].pershkrimartikulli}}</h2> -->
+          <!-- <p style="margin-bottom:2px;">{{syzeD[$index + 1].grupi}}</p>
+          <h2 class="produkteShkrim"><b>{{syzeD[$index + 1].cmimi}} {{syzeD[$index +1].monedha}}</b></h2> -->
+          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index + 1].kodartikulli}}" class="icon ion-heart"></i></button> -->
+        <!-- </div>
+        </a>
+      </div> -->
+    </div>
+
+      <!-- <div class="item item-avatar">
+       <img src="pics/1.jpg"/>
+         <a href="#/app/produkte/{{syzet.kodartikulli}}"><h2><b>{{syzet.kodifikimartikulli2}}</b></h2></a>
+        <h2>{{syzet.pershkrimartikulli}}{{gjinia}}</h2>
+        <p>{{syzet.grupi}}</p>
+        <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syzet.kodartikulli}}" class="icon ion-heart"></i></button>
+      </div> -->
+    <!-- </div> -->
+
+
+
+    <ion-infinite-scroll
+    on-infinite="loadNextProducts()"
+    distance="1%">
+  </ion-infinite-scroll>
+  <br><br><br><br><br><br>
+  </ion-content>
+  <!--<div class="bar bar-footer bar-balanced">
+    <div class="title" style="text-align: left;">
+      MAX OPTICA<sup>&reg;</sup>
+    </div>
+    <div class="title" style="text-align: right;">
+      DEA
+    </div>
+  </div>-->
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active" href="#/app/kreu">
+      <i class="icon ion-ios-home-outline"></i>
+      Kreu
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a class="tab-item active" href="#/app/sherbime">
+      <i class="icon ion-ios-briefcase-outline"></i>
+      Sherbime
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="shportlistItemsLength != null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <a ng-show="shportlistItemsLength == null" class="tab-item active" href="#/app/shporta">
+      <i class="icon ion-ios-cart-outline badge-container" ><span class="badge badge-assertive">{{shportlistItemsLength}}</span></i>
+      Shporta
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a ng-show="wishlistItemsLength != null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" style="margin-left: -10px;"><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <a ng-show="wishlistItemsLength == null" class="tab-item active" href="#/app/wishlist">
+      <i class="icon ion-ios-heart-outline badge-container" ><span class="badge badge-assertive">{{wishlistItemsLength}}</span></i>
+      Wishlist
+    </a>
+    <!-- <div style="border-right:1px solid #d12127;height: 70%;margin: auto 0px;opacity: 0.5;"></div> -->
+    <a class="tab-item active" href="#/app/profile">
+      <i class="icon ion-ios-person-outline"></i>
+      Profili
+    </a>
+  </div>
+</ion-view>

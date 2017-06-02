@@ -1,4 +1,4 @@
-angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMdInput', 'ionic-material', 'ngCordova'])
+angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMdInput', 'ionic-material', 'ngCordova', 'rzModule', 'ui.bootstrap'])
 
 
 
@@ -374,6 +374,179 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 .controller('syzeDielliCtrl', function($scope, Syze, $location, $state, $ionicLoading, $ionicPopup, $http) {
   console.log("test");
   console.log($scope.offsetD);
+
+$scope.paRezultat=true;
+$scope.itemchecked=false;
+
+$scope.slider = {
+  minValue: 300,
+  maxValue: 700,
+  options: {
+    floor: 0,
+    ceil: 1000,
+    translate: function(value, sliderId, label) {
+      switch (label) {
+        case 'model':
+          return '<b>Min price:</b> $' + value;
+        case 'high':
+          return '<b>Max price:</b> $' + value;
+        default:
+          return '$' + value
+      }
+    }
+  }
+};
+
+  $scope.singleModel = 1;
+
+  $scope.radioModel = 'Middle';
+
+  $scope.checkModel = {
+    Rayban: false,
+    Police: false,
+    Emporio: false
+  };
+
+  $scope.checkResults = [];
+
+  $scope.$watchCollection('checkModel', function () {
+    $scope.checkResults = [];
+    angular.forEach($scope.checkModel, function (value, key) {
+      if (value) {
+        $scope.checkResults.push(key);
+      }
+    });
+  });
+
+
+  $scope.singleModel = 1;
+
+  $scope.radioModel = 'Middle';
+
+  $scope.checkModelForma = {
+    Square: false,
+    Circle: false,
+    oval: false
+  };
+
+  $scope.checkResultsForma = [];
+
+  $scope.$watchCollection('checkModelForma', function () {
+    $scope.checkResultsForma = [];
+    angular.forEach($scope.checkModelForma, function (value, key) {
+      if (value) {
+        $scope.checkResultsForma.push(key);
+      }
+    });
+  });
+
+
+
+$scope.klasaSfond=['product--blue','product--orange','product--red','product--green','product--yellow','product--pink'];
+
+$scope.ktheNgjyre= function(index){
+  var kodi=index%6;
+  if(kodi==0){
+    kodi=6;
+  }
+  return kodi
+}
+
+$scope.filtroProduktet =  function(){
+  console.log($scope.syzeD);
+  $scope.syzeDCopy=$scope.syzeDOriginalBackup;
+  console.log($scope.syzeDOriginalBackup);
+  var newSyzeDHolder1=[];
+  var newSyzeDHolder2=[];
+  var newSyzeDHolder3=[];
+  var newSyzeDHolder4=[];
+
+  // Cmimi Filter
+  $scope.syzeDOriginalBackup.forEach( function(element, index) {
+    if(element.cmimi>=$scope.slider.minValue && element.cmimi<=$scope.slider.maxValue){
+      newSyzeDHolder1.push(element);
+    }
+  });
+
+  // Forma Filter
+  // Check if any value is selected from Forma
+  if ($scope.checkResultsForma!='') {
+    // First loop through the array of all the products
+    newSyzeDHolder1.forEach( function(element, index) {
+      // Then loop through all the selected Forma values and check them all with the products values
+      $scope.checkResultsForma.forEach( function(elementt, indexx) {
+        if(element.zonakadastrale==elementt){
+        newSyzeDHolder2.push(element);
+      }
+      });
+      
+    });
+  }else{
+    newSyzeDHolder2=newSyzeDHolder1;
+  }
+
+  // Gjinia Filter
+
+  if($scope.data.gjinia!=undefined){
+    newSyzeDHolder2.forEach( function(element, index) {
+      if(element.vitprodhimi==$scope.data.gjinia){
+        newSyzeDHolder3.push(element);
+      }
+    });
+
+  }else{
+    newSyzeDHolder3=newSyzeDHolder2;
+  }
+
+  // Marka Filter
+  // Check if any value is selected from Forma
+  if ($scope.checkResults!='') {
+    // Replace Emporio with Emporio Armani in the result array
+    $scope.checkResults.forEach( function(element, index) {
+      if(element=='Emporio'){
+        $scope.checkResults[index]='Emporio Armani';
+      }
+    });
+
+    // First loop through the array of all the products
+    newSyzeDHolder3.forEach( function(element, index) {
+      // Then loop through all the selected Forma values and check them all with the products values
+      $scope.checkResults.forEach( function(elementt, indexx) {
+        if(element.kodifikimartikulli2==elementt){
+        newSyzeDHolder4.push(element);
+      }
+      });
+      
+    });
+  }else{
+    newSyzeDHolder4=newSyzeDHolder3;
+  }
+  if(newSyzeDHolder4==undefined){
+    $scope.paRezultat=false;
+    console.log("bosh");
+  }else {
+      // Set the old array to the new modified one
+      $scope.syzeD=newSyzeDHolder4;
+      console.log($scope.syzeD);
+      $scope.paRezultat=true;
+      $scope.data.shfaq=false;
+  }
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
       
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
@@ -418,6 +591,7 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
   $scope.limit  = 20; //gets 20 objects the first time
   $scope.offsetD = 0;
   $scope.syzeD   = [];
+  $scope.countForBackUp   = 1;
   $scope.loadNextProducts = function(){
     console.log($scope.data.search);
     console.log('t');
@@ -461,8 +635,12 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
         
 
       });
+       if($scope.countForBackUp==1){
+        $scope.syzeDOriginalBackup=$scope.syzeD;
+        console.log("First and only call");
+       }
        localStorage.setItem('treArray', JSON.stringify($scope.treArray));
-      console.log($scope.treArray);
+       console.log($scope.treArray);
       
        // console.log(response);
        //gets another limt data

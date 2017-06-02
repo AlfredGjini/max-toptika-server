@@ -976,6 +976,11 @@ input[type=number]::-webkit-outer-spin-button {
 .sherbimeContainer a img{
   width: 100%;
 }
+
+/*.slick-list {
+    border: 2px solid #e62449;
+}*/
+
 .qenderSherbime{
   /*margin-top:-5px;*/
 }
@@ -1003,7 +1008,8 @@ input[type=number]::-webkit-outer-spin-button {
 .produkteShkrim{
   text-transform: uppercase;
   font-family: 'Montserrat Light', arial;
-  font-size: 20px;
+  font-size: 16px;
+  text-align: center;
 
 }
 
@@ -1467,4 +1473,20 @@ table.ui-datepicker-calendar {border-collapse: separate;}
     border: solid 0px #ccc !important;
     border-radius: 7px !important;
     background-color: #fff !important;
+}
+
+
+.cmimiFilter {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Montserrat Light', arial;
+    margin-bottom: -5px;
+}
+
+.cmimiFilter2 {
+    font-weight: normal;
+    font-size: 14px;
+    font-family: 'Montserrat Light', arial;
+    color: #636363;
 }

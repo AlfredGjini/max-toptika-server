@@ -375,12 +375,15 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
   console.log("test");
   console.log($scope.offsetD);
 
+$scope.paRezultat=true;
+$scope.itemchecked=false;
+
 $scope.slider = {
-  minValue: 100,
-  maxValue: 400,
+  minValue: 300,
+  maxValue: 700,
   options: {
     floor: 0,
-    ceil: 500,
+    ceil: 1000,
     translate: function(value, sliderId, label) {
       switch (label) {
         case 'model':
@@ -399,9 +402,9 @@ $scope.slider = {
   $scope.radioModel = 'Middle';
 
   $scope.checkModel = {
-    rayban: false,
-    police: false,
-    tjeter: false
+    Rayban: false,
+    Police: false,
+    Emporio: false
   };
 
   $scope.checkResults = [];
@@ -421,8 +424,8 @@ $scope.slider = {
   $scope.radioModel = 'Middle';
 
   $scope.checkModelForma = {
-    square: false,
-    circle: false,
+    Square: false,
+    Circle: false,
     oval: false
   };
 
@@ -450,27 +453,88 @@ $scope.ktheNgjyre= function(index){
 }
 
 $scope.filtroProduktet =  function(){
-  console.log("brenda");
   console.log($scope.syzeD);
-  $scope.syzeDCopy=$scope.syzeD;
-  console.log($scope.slider);
+  $scope.syzeDCopy=$scope.syzeDOriginalBackup;
+  console.log($scope.syzeDOriginalBackup);
   var newSyzeDHolder1=[];
   var newSyzeDHolder2=[];
   var newSyzeDHolder3=[];
   var newSyzeDHolder4=[];
 
-  $scope.syzeD.forEach( function(element, index) {
+  // Cmimi Filter
+  $scope.syzeDOriginalBackup.forEach( function(element, index) {
     if(element.cmimi>=$scope.slider.minValue && element.cmimi<=$scope.slider.maxValue){
       newSyzeDHolder1.push(element);
     }
   });
-  console.log(newSyzeDHolder1);
-  console.log($scope.checkResultsForma);
-  // newSyzeDHolder1.forEach( function(element, index) {
-  //   if(element.cmimi>=$scope.slider.minValue && element.cmimi<=$scope.slider.maxValue){
-  //     newSyzeDHolder1.push(element);
-  //   }
-  // });
+
+  // Forma Filter
+  // Check if any value is selected from Forma
+  if ($scope.checkResultsForma!='') {
+    // First loop through the array of all the products
+    newSyzeDHolder1.forEach( function(element, index) {
+      // Then loop through all the selected Forma values and check them all with the products values
+      $scope.checkResultsForma.forEach( function(elementt, indexx) {
+        if(element.zonakadastrale==elementt){
+        newSyzeDHolder2.push(element);
+      }
+      });
+      
+    });
+  }else{
+    newSyzeDHolder2=newSyzeDHolder1;
+  }
+
+  // Gjinia Filter
+
+  if($scope.data.gjinia!=undefined){
+    newSyzeDHolder2.forEach( function(element, index) {
+      if(element.vitprodhimi==$scope.data.gjinia){
+        newSyzeDHolder3.push(element);
+      }
+    });
+
+  }else{
+    newSyzeDHolder3=newSyzeDHolder2;
+  }
+
+  // Marka Filter
+  // Check if any value is selected from Forma
+  if ($scope.checkResults!='') {
+    // Replace Emporio with Emporio Armani in the result array
+    $scope.checkResults.forEach( function(element, index) {
+      if(element=='Emporio'){
+        $scope.checkResults[index]='Emporio Armani';
+      }
+    });
+
+    // First loop through the array of all the products
+    newSyzeDHolder3.forEach( function(element, index) {
+      // Then loop through all the selected Forma values and check them all with the products values
+      $scope.checkResults.forEach( function(elementt, indexx) {
+        if(element.kodifikimartikulli2==elementt){
+        newSyzeDHolder4.push(element);
+      }
+      });
+      
+    });
+  }else{
+    newSyzeDHolder4=newSyzeDHolder3;
+  }
+  if(newSyzeDHolder4==undefined){
+    $scope.paRezultat=false;
+    console.log("bosh");
+  }else {
+      // Set the old array to the new modified one
+      $scope.syzeD=newSyzeDHolder4;
+      console.log($scope.syzeD);
+      $scope.paRezultat=true;
+      $scope.data.shfaq=false;
+  }
+
+
+
+
 
 
 }
@@ -527,6 +591,7 @@ $scope.filtroProduktet =  function(){
   $scope.limit  = 20; //gets 20 objects the first time
   $scope.offsetD = 0;
   $scope.syzeD   = [];
+  $scope.countForBackUp   = 1;
   $scope.loadNextProducts = function(){
     console.log($scope.data.search);
     console.log('t');
@@ -570,8 +635,12 @@ $scope.filtroProduktet =  function(){
         
 
       });
+       if($scope.countForBackUp==1){
+        $scope.syzeDOriginalBackup=$scope.syzeD;
+        console.log("First and only call");
+       }
        localStorage.setItem('treArray', JSON.stringify($scope.treArray));
-      console.log($scope.treArray);
+       console.log($scope.treArray);
       
        // console.log(response);
        //gets another limt data

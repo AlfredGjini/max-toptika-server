@@ -1,0 +1,97 @@
+      <div class='product--orange'>
+        <div class='product_inner'>
+          <img src='http://wellandgood.com/wp-content/uploads/2012/07/Nike-Free-30-Womens-Running-Shoe-511495_600_A.png' width='300'>
+          <p>Nike Air (Men)</p>
+          <p>Size 10</p>
+          <p>Price £99.99</p>
+          <!-- <button>Add to basket</button> -->
+        </div>
+        <!-- <div class='product_overlay'>
+          <h2>Added to basket</h2>
+          <i class='fa fa-check'></i>
+        </div> -->
+      </div>
+      <div class='product--red'>
+        <div class='product_inner'>
+          <img src='http://wellandgood.com/wp-content/uploads/2012/07/Nike-Free-30-Womens-Running-Shoe-511495_600_A.png' width='300'>
+          <p>Nike Air (Women)</p>
+          <p>Size 8</p>
+          <p>Price £399.99</p>
+          <!-- <button>Add to basket</button> -->
+        </div>
+        <!-- <div class='product_overlay'>
+          <h2>Added to basket</h2>
+          <i class='fa fa-check'></i>
+        </div> -->
+      </div>
+      <div class='product--green'>
+        <div class='product_inner'>
+          <img src='http://wellandgood.com/wp-content/uploads/2012/07/Nike-Free-30-Womens-Running-Shoe-511495_600_A.png' width='300'>
+          <p>Nike Air (Men)</p>
+          <p>Size 11</p>
+          <p>Price £299.99</p>
+         <!--  <button>Add to basket</button> -->
+        </div>
+        <!-- <div class='product_overlay'>
+          <h2>Added to basket</h2>
+          <i class='fa fa-check'></i>
+        </div> -->
+      </div>
+      <div class='product--yellow'>
+        <div class='product_inner'>
+          <img src='http://wellandgood.com/wp-content/uploads/2012/07/Nike-Free-30-Womens-Running-Shoe-511495_600_A.png' width='300'>
+          <p>Nike Air (Women)</p>
+          <p>Size 11</p>
+          <p>Price £299.99</p>
+          <!-- <button>Add to basket</button> -->
+        </div>
+        <!-- <div class='product_overlay'>
+          <h2>Added to basket</h2>
+          <i class='fa fa-check'></i>
+        </div> -->
+      </div>
+      <div class='product--pink'>
+        <div class='product_inner'>
+          <img src='http://wellandgood.com/wp-content/uploads/2012/07/Nike-Free-30-Womens-Running-Shoe-511495_600_A.png' width='300'>
+          <p>Nike Air (Men)</p>
+          <p>Size 11</p>
+          <p>Price £299.99</p>
+          <!-- <button>Add to basket</button> -->
+        </div>
+        <!-- <div class='product_overlay'>
+          <h2>Added to basket</h2>
+          <i class='fa fa-check'></i>
+        </div> -->
+      </div>
+
+
+
+
+
+          <!-- <div class="list card" > -->
+    <div class="row"  ng-repeat="syzet in syzeD | filter:searchh" ng-if="$index % 2 == 0">
+      <div class="col list card" >
+      <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
+        <div class="item " style="text-align: center;">
+         <img src="http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index].kodartikulli}}_front.png"/>
+           <h2 class="produkteShkrim"><b>{{syzeD[$index].kodifikimartikulli2}} {{syzeD[$index].kodartikulli}}</b></h2>
+          <!-- <h2>{{syze[$index].pershkrimartikulli}}</h2> -->
+          <p style="margin-bottom:2px;">{{syzeD[$index].grupi}}</p>
+          <h2 class="produkteShkrim"><b>{{syzeD[$index].cmimi}} {{syzeD[$index].monedha}}</b></h2>
+          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index].kodartikulli}}" class="icon ion-heart"></i></button> -->
+        </div>
+        </a>
+      </div>
+      <!-- <div class="col list card"  ng-if="syzeD.length">
+      <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index + 1].kodartikulli}}">
+        <div class="item " style="text-align: center;">
+         <img src="http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index + 1].kodartikulli}}_front.png"/>
+           <h2 class="produkteShkrim"><b>{{syzeD[$index + 1].kodifikimartikulli2}} {{syzeD[$index + 1].kodartikulli}}</b></h2> -->
+          <!-- <h2>{{syze[$index + 1].pershkrimartikulli}}</h2> -->
+          <!-- <p style="margin-bottom:2px;">{{syzeD[$index + 1].grupi}}</p>
+          <h2 class="produkteShkrim"><b>{{syzeD[$index + 1].cmimi}} {{syzeD[$index +1].monedha}}</b></h2> -->
+          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index + 1].kodartikulli}}" class="icon ion-heart"></i></button> -->
+        <!-- </div>
+        </a>
+      </div> -->
+    </div>

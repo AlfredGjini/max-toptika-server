@@ -177,8 +177,22 @@ header i:nth-of-type(2) {
               <input type="search" placeholder="Kerko..." ng-model="searchh">
             </label>
           </div>
-          <div ng-hide="itemchecked" style="" data-ng-click="itemchecked=true" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
-          <div ng-show="itemchecked" style="" data-ng-click="itemchecked=false" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
+          <ul class="list" style="margin-top:0px;margin-bottom: -10px; ">
+
+          <li class="item item-toggle cmimiFilter2">
+             Shfaq Filtrat
+             <label class="toggle toggle-assertive">
+               <input type="checkbox" ng-model="data.shfaq">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+
+        </ul>
+
+          <!-- <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
+          <div ng-show="data.shfaq" style="" data-ng-click="data.shfaq=false" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div> -->
 
 
 
@@ -198,7 +212,7 @@ header i:nth-of-type(2) {
           Shfaq filtrat {{itemchecked}}
           </ion-toggle> -->
 
-            <div ng-show="itemchecked" class="item item-text-wrap" style="text-align: center;">
+            <div ng-show="data.shfaq" class="item item-text-wrap" style="text-align: center;">
 
             <div class="cmimiFilter" style="">Cmimi</div>
               <hr style="width: 30%;text-align: center;margin-bottom: 10px;">
@@ -212,8 +226,8 @@ header i:nth-of-type(2) {
             <div class="cmimiFilter" style="margin-top: 15px;">Forma</div>
             <hr style="width: 30%;text-align: center;margin-bottom: 10px;">
             <div class="btn-group klaseVecimi">
-                <label class="btn btn-primary notActive" ng-model="checkModelForma.circle" uib-btn-checkbox>Circle</label>
-                <label class="btn btn-primary notActive" ng-model="checkModelForma.square" uib-btn-checkbox>Square</label>
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Circle" uib-btn-checkbox>Circle</label>
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Square" uib-btn-checkbox>Square</label>
                 <label class="btn btn-primary notActive" ng-model="checkModelForma.oval" uib-btn-checkbox>Oval</label>
                 <!-- {{checkResultsForma}} -->
             </div>
@@ -221,9 +235,9 @@ header i:nth-of-type(2) {
             <div class="cmimiFilter" style="margin-top: 25px;">Gjinia</div>
             <hr style="width: 30%;text-align: center;margin-bottom: 0px;">
             <div class="radios">
-                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.ora" />
+                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.gjinia" />
                 <label class="radio" class="10:00-10:20" name="10:00-10:20" for="r1">Woman</label>
-                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.ora" />
+                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.gjinia" />
                 <label class="radio" id="10:20-10:40" name="10:20-10:40" for="r2">Man</label>
             </div>
             <!-- {{data.ora}} -->
@@ -231,15 +245,15 @@ header i:nth-of-type(2) {
             <div class="cmimiFilter" style="margin-top: 20px;">Marka</div>
             <hr style="width: 30%;text-align: center;margin-bottom: 10px;">
             <div class="btn-group klaseVecimi">
-                <label class="btn btn-primary notActive" ng-model="checkModel.rayban" uib-btn-checkbox>Ray Ban</label>
-                <label class="btn btn-primary notActive" ng-model="checkModel.police" uib-btn-checkbox>Police</label>
-                <label class="btn btn-primary notActive" ng-model="checkModel.tjeter" uib-btn-checkbox>Tjeter</label>
+                <label class="btn btn-primary notActive" ng-model="checkModel.Rayban" uib-btn-checkbox>Ray Ban</label>
+                <label class="btn btn-primary notActive" ng-model="checkModel.Police" uib-btn-checkbox>Police</label>
+                <label class="btn btn-primary notActive" ng-model="checkModel.Emporio" uib-btn-checkbox>Emporio Armani</label>
                 <!-- {{checkResultsForma}} -->
             </div>
 
             <div style="margin-top: 20px;">
               <button class="button button-small button-calm" data-ng-click="filtroProduktet()">Filtro</button>
-              <button class="button button-small button-assertive" data-ng-click="itemchecked=false">Cancel</button>
+              <button class="button button-small button-assertive" data-ng-click="data.shfaq=false">Cancel</button>
 <!--               <label class="notActive2">Filtro</label>
               <label>Cancel</label> -->
             </div>
@@ -294,6 +308,7 @@ header i:nth-of-type(2) {
 
     <div class='row' >
       <div ng-repeat="syzet in syzeD | filter:searchh" class='product--blue {{klasaSfond[ktheNgjyre($index)]}}'>
+        <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
         <div class='product_inner'>
         
         <img src='http://maxoptika-app.com/maxoptikaFTP/SD13137_front.png' width='300'>
@@ -303,6 +318,7 @@ header i:nth-of-type(2) {
           <p class="produkteShkrim">Cmimi {{syzeD[$index].cmimi}} {{syzeD[$index].monedha}}</p>
           <!-- <button>Add to basket</button> -->
         </div>
+        </a>
         <!-- <div class='product_overlay'>
           <h2>Added to basket</h2>
           <i class='fa fa-check'></i>
@@ -328,10 +344,10 @@ header i:nth-of-type(2) {
     <!-- </div> -->
 
 
-
-    <ion-infinite-scroll
+  <br><br><br><br><br><br>
+    <ion-infinite-scroll ng-if="paRezultat"
     on-infinite="loadNextProducts()"
-    distance="1%">
+    distance="1%" immediate-check="false">
   </ion-infinite-scroll>
   <br><br><br><br><br><br>
   </ion-content>
