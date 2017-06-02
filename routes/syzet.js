@@ -675,7 +675,8 @@ exports.getSingleProduct = function(req, res, next){
       console.log('Connected to postgresss! 9');
 
       client
-        .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.kodartikulli = $1',[productId])
+        .query('SELECT * FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.kodartikulli = $1',[productId])
+        // .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.kodartikulli = $1',[productId])
          // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
         
         .on('end', function(end) {
@@ -685,6 +686,8 @@ exports.getSingleProduct = function(req, res, next){
           productResponse.produkti=end.rows[0];
           pergjigje.push(productResponse);
           console.log(pergjigje);
+          console.log("ndarje");
+          console.log(pergjigje[0].produkti.cmimi);
           //res.send(end);
           // client.end();
           done();
