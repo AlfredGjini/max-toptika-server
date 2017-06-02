@@ -664,8 +664,8 @@ exports.findById = function (req, res, next) {
 
 exports.getSingleProduct = function(req, res, next){
   var productId = req.body.productId;
-  var pergjigje={};
-  var productResponse=[];
+  var productResponse={};
+  var pergjigje=[];
   console.log(productId);
   pg.connect(connectionStr, function(err, client, done) {
       if (err) {
@@ -681,8 +681,10 @@ exports.getSingleProduct = function(req, res, next){
         .on('end', function(end) {
           //console.log(end);
           console.log('Single item : ', productId);
-          productResponse.push(end);
-          console.log(productResponse);
+          
+          productResponse.produkti=end.rows[0];
+          pergjigje.push(productResponse);
+          console.log(pergjigje);
           //res.send(end);
           // client.end();
           done();
