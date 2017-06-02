@@ -664,6 +664,8 @@ exports.findById = function (req, res, next) {
 
 exports.getSingleProduct = function(req, res, next){
   var productId = req.body.productId;
+  var pergjigje={};
+  var productResponse=[];
   console.log(productId);
   pg.connect(connectionStr, function(err, client, done) {
       if (err) {
@@ -676,10 +678,12 @@ exports.getSingleProduct = function(req, res, next){
         .query('SELECT products2.grupi, products2.kodartikulli,products2.kodifikimartikulli2,products2.pershkrimartikulli, cmime2.cmimi, cmime2.monedha FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.kodartikulli = $1',[productId])
          // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
         
-        .on('row', function(row) {
-          console.log(row);
+        .on('end', function(end) {
+          //console.log(end);
           console.log('Single item : ', productId);
-          res.send(row);
+          productResponse.push(end);
+          console.log(productResponse);
+          //res.send(end);
           // client.end();
           done();
         });
