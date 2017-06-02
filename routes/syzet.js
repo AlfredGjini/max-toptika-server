@@ -681,13 +681,13 @@ exports.getSingleProduct = function(req, res, next){
         
         .on('end', function(end) {
           //console.log(end);
-          console.log('Single item : ', productId);
+          //console.log('Single item : ', productId);
           
           productResponse.produkti=end.rows[0];
           pergjigje.push(productResponse);
-          console.log(pergjigje);
-          console.log("ndarje");
-          console.log(pergjigje[0].produkti.pershkrimiangartikulli);
+          //console.log(pergjigje);
+          //console.log("ndarje");
+          //console.log(pergjigje[0].produkti.pershkrimiangartikulli);
           var pershkrim_artikulli=pergjigje[0].produkti.pershkrimiangartikulli;
           var query_text_new='SELECT * FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.pershkrimiangartikulli =\''+pershkrim_artikulli+'\'';
 
@@ -700,8 +700,10 @@ exports.getSingleProduct = function(req, res, next){
                     } else {
                       //console.log('Inserted successfully to the reservations table case 2...');
                       //done();
-                      console.log("para result");
-                      console.log(result);
+                      //console.log("para result");
+                      //console.log(result.rows[0]);
+                      pergjigje.push(result.rows[0]);
+                      res.send(pergjigje);
 
                       client.end();
 
