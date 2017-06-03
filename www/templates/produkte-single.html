@@ -38,18 +38,27 @@
           <h2 class="produktSingleTitle" align="center" style="color: #333333;"><b>{{syze.kodifikimartikulli2}} {{syze.kodartikulli}}</b></h2>
           <hr style="opacity: 0.3;">
           <div class="row">
-            <div class="col" style="margin-top: -20px;">
+            <!-- <div class="col" style="margin-top: -20px;">
               <h2 class="ngjyraProduktSingle" style="color: #4e5259;">Ngjyra</h2>
               <div class="zgjidhNgjyre1"></div>
               <div class="zgjidhNgjyre2"></div>
               <div class="zgjidhNgjyre3"></div>
-            </div>
-            <div class="col" style="margin-top: -20px;">
-            <h2 class="cmimiProduktSingle" style="color: #4e5259;">Cmimi</h2>
-              <h2 class="cmimiProduktSingle2" style="color: #4e5259;"><b style="font-size: 90%;">{{syze.cmimi}} {{syze.monedha}}</b></h2> 
+            </div> -->
+            <div class="col" style="margin-top: -20px;margin-bottom: -20px;">
+            <h2 class="cmimiProduktSingle" style="color: #4e5259;float: left;">Cmimi</h2>
+              <h2 class="cmimiProduktSingle2" style="color: #4e5259;float: right;"><b style="font-size: 90%;">{{syze.cmimi}} {{syze.monedha}}</b></h2> 
             </div>
           </div>
           <br>
+          <hr style="opacity: 0.3;margin-top:-10px;">
+          <h2 class="ngjyraProduktSingle" style="color: #4e5259;margin-bottom: -10px;">Ngjyra</h2>
+
+          <ion-scroll zooming="true" direction="x" scrollbar-x="true" style=" white-space: nowrap;">
+            <span ng-repeat="image in ngjyratSyze" style="width: 100px;"> 
+            <a href="#/app/produkte/{{image.kodartikulli}}"><img  ng-src="http://maxoptika-app.com/maxoptikaFTP/{{image.kodartikulli}}_list.png" style="float:left;width: 110px;"></a>
+            </span>
+
+          </ion-scroll>
           <hr style="opacity: 0.3;margin-top:-10px;">
           <!-- <h2 align="center">{{syze.pershkrimartikulli}}{{gjinia}}</h2>
           <p align="center">{{syze.grupi}}</p>

@@ -702,7 +702,7 @@ exports.getSingleProduct = function(req, res, next){
                       //console.log('Inserted successfully to the reservations table case 2...');
                       //done();
                       //console.log("para result");
-                      //console.log(result.rows[0]);
+                      console.log(result.rows[0]);
                       pergjigje.push(result.rows);
                       res.send(pergjigje);
 

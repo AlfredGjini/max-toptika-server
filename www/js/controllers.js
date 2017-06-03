@@ -132,8 +132,9 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
          productId : $stateParams.productId
        }
      }).success(function(response) {
-         $scope.syze = response;
-         console.log($scope.syze);
+         $scope.syze = response[0].produkti;
+         $scope.ngjyratSyze=response[1];
+         console.log($scope.ngjyratSyze);
       });
 
 

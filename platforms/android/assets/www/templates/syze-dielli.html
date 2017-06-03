@@ -177,8 +177,22 @@ header i:nth-of-type(2) {
               <input type="search" placeholder="Kerko..." ng-model="searchh">
             </label>
           </div>
-          <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
-          <div ng-show="data.shfaq" style="" data-ng-click="data.shfaq=false" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
+          <ul class="list" style="margin-top:0px;margin-bottom: -10px; ">
+
+          <li class="item item-toggle cmimiFilter2">
+             Shfaq Filtrat
+             <label class="toggle toggle-assertive">
+               <input type="checkbox" ng-model="data.shfaq">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+
+        </ul>
+
+          <!-- <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
+          <div ng-show="data.shfaq" style="" data-ng-click="data.shfaq=false" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div> -->
 
 
 
