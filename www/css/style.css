@@ -1490,3 +1490,23 @@ table.ui-datepicker-calendar {border-collapse: separate;}
     font-family: 'Montserrat Light', arial;
     color: #636363;
 }
+
+/*ion-scroll {
+  width: 100%;
+  font-size: 40px;
+  height: auto;
+  white-space: nowrap;
+  padding: 10px;
+  line-height: 40px;
+}*/
+
+.filterTag {
+    background-color: #cacaca;
+    padding: 2px 4px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 5px;
+    font-weight: normal;
+    background-color: #92DCE5;
+}

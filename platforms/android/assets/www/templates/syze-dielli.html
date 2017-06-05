@@ -177,7 +177,7 @@ header i:nth-of-type(2) {
               <input type="search" placeholder="Kerko..." ng-model="searchh">
             </label>
           </div>
-          <ul class="list" style="margin-top:0px;margin-bottom: -10px; ">
+          <!-- <ul class="list" style="margin-top:0px;margin-bottom: -10px; ">
 
           <li class="item item-toggle cmimiFilter2">
              Shfaq Filtrat
@@ -189,10 +189,21 @@ header i:nth-of-type(2) {
              </label>
           </li>
 
-        </ul>
+        </ul> -->
 
-          <!-- <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
-          <div ng-show="data.shfaq" style="" data-ng-click="data.shfaq=false" class="cmimiFilter2">Shfaq Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div> -->
+          <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
+          <div ng-show="data.shfaq" style="color: #43cee6;" data-ng-click="data.shfaq=false" class="cmimiFilter2">Filtrat<i style="color: #43cee6;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
+
+          <div ng-show="shfaqFiltraTag" class="row" style="margin-top: -10px;">
+          <span ng-hide="fshihCmimeVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Cmimi: {{slider.minValue}}-{{slider.maxValue}} $<i ng-click="fshiCmimiFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihFormaVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Forma: <span ng-repeat="forma in checkResultsForma">{{forma}} </span><i  ng-click="fshiFormaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihGjiniaVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Gjinia: {{data.gjinia}}<i ng-click="fshiGjiniaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihMarkaVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Marka: <span ng-repeat="marka in checkResults">{{marka}} </span><i ng-click="fshiMarkaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          </div>
 
 
 
@@ -228,7 +239,7 @@ header i:nth-of-type(2) {
             <div class="btn-group klaseVecimi">
                 <label class="btn btn-primary notActive" ng-model="checkModelForma.Circle" uib-btn-checkbox>Circle</label>
                 <label class="btn btn-primary notActive" ng-model="checkModelForma.Square" uib-btn-checkbox>Square</label>
-                <label class="btn btn-primary notActive" ng-model="checkModelForma.oval" uib-btn-checkbox>Oval</label>
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Oval" uib-btn-checkbox>Oval</label>
                 <!-- {{checkResultsForma}} -->
             </div>
             

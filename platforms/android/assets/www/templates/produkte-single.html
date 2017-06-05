@@ -52,13 +52,17 @@
           <br>
           <hr style="opacity: 0.3;margin-top:-10px;">
           <h2 class="ngjyraProduktSingle" style="color: #4e5259;margin-bottom: -10px;">Ngjyra</h2>
+            </div>
+          </div>
 
-          <ion-scroll zooming="true" direction="x" scrollbar-x="true" style=" white-space: nowrap;">
+          <ion-scroll zooming="true" direction="x" scrollbar-x="true" style=" white-space: nowrap;padding-left: 20px;margin-top:-25px;margin-bottom: -25px;">
             <span ng-repeat="image in ngjyratSyze" style="width: 100px;"> 
-            <a href="#/app/produkte/{{image.kodartikulli}}"><img  ng-src="http://maxoptika-app.com/maxoptikaFTP/{{image.kodartikulli}}_list.png" style="float:left;width: 110px;"></a>
+            <a href="#/app/produkte/{{image.kodartikulli}}"><img  ng-src="http://maxoptika-app.com/maxoptikaFTP/{{image.kodartikulli}}_list.png" style="width: 110px;"></a>
             </span>
 
           </ion-scroll>
+          <div class="list card pSingleContainer" style="height:auto;">
+        <div class="item item-body">
           <hr style="opacity: 0.3;margin-top:-10px;">
           <!-- <h2 align="center">{{syze.pershkrimartikulli}}{{gjinia}}</h2>
           <p align="center">{{syze.grupi}}</p>

@@ -1,17 +1,58 @@
-<ion-view title="Syze Optike">
-  <ion-nav-buttons side="left">
-    <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+.product_overlay i {
+  color: rgba(43, 45, 66, 0.7);
+  font-size: 1.5em;
+}
+
+</style>
+
+
+<ion-view title="Syze Dielli">
+  <ion-nav-buttons side="right">
+    <!-- <button ng-hide="itemchecked" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="itemchecked=true"><i style="color: #fff;font-size: 28px;"  class="icon ion-ios-toggle-outline" s></i></button>
+    <button ng-show="itemchecked" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="itemchecked=false"><i style="color: #fff;font-size: 28px;" class="icon ion-ios-toggle" s></i></button> -->
   </ion-nav-buttons>
   <ion-content class="has-header">
     <div class="filter">
       <div class="row responsive-sm">
-        <div class="search-container">
-          <div class="bar bar-header item-input-inset">
-            <label class="item-input-wrapper textbox-search">
+        <div class="search-container" style="background-color: #fff;">
+          <div class="bar bar-header item-input-inset" style="">
+            <label class="item-input-wrapper textbox-search" >
               <i class="icon ion-ios7-search placeholder-icon"></i>
               <input type="search" placeholder="Kerko..." ng-model="searchh">
             </label>
           </div>
+          <!-- <ul class="list" style="margin-top:0px;margin-bottom: -10px; ">
+
+          <li class="item item-toggle cmimiFilter2">
+             Shfaq Filtrat
+             <label class="toggle toggle-assertive">
+               <input type="checkbox" ng-model="data.shfaq">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+
+        </ul> -->
+
+          <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
+          <div ng-show="data.shfaq" style="color: #43cee6;" data-ng-click="data.shfaq=false" class="cmimiFilter2">Filtrat<i style="color: #43cee6;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
+
+          <div ng-show="shfaqFiltraTag" class="row" style="margin-top: -10px;">
+          <span ng-hide="fshihCmimeVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Cmimi: {{slider.minValue}}-{{slider.maxValue}} $<i ng-click="fshiCmimiFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihFormaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Forma: <span ng-repeat="forma in checkResultsForma">{{forma}} </span><i  ng-click="fshiFormaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihGjiniaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Gjinia: {{data.gjinia}}<i ng-click="fshiGjiniaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihMarkaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Marka: <span ng-repeat="marka in checkResults">{{marka}} </span><i ng-click="fshiMarkaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          </div>
+
+
+
+
+
 <!--           <div>
             <div class="checkbox">
               <label>M:<input type="radio" ng-model="gjinia" value="M"/></label>
@@ -22,34 +63,132 @@
           </div> -->
         </div>
       </div>
+          <!-- <ion-toggle ng-model="item.checked" ng-checked="false" ng-init="item.checked=false">
+          Shfaq filtrat {{itemchecked}}
+          </ion-toggle> -->
+
+            <div ng-show="data.shfaq" class="item item-text-wrap" style="text-align: center;">
+
+            <div class="cmimiFilter" style="">Cmimi</div>
+              <hr style="width: 30%;text-align: center;margin-bottom: 10px;">
+                <rzslider rz-slider-model="slider.minValue"
+                              rz-slider-high="slider.maxValue"
+                              rz-slider-options="slider.options"> 
+                </rzslider>
+              
+
+            <!-- <pre>Model: {{checkModel}}</pre> -->
+            <div class="cmimiFilter" style="margin-top: 15px;">Forma</div>
+            <hr style="width: 30%;text-align: center;margin-bottom: 10px;">
+            <div class="btn-group klaseVecimi">
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Circle" uib-btn-checkbox>Circle</label>
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Square" uib-btn-checkbox>Square</label>
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Oval" uib-btn-checkbox>Oval</label>
+                <!-- {{checkResultsForma}} -->
+            </div>
+            
+            <div class="cmimiFilter" style="margin-top: 25px;">Gjinia</div>
+            <hr style="width: 30%;text-align: center;margin-bottom: 0px;">
+            <div class="radios">
+                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.gjinia" ng-init="data.gjinia = ''" />
+                <label class="radio" class="10:00-10:20" name="10:00-10:20" for="r1">Woman</label>
+                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.gjinia" ng-init="data.gjinia = ''"/>
+                <label class="radio" id="10:20-10:40" name="10:20-10:40" for="r2">Man</label>
+            </div>
+            <!-- {{data.ora}} -->
+
+            <div class="cmimiFilter" style="margin-top: 20px;">Marka</div>
+            <hr style="width: 30%;text-align: center;margin-bottom: 10px;">
+            <div class="btn-group klaseVecimi">
+                <label class="btn btn-primary notActive" ng-model="checkModel.Rayban" uib-btn-checkbox>Ray Ban</label>
+                <label class="btn btn-primary notActive" ng-model="checkModel.Police" uib-btn-checkbox>Police</label>
+                <label class="btn btn-primary notActive" ng-model="checkModel.Emporio" uib-btn-checkbox>Emporio Armani</label>
+                <!-- {{checkResultsForma}} -->
+            </div>
+
+            <div style="margin-top: 20px;">
+              <button class="button button-small button-calm" data-ng-click="filtroProduktet()">Filtro</button>
+              <button class="button button-small button-assertive" data-ng-click="data.shfaq=false">Cancel</button>
+<!--               <label class="notActive2">Filtro</label>
+              <label>Cancel</label> -->
+            </div>
+
+
+            
+
+
+            
+
+
+
+                <style type="text/css">
+                  .notActive2{
+                    background-color: #0db9f0;
+                    padding: 7px;
+                    color: #fff;
+                    border-radius: 2px;
+                  }
+                  .notActive{
+                    background-color: #cacaca;
+                    padding: 5px;
+                    color: #fff;
+                    border-radius: 5px;
+                  }
+                  .klaseVecimi .active{
+                    background-color: #337ab7;
+                  }
+
+                  .radios input[type=radio]:checked + .radio {
+                      background-color: #337ab7;
+                      /*border: 5px solid red;*/
+                  }
+
+                  .radios .radio {
+                      background-color: #cacaca;
+                      display: inline-block;
+                      width: auto;
+                      height: auto;
+                      padding: 5px;
+                      text-align: center;
+                      color: #fff;
+                      font-size: 14px;
+                      border-radius: 5px;
+                      font-weight: normal;
+                  }
+                </style>
+            </div>
+
+
     </div>
-    <!-- <div class="list card" > -->
-    <div class="row"  ng-repeat="syzet in syzeO | filter:searchh" ng-if="$index % 2 == 0">
-      <div class="col list card" >
-      <a style="text-decoration: none;" href="#/app/produkte/{{syzeO[$index].kodartikulli}}">
-        <div class="item " style="text-align: center;">
-         <img src="pics/1.jpg"/>
-           <h2 class="produkteShkrim"><b>{{syzeO[$index].kodifikimartikulli2}} {{syzeO[$index].kodartikulli}}</b></h2>
-          <!-- <h2>{{syze[$index].pershkrimartikulli}}</h2> -->
-          <p style="margin-bottom:2px;">{{syzeO[$index].grupi}}</p>
-          <h2 class="produkteShkrim"><b>{{syzeO[$index].cmimi}} {{syzeO[$index].monedha}}</b></h2>
-          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index].kodartikulli}}" class="icon ion-heart"></i></button> -->
+
+    <div class='row' >
+        <div class='row cmimiFilter2' ng-show="skaRezultat" >Filtrat nuk nxorren asnje rezultat. Produktet jane te njejte.</div>
+      <div ng-repeat="syzet in syzeD | filter:searchh" class='product--blue {{klasaSfond[ktheNgjyre($index)]}}'>
+        <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
+        <div class='product_inner'>
+        
+        <img src='http://maxoptika-app.com/maxoptikaFTP/SD13137_front.png' width='300'>
+          <!-- <img src='http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index].kodartikulli}}_front.png' width='300'> -->
+          <p class="produkteShkrim">{{syzeD[$index].kodifikimartikulli2}} {{syzeD[$index].kodartikulli}}</p>
+          <p>{{syzeD[$index].grupi}}</p>
+          <p class="produkteShkrim">Cmimi {{syzeD[$index].cmimi}} {{syzeD[$index].monedha}}</p>
+          <!-- <button>Add to basket</button> -->
         </div>
         </a>
-      </div>
-      <div class="col list card"  ng-if="syzeO.length">
-      <a style="text-decoration: none;" href="#/app/produkte/{{syzeO[$index + 1].kodartikulli}}">
-        <div class="item " style="text-align: center;">
-         <img src="pics/1.jpg"/>
-           <h2 class="produkteShkrim"><b>{{syzeO[$index + 1].kodifikimartikulli2}} {{syzeO[$index + 1].kodartikulli}}</b></h2>
-          <!-- <h2>{{syze[$index + 1].pershkrimartikulli}}</h2> -->
-          <p style="margin-bottom:2px;">{{syzeO[$index + 1].grupi}}</p>
-          <h2 class="produkteShkrim"><b>{{syzeO[$index + 1].cmimi}} {{syzeO[$index +1].monedha}}</b></h2>
-          <!-- <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syze[$index + 1].kodartikulli}}" class="icon ion-heart"></i></button> -->
-        </div>
-        </a>
+        <!-- <div class='product_overlay'>
+          <h2>Added to basket</h2>
+          <i class='fa fa-check'></i>
+        </div> -->
       </div>
     </div>
+
+
+
+
+
+
+
+
 
       <!-- <div class="item item-avatar">
        <img src="pics/1.jpg"/>
@@ -59,12 +198,15 @@
         <button style="background:none;border:none;" data-ng-click="addToWishlist($event)"><i id="{{syzet.kodartikulli}}" class="icon ion-heart"></i></button>
       </div> -->
     <!-- </div> -->
+
+
+  <br><br><br><br><br><br>
     <ion-infinite-scroll
     on-infinite="loadNextProducts()"
-    distance="1%">
+    distance="1%" immediate-check="false">
   </ion-infinite-scroll>
-  </ion-content>
-  <!--<div class="bar bar-footer bar-balanced">
+  <br><br><br><br><br><br>
+  </ion-content>  <!--<div class="bar bar-footer bar-balanced">
     <div class="title" style="text-align: left;">
       MAX OPTICA<sup>&reg;</sup>
     </div>

@@ -379,12 +379,16 @@ angular.module('directory.controllers', ['ionic', 'ngOpenFB','angCamera', 'ionMd
 $scope.paRezultat=true;
 $scope.itemchecked=false;
 
+$scope.shfaqFiltraTag=false;
+var defaultMinPrice=0;
+var defaultMaxPrice=1000;
+
 $scope.slider = {
-  minValue: 300,
-  maxValue: 700,
+  minValue: defaultMinPrice,
+  maxValue: defaultMaxPrice,
   options: {
-    floor: 0,
-    ceil: 1000,
+    floor: defaultMinPrice,
+    ceil: defaultMaxPrice,
     translate: function(value, sliderId, label) {
       switch (label) {
         case 'model':
@@ -427,7 +431,7 @@ $scope.slider = {
   $scope.checkModelForma = {
     Square: false,
     Circle: false,
-    oval: false
+    Oval: false
   };
 
   $scope.checkResultsForma = [];
@@ -452,6 +456,11 @@ $scope.ktheNgjyre= function(index){
   }
   return kodi
 }
+
+
+
+
+
 
 $scope.filtroProduktet =  function(){
   console.log($scope.syzeD);
@@ -522,6 +531,9 @@ $scope.filtroProduktet =  function(){
   }else{
     newSyzeDHolder4=newSyzeDHolder3;
   }
+
+  $scope.shfaqFiltraTag=true;
+
   if(newSyzeDHolder4==undefined){
     $scope.paRezultat=false;
     console.log("bosh");
@@ -539,6 +551,47 @@ $scope.filtroProduktet =  function(){
 
 
 }
+
+
+
+// Delete the Cmimi filters
+$scope.fshiCmimiFilter =function(){
+  //console.log($scope.slider);
+  $scope.slider.minValue= defaultMinPrice;
+  $scope.slider.maxValue= defaultMaxPrice;
+  $scope.fshihCmimeVar=true;
+  // TODO: Call filtroProduktet and filter them again
+  $scope.filtroProduktet();
+}
+
+
+// Delete the Forma filters
+$scope.fshiFormaFilter =function(){
+  $scope.checkResultsForma=[];
+  $scope.checkModelForma=[];
+  $scope.fshihFormaVar=true;
+  // TODO: Call filtroProduktet and filter them again
+  $scope.filtroProduktet();
+}
+
+
+// Delete the gjinia filters
+$scope.fshiGjiniaFilter =function(){
+  $scope.data.gjinia=[];
+  $scope.fshihGjiniaVar=true;
+  // TODO: Call filtroProduktet and filter them again
+  $scope.filtroProduktet();
+}
+
+// Delete the marka filters
+$scope.fshiMarkaFilter =function(){
+  $scope.checkResults=[];
+  $scope.checkModel=[];
+  $scope.fshihMarkaVar=true;
+  // TODO: Call filtroProduktet and filter them again
+  $scope.filtroProduktet();
+}
+
 
 
 

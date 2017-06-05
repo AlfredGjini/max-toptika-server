@@ -193,7 +193,17 @@ header i:nth-of-type(2) {
 
           <div ng-hide="data.shfaq" style="" data-ng-click="data.shfaq=true" class="cmimiFilter2">Filtrat<i style="color: #000000;padding-left: 5px;"  class="icon ion-ios-arrow-down" s></i></div>
           <div ng-show="data.shfaq" style="color: #43cee6;" data-ng-click="data.shfaq=false" class="cmimiFilter2">Filtrat<i style="color: #43cee6;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
-          <div style="color: #43cee6;" data-ng-click="data.shfaq=false" class="cmimiFilter2">Cmimi: {{slider.minValue}} {{slider.maxValue}}<i style="color: #43cee6;padding-left: 5px;"  class="icon ion-close-round" s></i></div>
+
+          <div ng-show="shfaqFiltraTag" class="row" style="margin-top: -10px;">
+          <span ng-hide="fshihCmimeVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Cmimi: {{slider.minValue}}-{{slider.maxValue}} $<i ng-click="fshiCmimiFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihFormaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Forma: <span ng-repeat="forma in checkResultsForma">{{forma}} </span><i  ng-click="fshiFormaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihGjiniaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Gjinia: {{data.gjinia}}<i ng-click="fshiGjiniaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          <span ng-hide="fshihMarkaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Marka: <span ng-repeat="marka in checkResults">{{marka}} </span><i ng-click="fshiMarkaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+
+          </div>
 
 
 
@@ -229,16 +239,16 @@ header i:nth-of-type(2) {
             <div class="btn-group klaseVecimi">
                 <label class="btn btn-primary notActive" ng-model="checkModelForma.Circle" uib-btn-checkbox>Circle</label>
                 <label class="btn btn-primary notActive" ng-model="checkModelForma.Square" uib-btn-checkbox>Square</label>
-                <label class="btn btn-primary notActive" ng-model="checkModelForma.oval" uib-btn-checkbox>Oval</label>
+                <label class="btn btn-primary notActive" ng-model="checkModelForma.Oval" uib-btn-checkbox>Oval</label>
                 <!-- {{checkResultsForma}} -->
             </div>
             
             <div class="cmimiFilter" style="margin-top: 25px;">Gjinia</div>
             <hr style="width: 30%;text-align: center;margin-bottom: 0px;">
             <div class="radios">
-                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.gjinia" />
+                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.gjinia" ng-init="data.gjinia = ''" />
                 <label class="radio" class="10:00-10:20" name="10:00-10:20" for="r1">Woman</label>
-                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.gjinia" />
+                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.gjinia" ng-init="data.gjinia = ''"/>
                 <label class="radio" id="10:20-10:40" name="10:20-10:40" for="r2">Man</label>
             </div>
             <!-- {{data.ora}} -->
@@ -308,6 +318,7 @@ header i:nth-of-type(2) {
     </div>
 
     <div class='row' >
+        <div class='row cmimiFilter2' ng-show="skaRezultat" >Filtrat nuk nxorren asnje rezultat. Produktet jane te njejte.</div>
       <div ng-repeat="syzet in syzeD | filter:searchh" class='product--blue {{klasaSfond[ktheNgjyre($index)]}}'>
         <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
         <div class='product_inner'>
@@ -346,7 +357,7 @@ header i:nth-of-type(2) {
 
 
   <br><br><br><br><br><br>
-    <ion-infinite-scroll ng-if="paRezultat"
+    <ion-infinite-scroll
     on-infinite="loadNextProducts()"
     distance="1%" immediate-check="false">
   </ion-infinite-scroll>
