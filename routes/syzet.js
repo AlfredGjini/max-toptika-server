@@ -104,7 +104,7 @@ exports.findAllOptike = function (req, res, next) {
         //console.log();
         throw err;
       }
-      console.log('Connected to postgres! 3');
+      console.log('Connected to postgres! 4');
 
       client
         .query('SELECT DISTINCT ON (products2.pershkrimiangartikulli) * FROM products2 INNER JOIN cmime2 ON (products2.kodartikulli=cmime2.idprodukti) WHERE products2.grupi=\'Syze Optike\'  limit 20 offset ' + offset)
@@ -130,6 +130,7 @@ exports.findAllOptike = function (req, res, next) {
         if (err) throw err;
         console.log('closed connection');
     });
+    syzetO = [];
     console.log('too early');
     //res.send(products2);
     console.log('test');

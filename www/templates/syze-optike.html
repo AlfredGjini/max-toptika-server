@@ -1,3 +1,159 @@
+<style type="text/css">
+
+
+.row {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+p{
+  margin: 0;
+}
+
+header {
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+}
+header ul {
+  padding: 1.2em 0 0.5em;
+}
+header span {
+  padding: 0 0 0 0.5em;
+}
+header span, header i {
+  color: #2B2D42;
+}
+header i:nth-of-type(2) {
+  cursor: pointer;
+}
+
+.row {
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+}
+
+.product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+  box-shadow: 1px 5px 15px #CCC;
+  width: 15em;
+  height: auto;
+  border-radius: 3px;
+  padding: 2em;
+  margin: 1em;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.product--blue {
+  background: -webkit-linear-gradient(135deg, #92DCE5 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-40deg, #92DCE5 57%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--orange {
+  background: -webkit-linear-gradient(135deg, #EF6F6C 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-40deg, #EF6F6C 57%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--red {
+  background: -webkit-linear-gradient(135deg, #E84855 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-40deg, #E84855 57%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--green {
+  background: -webkit-linear-gradient(135deg, #70C1B3 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-40deg, #70C1B3 57%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--yellow {
+  background: -webkit-linear-gradient(135deg, #E8DB7D 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-40deg, #E8DB7D 57%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product--pink {
+  background: -webkit-linear-gradient(135deg, #FF386D 50%, rgba(255, 255, 255, 0.5) 50%);
+  background: linear-gradient(-40deg, #FF386D 57%, rgba(255, 255, 255, 0.5) 50%);
+}
+.product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
+  max-width: 120%;
+  height: auto !important;
+  text-align: center;
+}
+.product_inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-flow: column wrap;
+      flex-flow: column wrap;
+}
+.product_inner p {
+  color: rgba(255, 255, 255, 0.9);
+}
+.product_inner button {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #FFF;
+  border-radius: 3px;
+  padding: 1em 3em;
+  margin: 1em 0 0 0;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: background ease-in .25s;
+  transition: background ease-in .25s;
+}
+.product_inner button:hover {
+  background: white;
+  color: #2B2D42;
+}
+.product_inner button:before {
+  font-family: FontAwesome;
+  content: '\f07A';
+  color: #FFF;
+  position: absolute;
+  font-size: 1.5em;
+  margin: 0 -1.5em;
+}
+.product_inner button:hover:before {
+  color: #2B2D42;
+}
+.product_overlay {
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-500px);
+          transform: translateY(-500px);
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column wrap;
+      flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.product_overlay h2 {
+  color: rgba(43, 45, 66, 0.7);
+  font-size: 1.2em;
+  margin: 1em 0;
+}
 .product_overlay i {
   color: rgba(43, 45, 66, 0.7);
   font-size: 1.5em;
@@ -6,7 +162,7 @@
 </style>
 
 
-<ion-view title="Syze Dielli">
+<ion-view title="Syze Optike">
   <ion-nav-buttons side="right">
     <!-- <button ng-hide="itemchecked" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="itemchecked=true"><i style="color: #fff;font-size: 28px;"  class="icon ion-ios-toggle-outline" s></i></button>
     <button ng-show="itemchecked" style="background:none;border:none;display:block;margin:0 auto;" data-ng-click="itemchecked=false"><i style="color: #fff;font-size: 28px;" class="icon ion-ios-toggle" s></i></button> -->
@@ -163,15 +319,15 @@
 
     <div class='row' >
         <div class='row cmimiFilter2' ng-show="skaRezultat" >Filtrat nuk nxorren asnje rezultat. Produktet jane te njejte.</div>
-      <div ng-repeat="syzet in syzeD | filter:searchh" class='product--blue {{klasaSfond[ktheNgjyre($index)]}}'>
-        <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
+      <div ng-repeat="syzet in syzeO | filter:searchh" class='product--blue {{klasaSfond[ktheNgjyre($index)]}}'>
+        <a style="text-decoration: none;" href="#/app/produkte/{{syzeO[$index].kodartikulli}}">
         <div class='product_inner'>
         
         <img src='http://maxoptika-app.com/maxoptikaFTP/SD13137_front.png' width='300'>
-          <!-- <img src='http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index].kodartikulli}}_front.png' width='300'> -->
-          <p class="produkteShkrim">{{syzeD[$index].kodifikimartikulli2}} {{syzeD[$index].kodartikulli}}</p>
-          <p>{{syzeD[$index].grupi}}</p>
-          <p class="produkteShkrim">Cmimi {{syzeD[$index].cmimi}} {{syzeD[$index].monedha}}</p>
+          <!-- <img src='http://maxoptika-app.com/maxoptikaFTP/{{syzeO[$index].kodartikulli}}_front.png' width='300'> -->
+          <p class="produkteShkrim">{{syzeO[$index].kodifikimartikulli2}} {{syzeO[$index].kodartikulli}}</p>
+          <p>{{syzeO[$index].grupi}}</p>
+          <p class="produkteShkrim">Cmimi {{syzeO[$index].cmimi}} {{syzeO[$index].monedha}}</p>
           <!-- <button>Add to basket</button> -->
         </div>
         </a>

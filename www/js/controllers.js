@@ -929,18 +929,18 @@ $scope.data.gjinia=new Array(' ');
 
 $scope.filtroProduktet =  function(){
   $scope.checkFilterValues();
-  console.log($scope.syzeD);
-  //$scope.syzeDCopy=$scope.syzeDOriginalBackup;
-  console.log($scope.syzeDOriginalBackup);
-  var newSyzeDHolder1=[];
-  var newSyzeDHolder2=[];
-  var newSyzeDHolder3=[];
-  var newSyzeDHolder4=[];
+  console.log($scope.syzeO);
+  //$scope.syzeOCopy=$scope.syzeOOriginalBackup;
+  console.log($scope.syzeOOriginalBackup);
+  var newsyzeOHolder1=[];
+  var newsyzeOHolder2=[];
+  var newsyzeOHolder3=[];
+  var newsyzeOHolder4=[];
 
   // Cmimi Filter
-  $scope.syzeDOriginalBackup.forEach( function(element, index) {
+  $scope.syzeOOriginalBackup.forEach( function(element, index) {
     if(element.cmimi>=$scope.slider.minValue && element.cmimi<=$scope.slider.maxValue){
-      newSyzeDHolder1.push(element);
+      newsyzeOHolder1.push(element);
     }
   });
 
@@ -948,31 +948,31 @@ $scope.filtroProduktet =  function(){
   // Check if any value is selected from Forma
   if ($scope.checkResultsForma!='') {
     // First loop through the array of all the products
-    newSyzeDHolder1.forEach( function(element, index) {
+    newsyzeOHolder1.forEach( function(element, index) {
       // Then loop through all the selected Forma values and check them all with the products values
       $scope.checkResultsForma.forEach( function(elementt, indexx) {
         if(element.zonakadastrale==elementt){
-        newSyzeDHolder2.push(element);
+        newsyzeOHolder2.push(element);
       }
       });
       
     });
   }else{
-    newSyzeDHolder2=newSyzeDHolder1;
+    newsyzeOHolder2=newsyzeOHolder1;
   }
 
   // Gjinia Filter
   if($scope.data.gjinia.length>0){
     //console.log('brenda gjinia');
-    newSyzeDHolder2.forEach( function(element, index) {
+    newsyzeOHolder2.forEach( function(element, index) {
       if(element.vitprodhimi==$scope.data.gjinia){
-        newSyzeDHolder3.push(element);
+        newsyzeOHolder3.push(element);
       }
     });
 
   }else{
     //console.log('jo brenda gjinia');
-    newSyzeDHolder3=newSyzeDHolder2;
+    newsyzeOHolder3=newsyzeOHolder2;
   }
 
   // Marka Filter
@@ -986,22 +986,22 @@ $scope.filtroProduktet =  function(){
     });
 
     // First loop through the array of all the products
-    newSyzeDHolder3.forEach( function(element, index) {
+    newsyzeOHolder3.forEach( function(element, index) {
       // Then loop through all the selected Forma values and check them all with the products values
       $scope.checkResults.forEach( function(elementt, indexx) {
         if(element.kodifikimartikulli2==elementt){
-        newSyzeDHolder4.push(element);
+        newsyzeOHolder4.push(element);
       }
       });
       
     });
   }else{
-    newSyzeDHolder4=newSyzeDHolder3;
+    newsyzeOHolder4=newsyzeOHolder3;
   }
 
   $scope.shfaqFiltraTag=true;
   // if filter don't return any result then don't change a thing
-  if(newSyzeDHolder4==''){
+  if(newsyzeOHolder4==''){
     $scope.skaRezultat=true;
 
     $timeout(function () { 
@@ -1012,8 +1012,8 @@ $scope.filtroProduktet =  function(){
     $scope.data.shfaq=false;
   }else {
       // Set the old array to the new modified one
-      $scope.syzeD=newSyzeDHolder4;
-      console.log($scope.syzeD);
+      $scope.syzeO=newsyzeOHolder4;
+      console.log($scope.syzeO);
       $scope.data.shfaq=false;
   }
 
@@ -1139,7 +1139,7 @@ $scope.fshiMarkaFilter =function(){
   //offset to get data and implement infinite scroll
   $scope.limit  = 20; //gets 20 objects the first time
   $scope.offsetD = 0;
-  $scope.syzeD   = [];
+  $scope.syzeO   = [];
   $scope.countForBackUp   = 1;
   $scope.loadNextProducts = function(){
       // $scope.fshihCmimeVar=false;
@@ -1183,9 +1183,9 @@ $scope.fshiMarkaFilter =function(){
        var randomNumber=Math.floor(Math.random() * 10) + 4 ;
        console.log(randomNumber);
        response.forEach(function(item){
-        $scope.syzeD.push(item);
+        $scope.syzeO.push(item);
         console.log('tttttt');
-        $scope.treArray=$scope.syzeD.slice(randomNumber-3, randomNumber);
+        $scope.treArray=$scope.syzeO.slice(randomNumber-3, randomNumber);
         
 
       });
@@ -1197,7 +1197,7 @@ $scope.fshiMarkaFilter =function(){
        }
 
        if($scope.countForBackUp==1){
-        $scope.syzeDOriginalBackup=$scope.syzeD;
+        $scope.syzeOOriginalBackup=$scope.syzeO;
         console.log("First and only call");
        }
        
