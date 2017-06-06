@@ -32,7 +32,7 @@ app.post('/pick-up-store', syzet.pickUpStore);
 app.post('/pay-on-delivery', syzet.payOnDelivery);
 
 
-app.get('/kartela-klinike', clinic.getClinicCard);
+app.post('/kartela-klinike', clinic.getClinicCard);
 
 app.post('/product-single',syzet.getSingleProduct);
 

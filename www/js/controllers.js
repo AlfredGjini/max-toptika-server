@@ -3410,23 +3410,34 @@ $scope.vazhdoPorosine= function(allCmimi){
   $scope.data.klient_id = $scope.loggedInSakte.id;
   console.log($scope.data);
 
+
   $http({
-    method: 'GET',
-    url: 'https://max-optika-server.herokuapp.com/kartela-klinike/',
-    cach: false,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    data: {
-      client_id: $scope.data.klient_id,
+       method: 'POST',
+       //url: 'https://tarzantest.herokuapp.com/login',
+       url: 'https://max-optika-server.herokuapp.com/kartela-klinike',
+       headers: {
+         'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       transformRequest: function(obj) {
+         var str = [];
+         for (var p in obj)
+           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+         return str.join("&");
+       },
+       data: {
+         client_id: $scope.data.klient_id,
       id: $scope.data.id
-    }
-  }).success(function(response) {
-    console.log(response);
-    console.log('kartela klinike');
-    $scope.data.clinic = response[0];
-    $scope.data.clinic.data_vizites = new Date(Date.parse($scope.data.clinic.data_vizites)).toDateString();
-  });
+       }
+     }).success(function(response) {
+          console.log(response);
+          console.log('kartela klinike');
+          $scope.data.clinic = response[0];
+          $scope.data.clinic.data_vizites = new Date(Date.parse($scope.data.clinic.data_vizites)).toDateString();
+         //$scope.syze = response;
+         //console.log("trt"+$scope.syze);
+      });
+
+
 
 })
 
