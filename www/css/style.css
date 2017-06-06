@@ -1389,13 +1389,13 @@ table.ui-datepicker-calendar {border-collapse: separate;}
 
 .radios .radio{
     
-    background-color: rgba(44, 62, 80, 0.7);
+    background-color: #cacaca;
     display: inline-block;
     width: 100px;
     height: 30px;
     padding-top: 6px;
     text-align: center;
-    color: #eee;
+    color: #fff;
     font-weight: bold;
     margin: 5px;
 }
@@ -1405,7 +1405,7 @@ table.ui-datepicker-calendar {border-collapse: separate;}
 }
 
 .radios input[type=radio]:checked + .radio{
-    background-color: #b71c1c;
+    background-color: #337ab7;
     /*border:5px solid red;*/
 }
 
@@ -1421,7 +1421,8 @@ table.ui-datepicker-calendar {border-collapse: separate;}
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #2c3e50;
+  /*background: #2c3e50;*/
+  background: #337ab7;
   background-image: none;
 }
 /* Custom Select */
@@ -1431,7 +1432,7 @@ table.ui-datepicker-calendar {border-collapse: separate;}
   /*width: 20em;*/
   height: 3em;
   line-height: 3;
-  background: #2c3e50;
+  background: #337ab7;
   overflow: hidden;
   border-radius: .25em;
 }
@@ -1454,7 +1455,7 @@ table.ui-datepicker-calendar {border-collapse: separate;}
   right: 0;
   bottom: 0;
   padding: 0 1em;
-  background: #34495e;
+  background: #306ca0;
   pointer-events: none;
   color: #fff;
 }
@@ -1467,6 +1468,23 @@ table.ui-datepicker-calendar {border-collapse: separate;}
   -o-transition: .25s all ease;
   transition: .25s all ease;
 }
+
+/*Calendar CSS*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #dad55e;
+    background: #fffa90;
+    color: #337ab7;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #306ca0;
+    background: #337ab7;
+    font-weight: normal;
+    color: #fff;
+}
+
+
+
 
 .searchFillimKreu.list-inset {
     margin: -1px 5px !important;

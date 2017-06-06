@@ -876,13 +876,13 @@ $scope.slider = {
 
 
 
-$scope.klasaSfond=['product--blue','product--orange','product--red','product--green','product--yellow','product--pink'];
+$scope.klasaSfond=['product--optike1','product--optike2','product--optike3','product--optike4','product--optike5','product--optike6'];
 
 $scope.ktheNgjyre= function(index){
   var kodi=index%6;
-  if(kodi==0){
-    kodi=6;
-  }
+  // if(kodi==0){
+  //   kodi=6;
+  // }
   return kodi
 }
 
@@ -3402,18 +3402,28 @@ $scope.vazhdoPorosine= function(allCmimi){
          }
        }
 
+  $scope.loggedInSakte=window.localStorage.getItem('loggedInSakte');
+  $scope.loggedInSakte=JSON.parse($scope.loggedInSakte);
+  //console.log($scope.loggedInSakte);
   $scope.data = {};
+  $scope.data.id = $scope.loggedInSakte.user_id;
+  $scope.data.klient_id = $scope.loggedInSakte.id;
+  console.log($scope.data);
+
   $http({
     method: 'GET',
-    url: 'https://max-optika-server.herokuapp.com/kartela-klinike/?id=' + window.localStorage.id,
+    url: 'https://max-optika-server.herokuapp.com/kartela-klinike/',
     cach: false,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     data: {
-      id: window.localStorage.id
+      client_id: $scope.data.klient_id,
+      id: $scope.data.id
     }
   }).success(function(response) {
+    console.log(response);
+    console.log('kartela klinike');
     $scope.data.clinic = response[0];
     $scope.data.clinic.data_vizites = new Date(Date.parse($scope.data.clinic.data_vizites)).toDateString();
   });
