@@ -23,8 +23,13 @@ exports.getClinicCard = function(req,res,next){
         .on('end', function(end) {
           //console.log(row);
           //console.log('Single item : ', productId);
-          console.log(end);
-          res.send(end);
+          //console.log(end);
+          if (end.rows[0]=='') {
+            var paRezultat={sukses:0};
+            res.send(paRezultat);
+          }else{
+          res.send(end.rows[0]);
+          }
           // client.end();
           done();
         });
