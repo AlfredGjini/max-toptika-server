@@ -25,9 +25,10 @@ exports.getClinicCard = function(req,res,next){
           //console.log('Single item : ', productId);
           //console.log(end);
           if (end.rows[0]=='') {
-            var paRezultat={sukses:0};
-            res.send(paRezultat);
+            end.rows[0].paRezultat=0;
+            res.send(end.rows[0]);
           }else{
+          end.rows[0].paRezultat=1;
           res.send(end.rows[0]);
           }
           // client.end();

@@ -3431,8 +3431,8 @@ $scope.vazhdoPorosine= function(allCmimi){
      }).success(function(response) {
           console.log(response);
           console.log('kartela klinike');
-          $scope.data.clinic = response[0];
-          //$scope.data.clinic.data_vizites = new Date(Date.parse($scope.data.clinic.data_vizites)).toDateString();
+          $scope.data.clinic = response;
+          $scope.data.clinic.data_vizites = new Date(Date.parse($scope.data.clinic.data_vizites)).toDateString();
          //$scope.syze = response;
          //console.log("trt"+$scope.syze);
       });
