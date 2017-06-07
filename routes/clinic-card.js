@@ -24,14 +24,18 @@ exports.getClinicCard = function(req,res,next){
         .on('end', function(end) {
           //console.log(row);
           //console.log('Single item : ', productId);
-          //console.log(end);
-          if (end.rows[0]=='') {
-            end.rows[0].paRezultat=0;
-            res.send(end.rows[0]);
-          }else{
-          end.rows[0].paRezultat=1;
-          res.send(end.rows[0]);
-          }
+          console.log(end);
+
+
+          // if (end.rows[0]=='') {
+          //   end.rows[0].paRezultat=0;
+          //   res.send(end.rows[0]);
+          // }else{
+          // end.rows[0].paRezultat=1;
+          // res.send(end.rows[0]);
+          // }
+
+
           // client.end();
           done();
         });
