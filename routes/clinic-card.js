@@ -7,7 +7,6 @@ pg.defaults.ssl = true;
 exports.getClinicCard = function(req,res,next){
   var client_id = req.body.client_id;
     var id = req.body.id;
-    id=124;
 
   pg.connect(connectionStr, function(err, client, done) {
       if (err) {

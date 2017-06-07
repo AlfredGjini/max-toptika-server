@@ -3439,9 +3439,9 @@ $scope.vazhdoPorosine= function(allCmimi){
         }else{
           $scope.userPaKartele=true;
 
-          // $timeout(function () { 
-          //   $scope.userPaKartele = false; 
-          // }, 3000);
+          $timeout(function () { 
+            $scope.userPaKartele = false; 
+          }, 10000);
         
         }
       });
