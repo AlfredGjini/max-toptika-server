@@ -24,7 +24,7 @@ exports.getClinicCard = function(req,res,next){
         .on('end', function(end) {
           //console.log(row);
           //console.log('Single item : ', productId);
-          console.log(end);
+          //console.log(end);
 
 
           if (end.rowCount==0) {

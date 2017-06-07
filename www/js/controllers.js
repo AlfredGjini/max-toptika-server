@@ -3431,6 +3431,7 @@ $scope.vazhdoPorosine= function(allCmimi){
       id: $scope.data.id
        }
      }).success(function(response) {
+      console.log(response);
 
         if (response.paRezultat==1) {
           $scope.data.clinic = response;
@@ -3438,9 +3439,9 @@ $scope.vazhdoPorosine= function(allCmimi){
         }else{
           $scope.userPaKartele=true;
 
-          $timeout(function () { 
-            $scope.userPaKartele = false; 
-          }, 3000);
+          // $timeout(function () { 
+          //   $scope.userPaKartele = false; 
+          // }, 3000);
         
         }
       });
