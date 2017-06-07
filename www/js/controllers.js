@@ -3366,7 +3366,9 @@ $scope.vazhdoPorosine= function(allCmimi){
   });
 })
 
-.controller('kartelaCtrl', function($scope, $stateParams, $http) {
+.controller('kartelaCtrl', function($scope, $stateParams, $http, $timeout) {
+
+      $scope.userPaKartele = false;
       // Check the number of elements in the cart and wishlist
       var numriWish=[];
       var wishlistItems=window.localStorage.getItem('wishlist');
@@ -3429,12 +3431,18 @@ $scope.vazhdoPorosine= function(allCmimi){
       id: $scope.data.id
        }
      }).success(function(response) {
-          console.log(response);
-          console.log('kartela klinike');
+
+        if (response.paRezultat==1) {
           $scope.data.clinic = response;
           $scope.data.clinic.data_vizites = new Date(Date.parse($scope.data.clinic.data_vizites)).toDateString();
-         //$scope.syze = response;
-         //console.log("trt"+$scope.syze);
+        }else{
+          $scope.userPaKartele=true;
+
+          $timeout(function () { 
+            $scope.userPaKartele = false; 
+          }, 3000);
+        
+        }
       });
 
 
