@@ -27,13 +27,13 @@ exports.getClinicCard = function(req,res,next){
           console.log(end);
 
 
-          // if (end.rows[0]=='') {
-          //   end.rows[0].paRezultat=0;
-          //   res.send(end.rows[0]);
-          // }else{
-          // end.rows[0].paRezultat=1;
-          // res.send(end.rows[0]);
-          // }
+          if (end.rowCount==0) {
+            end.paRezultat=0;
+            res.send(end);
+          }else{
+          end.rows[0].paRezultat=1;
+          res.send(end.rows[0]);
+          }
 
 
           // client.end();
