@@ -2786,7 +2786,8 @@ $scope.fshiMarkaFilter =function(){
     }, function (err) {
       $scope.emailiDyqAfer="agjini@dea.com.al";
       $ionicLoading.hide();
-      alert("Ju lutem aktivizoni location");
+      // Careful here, this is needed
+      //alert("Ju lutem aktivizoni location");
     });
 
     
@@ -3103,7 +3104,7 @@ $scope.vazhdoPorosine= function(allCmimi){
         // console.log($scope.loggedInSakte);
         var klientEmer=$scope.loggedInSakte.emer;
         var klientMbiemer=$scope.loggedInSakte.mbiemer;
-        var klientTel=$scope.loggedInSakte.tel;
+        var klientTel=$scope.loggedInSakte.celular;
         var klientEmail=$scope.loggedInSakte.email;
         console.log(klientEmer+" "+klientMbiemer+" "+klientTel+" "+klientEmail);
         console.log($scope.shportaElem);
@@ -3175,7 +3176,7 @@ $scope.vazhdoPorosine= function(allCmimi){
         var klientAdresa=item;
         var klientEmer=$scope.loggedInSakte.emer;
         var klientMbiemer=$scope.loggedInSakte.mbiemer;
-        var klientTel=$scope.loggedInSakte.tel;
+        var klientTel=$scope.loggedInSakte.celular;
         var klientEmail=$scope.loggedInSakte.email;
         console.log(klientEmer+" "+klientMbiemer+" "+klientTel+" "+klientEmail);
         console.log($scope.shportaElem);

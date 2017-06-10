@@ -195,13 +195,13 @@ header i:nth-of-type(2) {
           <div ng-show="data.shfaq" style="color: #43cee6;" data-ng-click="data.shfaq=false" class="cmimiFilter2">Filtrat<i style="color: #43cee6;padding-left: 5px;"  class="icon ion-ios-arrow-up" s></i></div>
 
           <div ng-show="shfaqFiltraTag" class="row" style="margin-top: -10px;">
-          <span ng-hide="fshihCmimeVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Cmimi: {{slider.minValue}}-{{slider.maxValue}} $<i ng-click="fshiCmimiFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+          <span ng-hide="fshihCmimeVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Cmimi: {{slider.minValue}}-{{slider.maxValue}} $<i ng-click="fshiCmimiFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
 
-          <span ng-hide="fshihFormaVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Forma: <span ng-repeat="forma in checkResultsForma">{{forma}} </span><i  ng-click="fshiFormaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+          <span ng-hide="fshihFormaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Forma: <span ng-repeat="forma in checkResultsForma">{{forma}} </span><i  ng-click="fshiFormaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
 
-          <span ng-hide="fshihGjiniaVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Gjinia: {{data.gjinia}}<i ng-click="fshiGjiniaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+          <span ng-hide="fshihGjiniaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Gjinia: {{data.gjinia}}<i ng-click="fshiGjiniaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
 
-          <span ng-hide="fshihMarkaVar" style="background-color: #337ab7;margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Marka: <span ng-repeat="marka in checkResults">{{marka}} </span><i ng-click="fshiMarkaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
+          <span ng-hide="fshihMarkaVar" style="margin-top: 15px;" data-ng-click="data.shfaq=false" class="filterTag">Marka: <span ng-repeat="marka in checkResults">{{marka}} </span><i ng-click="fshiMarkaFilter()" style="padding-left: 5px;color: #EF6F6C;text-align: right;margin-left: 5px;margin-right: 5px;"  class="icon ion-close-round" s></i></span>
 
           </div>
 
@@ -246,9 +246,9 @@ header i:nth-of-type(2) {
             <div class="cmimiFilter" style="margin-top: 25px;">Gjinia</div>
             <hr style="width: 30%;text-align: center;margin-bottom: 0px;">
             <div class="radios">
-                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.gjinia" />
+                <input type="radio" name="rGroup" value="Woman" id="r1" ng-model="data.gjinia" ng-init="data.gjinia = ''" />
                 <label class="radio" class="10:00-10:20" name="10:00-10:20" for="r1">Woman</label>
-                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.gjinia" />
+                <input type="radio" name="rGroup" value="Man" id="r2" ng-model="data.gjinia" ng-init="data.gjinia = ''"/>
                 <label class="radio" id="10:20-10:40" name="10:20-10:40" for="r2">Man</label>
             </div>
             <!-- {{data.ora}} -->
@@ -318,11 +318,12 @@ header i:nth-of-type(2) {
     </div>
 
     <div class='row' >
+        <div class='row cmimiFilter2' ng-show="skaRezultat" >Filtrat nuk nxorren asnje rezultat. Produktet jane te njejte.</div>
       <div ng-repeat="syzet in syzeD | filter:searchh" class='product--blue {{klasaSfond[ktheNgjyre($index)]}}'>
         <a style="text-decoration: none;" href="#/app/produkte/{{syzeD[$index].kodartikulli}}">
         <div class='product_inner'>
         
-        <img src='http://maxoptika-app.com/maxoptikaFTP/SD13137_front.png' width='300'>
+        <img src='http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index].kodartikulli}}_front.png' width='300'>
           <!-- <img src='http://maxoptika-app.com/maxoptikaFTP/{{syzeD[$index].kodartikulli}}_front.png' width='300'> -->
           <p class="produkteShkrim">{{syzeD[$index].kodifikimartikulli2}} {{syzeD[$index].kodartikulli}}</p>
           <p>{{syzeD[$index].grupi}}</p>
@@ -356,7 +357,7 @@ header i:nth-of-type(2) {
 
 
   <br><br><br><br><br><br>
-    <ion-infinite-scroll ng-if="paRezultat"
+    <ion-infinite-scroll
     on-infinite="loadNextProducts()"
     distance="1%" immediate-check="false">
   </ion-infinite-scroll>
