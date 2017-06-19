@@ -9,6 +9,29 @@ var pg = require('pg');
 var connectionStr = 'postgres://dekixmpqcprkpu:MNbCC56WQ1ZaNRqX8GHmTBaUv-@ec2-23-21-55-25.compute-1.amazonaws.com:5432/d3fn4lugik4eop';
 pg.defaults.ssl = true;
 
+exports.getCmimiFilter = function (req, res, next) {
+
+    pg.connect(connectionStr, function(err, client) {
+      if (err) {
+        //console.log();
+        throw err;
+      }
+      console.log('Connected to postgres! 1');
+
+      client
+        .query('SELECT * FROM cmimifilter ')
+        .on('end',function(){
+          res.send(response);
+          client.end();
+        });
+    });
+    pg.end(function(err) {
+        if (err) throw err;
+        console.log('closed connection');
+    });
+
+};
+
 exports.findAll = function (req, res, next) {
   //TODO : in localhost the response stucks at offset = 180, if the same thing happens in Heroku
   //TODO : than it means that the function needs to be changed in  order to handle all request
@@ -50,6 +73,8 @@ exports.findAll = function (req, res, next) {
     console.log('test');
     //console.log(products2);
 };
+
+
 exports.findAllDielli = function (req, res, next) {
   //TODO : in localhost the response stucks at offset = 180, if the same thing happens in Heroku
   //TODO : than it means that the function needs to be changed in  order to handle all request
