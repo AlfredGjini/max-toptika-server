@@ -20,7 +20,7 @@ exports.getCmimiFilter = function (req, res, next) {
 
       client
         .query('SELECT * FROM cmimifilter ')
-        .on('end',function(){
+        .on('end',function(end){
           res.send(end);
           client.end();
         });
@@ -51,15 +51,15 @@ exports.findAll = function (req, res, next) {
           syzet.push(row);
           console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
         }).on('end',function(){
-          console.log(syzet.length);
+          //console.log(syzet.length);
           if(offset !== 0){
             response = syzet.splice(0,offset);
           }else{
             response = syzet;
           }
 
-          console.log('------------------ ',response.length);
-          console.log(response);
+          //console.log('------------------ ',response.length);
+          //console.log(response);
           res.send(response);
           client.end();
         });
