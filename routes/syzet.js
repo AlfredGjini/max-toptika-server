@@ -21,7 +21,7 @@ exports.getCmimiFilter = function (req, res, next) {
       client
         .query('SELECT * FROM cmimifilter ')
         .on('end',function(){
-          res.send(response);
+          res.send(end);
           client.end();
         });
     });
