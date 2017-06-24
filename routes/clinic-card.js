@@ -21,7 +21,7 @@ exports.getClinicCard = function(req,res,next){
          // .query('SELECT grupi,kodartikulli,kodifikimartikulli2,pershkrimartikulli FROM products2 WHERE kodartikulli = $1',[productId])
         
         .on('end', function(end) {
-          console.log(row);
+          console.log(end);
           //console.log('Single item : ', productId);
           //console.log(end);
 
