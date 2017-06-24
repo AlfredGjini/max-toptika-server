@@ -30,7 +30,7 @@ exports.getClinicCard = function(req,res,next){
             end.paRezultat=0;
             res.send(end);
           }else{
-          end.rows[0].paRezultat=1;
+          end.paRezultat=1;
           res.send(end.rows);
           }
 
