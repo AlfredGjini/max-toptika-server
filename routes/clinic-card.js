@@ -14,7 +14,7 @@ exports.getClinicCard = function(req,res,next){
         throw err;
       }
       console.log('Connected to postgresss! get clinic card');
-      var query="SELECT * FROM clinic_card WHERE id_client='"+client_id+"' AND id='"+id+"' ORDER BY data_vizites DESC LIMIT 1";
+      var query="SELECT * FROM clinic_card WHERE id_client='"+client_id+"' AND user_id='"+id+"' ORDER BY data_vizites DESC LIMIT 1";
 
       client
         .query(query)
